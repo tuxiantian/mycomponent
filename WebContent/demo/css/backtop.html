@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>返回顶部的样式</title>
+  <meta name="keywords" content="返回顶部的样式"> 
+  <style type="text/css">
+.to-top.visible {
+    -webkit-transition: opacity .3s 0s, visibility 0s 0s;
+    -moz-transition: opacity .3s 0s, visibility 0s 0s;
+    transition: opacity .3s 0s, visibility 0s 0s;
+    visibility: visible;
+    opacity: 1;
+}
+.to-top {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    position: fixed;
+    bottom: 75px;
+    right: 40px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0,0,0,.05);
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
+    background: #5b4782 url(images/to-top-arrow.svg) no-repeat center 50%;
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: opacity .3s 0s, visibility 0s .3s;
+    -moz-transition: opacity .3s 0s, visibility 0s .3s;
+    transition: opacity .3s 0s, visibility 0s .3s;
+}
+</style> 
+ </head> 
+ <body> 
+  <a href="javascript:void(0)" class="to-top visible">Top</a>  
+ </body>
+</html>

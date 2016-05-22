@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>layer 扩展功能</title>
+<link rel="stylesheet" type="text/css" href="http://localhost:80/mycomponent/lib/layer/skin/layer.css">
+<script type="text/javascript" src="http://localhost:80/mycomponent/lib/jQuery/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="http://localhost:80/mycomponent/lib/layer/layer.js"></script>
+<script type="text/javascript" src="http://localhost:80/mycomponent/lib/layer/extend/layer.ext.js"></script>
+
+</head>
+<body>
+	<button id="test7">tab层</button>
+	<button id="test8">相册</button>
+	<!-- <div id="layer-photos-demo" class="layer-photos-demo">
+	  <img layer-pid="1" layer-src="http://localhost:80/mycomponent/demo/layer/images/彩虹.jpg" src="http://localhost:80/mycomponent/demo/layer/images/彩虹.jpg" alt="彩虹.jp">
+	  <img layer-pid="2" layer-src="http://localhost:80/mycomponent/demo/layer/images/草地.jpg" src="http://localhost:80/mycomponent/demo/layer/images/草地.jpg" alt="草地.jpg">
+	  <img layer-pid="3" layer-src="http://localhost:80/mycomponent/demo/layer/images/荷花.jpg" src="http://localhost:80/mycomponent/demo/layer/images/荷花.jpg" alt="荷花.jpg">
+	  <img layer-pid="4" layer-src="http://localhost:80/mycomponent/demo/layer/images/猫.jpg" src="http://localhost:80/mycomponent/demo/layer/images/猫.jpg" alt="猫.jpg">
+	</div> -->
+
+   
+	<script type="text/javascript">
+	//tab层
+	//这是layer的扩展功能，需要引用layer.ext.js
+	$('#test7').on('click', function(){
+		layer.tab({
+		  area: ['600px', '300px'],
+		  tab: [{
+		    title: 'TAB1', 
+		    content: '内容1'
+		  }, {
+		    title: 'TAB2', 
+		    content: '内容2'
+		  }, {
+		    title: 'TAB3', 
+		    content: '内容3'
+		  }]
+		});
+	});
+	//相册
+	$('#test8').on('click', function(){
+		$.getJSON('http://localhost:80/mycomponent/demo/layer/data/data.json', function(json){
+			  console.log(json)
+			 layer.photos({
+			    photos: json
+			  });  
+			}); 
+		//调用示例
+		 /* layer.ready(function(){ //为了layer.ext.js加载完毕再执行
+		  layer.photos({
+		    photos: '#layer-photos-demo'
+		  });
+		});  */ 
+	});
+	</script>
+</body>
+</html>

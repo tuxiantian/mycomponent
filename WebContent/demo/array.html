@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>array demo</title>
+  <meta name="keywords" content="array demo"> 
+  <link rel="stylesheet" type="text/css" href="http://localhost:80/mycomponent/css/common.css"> 
+  <script type="text/javascript" src="http://localhost:80/mycomponent/lib/js/array.js"></script> 
+ </head> 
+ <body> 
+  <script type="text/javascript">
+var array=['a','b','c','d'];
+var array2=NiceTools.removeByIndex(array,1);
+alert(array);//a,c,d
+alert(array2);//a,c,d
+var array3=NiceTools.removeByValue(array,'c');
+alert(array);//a,d
+alert(array3);//a,d
+</script> 
+<details>
+<summary><strong>js</strong></summary>
+<pre class="code">
+&lt;script type="text/javascript"&gt;
+var array=['a','b','c','d'];
+var array2=NiceTools.removeByIndex(array,1);
+alert(array);//a,c,d
+alert(array2);//a,c,d
+var array3=NiceTools.removeByValue(array,'c');
+alert(array);//a,d
+alert(array3);//a,d
+&lt;/script&gt;
+</pre>
+</details> 
+ </body>
+</html>

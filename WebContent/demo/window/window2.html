@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>window 窗口</title>
+  <meta name="keywords" content="window 窗口"> 
+  <style type="text/css">
+*{padding: 0;margin: 0;}
+body{font-size: 14px;font-family: "微软雅黑";}
+.window{border-radius:5px; position: absolute;width: 300px;height: 300px;border:2px solid #111;background: #fff;margin: 10px;}
+.window h1{height: 40px;background: linear-gradient(#CBD8E6,rgb(231,228,228));font-size: 12px;line-height:40px;padding-left: 10px;}
+.window .icon{display: inline-block;overflow: hidden;
+border-top:10px solid transparent;
+border-right:10px solid #999;
+border-bottom:10px solid #999;
+border-left:10px solid transparent;
+position: absolute;right: 0;bottom:0;
+cursor:se-resize;
+}
+</style> 
+<script type="text/javascript" src="http://localhost:80/mycomponent/lib/jQuery/jquery-1.11.3.js"></script>
+
+ </head> 
+ <body> 
+  <!-- <div class="window"> 
+  <h1 class="title">窗口的标题</h1>
+  <span class="icon"></span>
+  </div>   -->
+ </body>
+</html>
+  <script type="text/javascript">
+ //jquery组件插件的固定格式
+ (function($){
+	 $.tzWindow=function(options){
+	
+		 var opts=$.extend({},{title:"窗口的标题"},options);
+		 var $window=$("<div class='window'>" +
+				 " <h1 class='title'>"+opts.title+"</h1>"+
+				  "<span class='icon'></span>"
+				 +" </div>");
+		 $("body").append($window);
+		 $window.width(opts.width).height(opts.height);
+		 initEvents($window);
+		 initDragEvent($window);
+	 };
+	 var zIndex=0;
+	 function initEvents($window){
+	 	var dragMark=false;
+		 $window.find(".title").mousedown(function(e){
+			 var x=e.clientX;
+			 var y=e.clientY;
+			 var left=$window.offset().left;
+			 var top=$window.offset().top;
+			 var w=$(window).width();
+			 var h=$(window).height();
+			 dragMark=true;
+			 zIndex++;
+			 $window.css("zIndex",zIndex);
+			 $(document).mousemove(function(ev){
+				 if(dragMark){
+					 x1=ev.clientX;
+					 y1=ev.clientY;
+					 var nw=x1-x+left;
+					 var nh=y1-y+top;
+					 if(nw<=0)nw=1;
+					 if(nh<=0)nh=1;
+					 if(nw>w)nw=w-200;
+					 if(nh>h)nh=h-200;
+					 $window.css({left:nw,top:nh}); 
+				 }
+			 }).mouseup(function(){
+				 dragMark=false;
+			 });
+		 });				 		 
+	 }
+	 function initDragEvent($window){
+		 var mark=false;
+		 $window.find(".icon").mousedown(function(e){
+			 var width=$window.width();
+			 var height=$window.height();
+			 var w=$(window).width();
+			 var h=$(window).height();
+			 var x,y,x1,y1;
+			 x=e.clientX;
+			 y=e.clientY;
+			 mark=true;
+			 zIndex++;
+			 $window.css("zIndex",zIndex);
+			 $(document).mousemove(function(ev){
+				 if(mark){
+					 
+				 x1=ev.clientX;
+				 y1=ev.clientY;
+				 var nw=x1-x+width;
+				 var nh=y1-y+height;
+				 if(nw>w)nw=w-30;
+				 if(nh>h)nh=h-30;
+				 if(nw<=200)nw=200;
+				 if(nh<=200)nh=200;
+				 $window.width(nw).height(nh); 
+				 }
+			 }).mouseup(function(){
+				 mark=false;
+			 });
+		 });
+	 }
+	 
+ })(jQuery);
+ $.tzWindow({title:"自定义窗口的标题"});
+ $.tzWindow({width:150,height:150,title:"自定义窗口的标题2"});
+ /* $(function(){
+	 var $window=$(".window");
+	 var mark=false;
+	 $window.find(".icon").mousedown(function(e){
+		 var width=$window.width();
+		 var height=$window.height();
+		 var w=$(window).width();
+		 var h=$(window).height();
+		 var x,y,x1,y1;
+		 x=e.clientX;
+		 y=e.clientY;
+		 mark=true;
+		 $(document).mousemove(function(ev){
+			 if(mark){
+				 
+			 x1=ev.clientX;
+			 y1=ev.clientY;
+			 var nw=x1-x+width;
+			 var nh=y1-y+height;
+			 if(nw>w)nw=w-30;
+			 if(nh>h)nh=h-30;
+			 if(nw<=200)nw=200;
+			 if(nh<=200)nh=200;
+			 $window.width(nw).height(nh); 
+			 }
+		 }).mouseup(function(){
+			 mark=false;
+		 });
+	 });
+	 var dragMark=false;
+	 $window.find(".title").mousedown(function(e){
+		 var x=e.clientX;
+		 var y=e.clientY;
+		 var left=$window.offset().left;
+		 var top=$window.offset().top;
+		 var w=$(window).width();
+		 var h=$(window).height();
+		 dragMark=true;
+		 $(document).mousemove(function(ev){
+			 if(dragMark){
+				 x1=ev.clientX;
+				 y1=ev.clientY;
+				 var nw=x1-x+left;
+				 var nh=y1-y+top;
+				 if(nw<=0)nw=1;
+				 if(nh<=0)nh=1;
+				 if(nw>w)nw=w-200;
+				 if(nh>h)nh=h-200;
+				 $window.css({left:nw,top:nh}); 
+			 }
+		 }).mouseup(function(){
+			 dragMark=false;
+		 });
+	 });
+ }); */
+ </script>

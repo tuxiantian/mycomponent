@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="keywords" content="html safe">
+<title>html safe</title>
+<script type="text/javascript" src="http://localhost:80/mycomponent/lib/jQuery/jquery-1.11.3.js"></script>
+</head>
+<body>
+<p><strong>html</strong></p>
+<textarea rows="20" cols="100" id="source"></textarea>
+<p><strong>safe html</strong></p>
+<textarea rows="20" cols="100" id="result"></textarea>
+<script type="text/javascript">
+$(function(){
+	$("#source").blur(function(){
+		var str=$("#source").val();
+		str=str.replace(/</g,"&lt;");
+		str=str.replace(/>/g,"&gt;");
+		$("#result").val(str);
+	});
+	 $("#result").focus(function() {
+		   $("#result").select(); 
+		 	//执行浏览器复制命令
+		   document.execCommand("Copy");
+		});
+});
+</script>
+</body>
+</html>

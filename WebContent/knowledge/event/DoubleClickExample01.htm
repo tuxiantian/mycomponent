@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+ <head> 
+  <title>Double Click Example</title>
+  <meta name="keywords" content="Double Click Example"> 
+  <link rel="stylesheet" type="text/css" href="http://localhost:80/mycomponent/css/common.css">
+ </head> 
+ <body> 
+  <p>Double click on the red box to see the order of mouse events.</p> 
+  <div style="width: 100px; height: 100px; background: red" id="testDiv"></div> 
+  <div id="output"></div> 
+  <script type="text/javascript">
+window.onload = function(){
+
+    var div = document.getElementById("testDiv");
+    div.onclick = div.onmousedown = div.onmouseup = div.ondblclick = function(event){
+        event = event || window.event;
+        
+        var output = document.getElementById("output");
+        output.innerHTML += event.type + "<br>";        
+    };
+
+};
+</script>  
+<details open="open">
+<summary>js</summary>
+<pre class="code">
+&lt;script type="text/javascript"&gt;
+window.onload = function(){
+
+    var div = document.getElementById("testDiv");
+    div.onclick = div.onmousedown = div.onmouseup = div.ondblclick = function(event){
+        event = event || window.event;
+        
+        var output = document.getElementById("output");
+        output.innerHTML += event.type + "&lt;br&gt;";        
+    };
+
+};
+&lt;/script&gt; 
+</pre>
+</details> 
+ </body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>datalist</title>
+  <meta name="keywords" content="datalist"> 
+  <link rel="stylesheet" type="text/css" href="http://localhost:80/mycomponent/css/common.css"> 
+  <script type="text/javascript" src="http://localhost:80/mycomponent/lib/jQuery/jquery-1.11.3.js"></script> 
+ </head> 
+ <body>
+   Webpage:
+  <input type="url" list="url_list" name="link"> 
+  <datalist id="url_list"> <option label="W3School" value="http://www.W3School.com.cn"> </option><option label="Google" value="http://www.google.com"> </option><option label="Microsoft" value="http://www.microsoft.com"> </option></datalist> 
+  <script type="text/javascript">
+document.write($("#url_list").val());
+var url_list=[];
+url_list.push("http://www.W3School.com.cn");
+url_list.push("http://www.W3School.com.cn2");
+sessionStorage.url_list=url_list;
+alert(sessionStorage.url_list)
+document.write("<br>");
+document.writeln(sessionStorage.url_list);
+document.write("<br>");
+$("#url_list").find("option").each(function(index,element){
+	document.writeln($(element).attr("value"));
+	document.write("<br>");
+});
+var html="<option label='Microsoft' value='http://www.microsoft.com'>";
+$("#url_list").prepend(html);
+</script> 
+  <details> 
+   <summary>js</summary> 
+   <pre class="code">
+&lt;script type="text/javascript"&gt;
+document.write($("#url_list").val());
+var url_list=[];
+url_list.push("http://www.W3School.com.cn");
+url_list.push("http://www.W3School.com.cn2");
+sessionStorage.url_list=url_list;
+alert(sessionStorage.url_list)
+document.write("&lt;br&gt;");
+document.writeln(sessionStorage.url_list);
+document.write("&lt;br&gt;");
+$("#url_list").find("option").each(function(index,element){
+	document.writeln($(element).attr("value"));
+	document.write("&lt;br&gt;");
+});
+var html="&lt;option label='Microsoft' value='http://www.microsoft.com'&gt;";
+$("#url_list").prepend(html);
+&lt;/script&gt;
+</pre> 
+  </details>  
+ </body>
+</html>

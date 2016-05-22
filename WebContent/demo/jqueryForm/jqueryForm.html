@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>jqueryForm</title>
+  <meta name="keywords" content="jqueryForm"> 
+  <script type="text/javascript" src="http://localhost:80/mycomponent/lib/jQuery/jquery-1.11.3.js"></script> 
+  <script type="text/javascript" src="http://localhost:80/mycomponent/lib/jQueryForm/jquery.form.js"></script> 
+ </head> 
+ <body> 
+  <form action="http://localhost:80/mycomponent/JqueryFormServlet" id="myForm" method="post"> 
+   <input name="name" type="text"> 
+   <input name="major" type="text">
+   <input type="submit" value="提交">
+   <input type="button" value="重置" id="reset">
+   <input type="button" value="call1" id="call1">
+   <input type="button" value="call2" id="call2">
+  </form> 
+  <p id="params"></p>
+  <script type="text/javascript">
+$(function() {
+	$("#myForm").submit(function() {
+	var myForm=$("#myForm").formSerialize();
+	console.log(myForm)
+	$("#params").html(myForm);
+	return false;
+	})
+	/* 清除表单数据 */
+	$("#reset").click(function() {
+		$("#myForm").clearForm();
+	})
+	/*jQuery ajax异步提交表单 */
+	$("#call1").click(function() {
+		 var options={
+			url:'http://localhost:80/mycomponent/JqueryFormServlet',
+			type:'post',
+			dataType:'text',
+			data:$("#myForm").formSerialize(),
+			success:function(data){
+				alert(data)
+			}
+		}; 
+		$.ajax(options);
+	})
+	/* jQuery-Form提交表单 */
+	$("#call2").click(function() {
+		var options={
+				success:function(data){
+					alert(data)
+				}
+			};
+		$('#myForm').ajaxSubmit(options);
+        return false;
+	});
+});
+</script>  
+ </body>
+</html>

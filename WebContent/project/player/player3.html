@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>play3</title>
+  <meta name="keywords" content="play3"> 
+  <style type="text/css">
+*{padding: 0;margin: 0;}
+body{font-family: "微软雅黑";font-size: 14px;}
+#timer{float: left;}
+#ctimer{float: left;}
+#seperator{float: left;}
+.clear{clear: both;}
+#progress{height: 30px;width: 640px;background: #111;position: relative;}
+#percent{height: 30px;width:0; background: red;position: absolute;top: 0;left: 0;}
+#progress span.f{z-index:2; height: 30px;width:20px;display: inline-block;position: absolute;top: 0;left: 0;background: green;}
+fieldset{margin: 50px auto;width: 960px;}
+#progress span.s{height: 30px;width:100%;display: inline-block;position: absolute;top: 0;left: 0;background: transparent;}
+</style> 
+ </head> 
+ <body> 
+  <audio src="mp3/fcml.mp3" id="audioDom" controls="controls"></audio> 
+  <fieldset> 
+   <legend>Audio element parse</legend> 
+   <div id="timer"></div>
+   <div id="seperator">
+    /
+   </div>
+   <div id="ctimer">
+    00:00
+   </div> 
+   <div class="clear"></div> 
+   <hr> 
+   <a href="javascript:void(0)" id="play">播放</a>&nbsp;&nbsp;
+   <a id="pause" href="javascript:void(0)">暂停</a> &nbsp;&nbsp;
+   <a href="javascript:void(0)" id="staticVolume">静音</a> &nbsp;&nbsp;
+   <a href="javascript:void(0)" id="openVolume">开启音量</a> 
+   <input type="text" value="5" id="vnum"> 
+   <hr> 
+   <div id="progress"> 
+    <div id="percent"></div> 
+    <span class="f"></span> 
+    <span class="s"></span> 
+   </div> 
+  </fieldset> 
+  <script type="text/javascript">
+window.onload=function(){
+	var audioDom=document.getElementById("audioDom");
+	var vnum=$("vnum").value;
+	var totalTimer=0;
+	audioDom.volume=vnum/10;
+	function $(id){
+		return document.getElementById(id);
+	}
+	//音乐加载完成
+	audioDom.oncanplaythrough=function(){
+		$("timer").innerHTML=getTime(this.duration);
+		totalTimer=this.duration;
+		drag();
+	};
+	//音乐播放中
+	audioDom.ontimeupdate=function(){
+		$("ctimer").innerHTML=getTime(this.currentTime);
+		var per=((this.currentTime/this.duration)*100);
+		$("percent").style.width=per+"%";
+		$("progress").children[1].style.left=per+"%";
+	};
+	//格式化时间
+	function getTime(timer){
+		var m=parseInt(timer/60);
+		m=m<10?"0"+m:m;
+		var s=parseInt(timer%60);
+		s=s<10?"0"+s:s;
+		return m+":"+s;
+	};
+	//点击改变音乐的进度和滑块的位置
+	$("progress").children[2].onmousedown=function(e){
+		var ev=e||window.event;
+		var x=ev.clientX;
+		var nl=x-this.parentElement.offsetLeft;
+		var per=(nl/this.parentElement.offsetWidth);
+		$("percent").style.width=per*100+"%";
+		$("progress").children[1].style.left=per*100+"%";
+		audioDom.currentTime=(totalTimer*per);
+	};
+	//拖动滑块改变音乐的进度
+	function drag() {
+		$("progress").children[1].onmousedown=function(e){
+			var ev=e||window.event;
+			var targetDom=this;
+			var x=ev.clientX;
+			var y=ev.clientY;
+			var l=this.offsetLeft;
+			var t=this.offsetTop;
+			var mv=targetDom.parentElement.offsetWidth-targetDom.offsetWidth;
+			audioDom.pause();
+			document.onmousemove=function(e){
+				var evv=e||window.event;
+				var nl=evv.clientX-x+l;
+				if(nl<0)nl=0;
+				if(nl>mv)nl=mv;
+				var p=(nl/mv);
+				targetDom.style.left=nl+"px";//仅在水平方向拖动
+				//targetDom.style.top=evv.clientY-y+t+"px";
+				$("percent").style.width=p*100+"%";
+				
+				if(audioDom.played)
+				audioDom.currentTime=(totalTimer*p);
+			};//end document.onmousemove
+			document.onmouseup=function(){
+				document.onmousemove=null;
+				document.onmouseup=null;
+				audioDom.play();
+			};
+		}//end $("progress").children[1].onmousedown
+	};//end drag
+	//播放
+	$("play").onclick=function(){
+		audioDom.play()
+	};
+	//暂停
+	$("pause").onclick=function(){
+		audioDom.pause();
+	};
+	var v=0;
+	//静音
+	$("staticVolume").onclick=function(){
+		v=audioDom.volume;
+		audioDom.volume=0;
+	};
+	//开启音量
+	$("openVolume").onclick=function(){
+		vnum=$("vnum").value;
+		audioDom.volume=vnum/10;		
+	};
+}
+</script>  
+ </body>
+</html>

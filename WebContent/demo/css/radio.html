@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>custome radio</title>
+  <meta name="keywords" content="custome radio"> 
+  <style type="text/css">
+.zui_check {
+    background: url(images/fenbao.png) 0 -42px no-repeat;
+    display: inline-block;
+    vertical-align: middle;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+}
+.zui_check.checked {
+    background-position: 0 -71px;
+}
+.zui_check_list li{list-style: none;}
+</style> 
+  <script type="text/javascript" src="http://localhost:80/mycomponent/lib/jQuery/jquery-1.11.3.js"></script> 
+ </head> 
+ <body> 
+  <ul class="zui_check_list"> 
+   <li> <i class="zui_check" data-id="1" data-des="通过"></i> <span>通过（0）</span> </li> 
+   <li> <i class="zui_check" data-id="19" data-des="未上传手持证件"></i> <span>未上传手持证件（1）</span> </li> 
+   <li> <i class="zui_check" data-id="22" data-des="头像不清晰"></i> <span>头像不清晰（2）</span> </li> 
+   <li> <i class="zui_check" data-id="28" data-des="身份证照片不清晰"></i> <span>身份证照片不清晰（3）</span> </li> 
+   <li> <i class="zui_check" data-id="8" data-des="其他"></i> <span>其他（4）</span> </li> 
+  </ul> 
+  <script type="text/javascript">
+			function quickClick(evt){
+			var evt = (evt) ? evt : window.event;
+			switch(evt.keyCode){
+				case 48:case 96://0
+					$(".zui_check_list .zui_check").eq(0).trigger("click");
+					break;
+				case 49:case 97: //1
+					$(".zui_check_list .zui_check").eq(1).trigger("click");
+					break;
+				case 50:case 98: //2
+					$(".zui_check_list .zui_check").eq(2).trigger("click");
+					break;
+				case 51:case 99:
+					$(".zui_check_list .zui_check").eq(3).trigger("click");
+					break;
+				case 52:case 100:
+					$(".zui_check_list .zui_check").eq(4).trigger("click");
+					break;
+				case 53:case 101:
+					$(".zui_check_list .zui_check").eq(5).trigger("click");
+					break;
+				case 54:case 102:
+					$(".zui_check_list .zui_check").eq(6).trigger("click");
+					break;
+				}
+			
+		}
+			//按键绑定
+			$(document).unbind("keyup").bind("keyup", function(evt){
+				quickClick(evt);
+			})
+		//快速选择
+		$(".zui_check_list .zui_check").unbind("click").bind("click", function(){
+			var $this = $(this);
+			if($this.hasClass("disable")){
+				return false;
+			}
+			var $val = $this.data("id");
+			if($this.hasClass("checked")){
+				switch($val){
+					case 1:
+						alert($val);
+						break;
+					case 8:
+						alert($val);
+						break;
+					default:
+						document.write($val);
+						break;
+				}
+			}else{
+				$(".zui_check_list .zui_check").removeClass("checked");
+				
+				$this.addClass('checked');
+				
+				switch($val){
+					case 1:
+						alert($val);
+						break;
+					case 8:
+						alert($val);
+						break;
+					default:
+						document.write($val);
+						break;
+				}
+			}
+			});
+		</script>  
+ </body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>音乐播放器</title>
+<meta name="keywords" content="音乐播放器">
+<link rel="stylesheet" href="http://localhost:80/mycomponent/project/player/font-awesome/css/font-awesome.min.css">
+<style type="text/css">
+*{margin: 0;padding: 0;}
+body{font-size: 14px;font-family: "微软雅黑"}
+.header{height: 35px;background: #333;}
+.container{width: 1200px;height: 600px;margin: 0 auto;}
+.container .t{height: 120px;background:green ;}
+.container .l{width: 800px;height: 480px;}
+.container .l h1{margin-bottom: 20px;font-size: 36px;text-shadow: 1px 1px 1px #f9f9f9;
+font-weight: 700
+}
+.container .l p{line-height: 22px;}
+.container .l .line{height: 5px;background: #e5e5e5;margin: 20px 0;width: 700px;position: relative;border-radius:5px;}
+.container .l .line .percent{position: absolute;background-color: green;height: 100%;top:0;left:0;border-radius:5px;}
+.container .l ul li{color:#666;list-style: none; }
+.container .r{height: 480px;width: 400px;}
+h1{color: #666;font-weight: normal;}
+.g{color: #0C8F44; }
+.opbtn{margin: 20px 0;}
+.container .l a{color: #c5c5c5;font-size: 33px;}
+</style>
+</head>
+<body>
+	<div class="header"></div>
+	<div class="container">
+		<div class="t"></div>
+		<div class="l">
+			<h1>一次就好 （《夏洛特烦恼》电影暖水曲）</h1>
+			<p class="opbtn">
+				<a href="javascript:void(0)" class="play" id="play"><i
+					class="fa fa-play-circle-o"></i></a> 
+					<a href="javascript:void(0)"
+					class="pause" id="pause" style="display: none;"><i class="fa fa-pause"></i></a> <a href=""
+					class="plus"><i class="fa fa-plus"></i></a>
+			</p>
+			<p>
+				歌手：<label class="g">杨宗纬</label>
+			</p>
+			<p>
+				语言：<label class="g">国语 </label>
+			</p>
+			<p>
+				所属专辑：<label class="g">夏洛特烦恼 电影原声带</label>
+			</p>
+			<p>
+				发行时间：<label class="g">2015-10-20</label>
+			</p>
+			<div class="line">
+			<div class="percent"></div>
+			</div>
+			<span id="ttime">00:00</span>/<span id="stime">00:00</span>
+			<p>歌词复制歌词|下载LRC歌词</p>
+			<ul>
+				<li>一次就好 - 杨宗纬</li>
+				<li>（《夏洛特烦恼》电影暖水曲）</li>
+				<li>词：陈曦</li>
+				<li>曲：董冬冬</li>
+				<li>想看你笑</li>
+				<li>想和你闹</li>
+				<li>想拥你入我怀抱</li>
+				<li>上一秒红着脸在争吵</li>
+				<li>下一秒转身就能和好</li>
+				<li>不怕你哭</li>
+				<li>不怕你叫</li>
+				<li>因为你是我的骄傲</li>
+				<li>一双眼睛追着你乱跑</li>
+				<li>一颗心早已经准备好</li>
+				<li>一次就好我带你去看天荒地老</li>
+				<li>在阳光灿烂的日子里开怀大笑</li>
+				<li>在自由自在的空气里吵吵闹闹</li>
+				<li>你可知道我唯一的想要</li>
+				<li>世界还小我陪你去到天涯海角</li>
+				<li>在没有烦恼的角落里停止寻找</li>
+				<li>在无忧无虑的时光里慢慢变老</li>
+				<li>你可知道我全部的心跳</li>
+				<li>随你跳</li>
+				<li>想看你笑</li>
+				<li>想和你闹</li>
+				<li>想拥你入我怀抱</li>
+				<li>上一秒红着脸在争吵</li>
+				<li>下一秒转身就能和好</li>
+				<li>不怕你哭</li>
+				<li>不怕你叫</li>
+				<li>因为你是我的骄傲</li>
+				<li>一双眼睛追着你乱跑</li>
+				<li>一颗心早已经准备好</li>
+				<li>一次就好我带你去看天荒地老</li>
+				<li>在阳光灿烂的日子里开怀大笑</li>
+				<li>在自由自在的空气里吵吵闹闹</li>
+				<li>你可知道我唯一的想要</li>
+				<li>世界还小我陪你去到天涯海角</li>
+				<li>在没有烦恼的角落里停止寻找</li>
+				<li>在无忧无虑的时光里慢慢变老</li>
+				<li>你可知道我全部的心跳</li>
+				<li>随你跳</li>
+			</ul>
+		</div>
+		<div class="r"></div>
+		<audio id="audio" src="http://localhost:80/mycomponent/project/player/mp3/fcml.mp3"></audio>
+		<script type="text/javascript">
+		var tzAudio={
+				$:function(id){
+					return document.getElementById(id);
+				},
+			audioDom:document.getElementById("audio"),
+			add:function(url){
+				this.audioDom.src=url;
+			},
+			showPercent:function(aobj){
+				var p=aobj.currentTime;
+				console.log(aobj.currentTime)
+				var t=aobj.duration;
+				var percent=parseInt((p / t)*100);
+				return percent;
+			}, 
+			showtime:function(callback){
+				var $this=this;
+				this.audioDom.oncanplaythrough=function(){
+					callback($this.timeFormat(this.duration));
+				};
+			},
+			timeFormat:function(time){
+				var m=parseInt(time/60);
+				var s=parseInt(time%60);
+				if(m<10)m="0"+m;
+				if(s<10)s="0"+s;
+				return m+":"+s;
+			},
+			playing:function(callback){
+				var $this=this;
+				this.audioDom.ontimeupdate=function(){
+					var p=$this.showPercent($this.audioDom);
+					callback($this.timeFormat(this.currentTime),p);
+				};
+			},
+			play:function(){
+					this.audioDom.play();
+				},
+				stop:function(){
+					this.audioDom.pause();
+				},
+				events:function(id,callback){
+					var $this=this;
+					document.getElementById(id).onclick=function(){
+						callback.call(this.audioDom,$this,this);
+					};
+				}
+		};
+		tzAudio.add("http://localhost:80/mycomponent/project/player/mp3/fcml.mp3");
+		//tzAudio.play();
+		tzAudio.events("play",function(obj,btnDom){
+			obj.play();
+			btnDom.style.display="none";
+			tzAudio.$("pause").style.display="inline-block";
+		});
+		tzAudio.showtime(function(t){
+			tzAudio.$("ttime").innerHTML=t;
+		});
+		tzAudio.playing(function(t,p){
+			tzAudio.$("stime").innerHTML=t;
+			console.log(p)
+			document.getElementsByClassName("percent")[0].style.width=p+"%";
+		});
+		tzAudio.events("pause",function(obj,btnDom){
+			obj.stop();
+			btnDom.style.display="none";
+			tzAudio.$("play").style.display="inline-block";
+		});
+		</script>
+	</div>
+</body>
+</html>

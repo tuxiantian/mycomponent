@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+ <head> 
+  <title>Client coordinates Example</title>
+  <meta name="keywords" content="Client coordinates Example"> 
+   <link rel="stylesheet" type="text/css" href="http://localhost:80/mycomponent/css/common.css">
+  <script type="text/javascript" src="EventUtil.js"></script> 
+ </head> 
+ <body> 
+  <div id="myDiv" style="background-color:red;height:10000px;width:100px">
+   Click me
+  </div> 
+  <script>
+        var div = document.getElementById("myDiv");
+        EventUtil.addHandler(div, "click", function(event){
+            event = EventUtil.getEvent(event);
+            var pageX = event.pageX,
+                pageY = event.pageY;
+        
+            if (pageX === undefined){
+                pageX = event.clientX + (document.body.scrollLeft || document.documentElement.scrollLeft);
+            }
+        
+            if (pageY === undefined){
+                pageY = event.clientY + (document.body.scrollTop || document.documentElement.scrollTop);
+            }
+        
+            alert("Page coordinates: " + event.pageX + "|" + pageX + "," + event.pageY + "|"+pageY);        
+        });
+    </script>  
+     <details open="open">
+<summary>js</summary>
+<pre class="code">
+&lt;script&gt;
+        var div = document.getElementById("myDiv");
+        EventUtil.addHandler(div, "click", function(event){
+            event = EventUtil.getEvent(event);
+            var pageX = event.pageX,
+                pageY = event.pageY;
+        
+            if (pageX === undefined){
+                pageX = event.clientX + (document.body.scrollLeft || document.documentElement.scrollLeft);
+            }
+        
+            if (pageY === undefined){
+                pageY = event.clientY + (document.body.scrollTop || document.documentElement.scrollTop);
+            }
+        
+            alert("Page coordinates: " + event.pageX + "|" + pageX + "," + event.pageY + "|"+pageY);        
+        });
+    &lt;/script&gt; 
+</pre>
+</details>
+ </body>
+</html>

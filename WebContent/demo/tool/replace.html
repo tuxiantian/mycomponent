@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="keywords" content="window文件路径替换">
+<title>window文件路径替换</title>
+<link rel="stylesheet" type="text/css" href="http://localhost:80/mycomponent/css/common.css">
+<style type="text/css">
+
+</style>
+
+<!-- <script type="text/javascript" src="http://localhost:80/mycomponent/lib/jQuery/jquery-1.11.3.js"></script> -->
+<script data-main="http://localhost:80/mycomponent/lib/js/main" src="http://localhost:80/mycomponent/lib/requireJs/require.js"></script>
+</head>
+<body>
+<p>原路径</p>
+<textarea rows="2" cols="100" id="source"></textarea>
+<p>替换后路径</p>
+<textarea rows="2" cols="100" id="target"></textarea>
+<script type="text/javascript">
+require( ['jquery'], function( $ ) {
+	String.prototype.replaceAll = function(reallyDo, replaceWith, ignoreCase) {  
+	    if (!RegExp.prototype.isPrototypeOf(reallyDo)) {  
+	        return this.replace(new RegExp(reallyDo, (ignoreCase ? "gi": "g")), replaceWith);  
+	    } else {  
+	        return this.replace(reallyDo, replaceWith);  
+	    }  
+	}  
+	$(function(){
+		$("#source").blur(function(){
+			var str=$("#source").val();
+			str=str.replaceAll('\\\\',"/",true);
+			//str=str.replace(/\\/g,"/");
+			$("#target").val(str);
+		});
+		 $("#target").focus(function() {
+			   $("#target").select(); 
+			 	//执行浏览器复制命令
+			   document.execCommand("Copy");
+			});
+	});
+});
+</script>
+<p><strong>js</strong></p>
+<pre class="code">
+&lt;script type=&quot;text/javascript&quot;&gt;<br/>String.prototype.replaceAll = function(reallyDo, replaceWith, ignoreCase) {  <br/>    if (!RegExp.prototype.isPrototypeOf(reallyDo)) {  <br/>        return this.replace(new RegExp(reallyDo, (ignoreCase ? &quot;gi&quot;: &quot;g&quot;)), replaceWith);  <br/>    } else {  <br/>        return this.replace(reallyDo, replaceWith);  <br/>    }  <br/>}  <br/>$(function(){<br/>	$(&quot;#source&quot;).blur(function(){<br/>		var str=$(&quot;#source&quot;).val();<br/>		str=str.replaceAll('\\\\',&quot;/&quot;,true);<br/>		//str=str.replace(/\\/g,&quot;/&quot;);<br/>		$(&quot;#target&quot;).val(str);<br/>	});<br/>});<br/>&lt;/script&gt;
+</pre>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <META http-equiv=Content-Type content="text/html; charset=utf-8">
+    <meta name="keywords" content="with-进入到某个属性(进入到某个上下文环境)">
+    <link rel="stylesheet" type="text/css" href="http://localhost:80/mycomponent/css/common.css">
+    <title>with-进入到某个属性(进入到某个上下文环境) - by 杨元</title>
+  </head>
+  <body>
+    <h1>with-进入到某个属性(进入到某个上下文环境)</h1>
+    <!--基础html框架-->
+    <table>
+      <thead>
+        <tr>
+          <th>姓名</th>
+          <th>性别</th>
+          <th>年龄</th>
+          <th>兴趣爱好</th>
+        </tr>
+      </thead>
+      <tbody id="tableList">
+        
+      </tbody>
+    </table>
+    
+    <!--插件引用-->
+    <script type="text/javascript" src="script/jquery.js"></script>
+    <script type="text/javascript" src="script/handlebars-1.0.0.beta.6.js"></script>
+    
+    <!--Handlebars.js模版-->
+    <!--Handlebars.js模版放在script标签中，保留了html原有层次结构,模版中要写一些操作语句-->
+    <!--id可以用来唯一确定一个模版,type是模版固定的写法-->
+    <script id="table-template" type="text/x-handlebars-template">
+      {{#each this}}
+        <tr>
+          <td>{{name}}</td>
+          <td>{{sex}}</td>
+          <td>{{age}}</td>
+          <td>
+            {{#with favorite}}
+              {{#each this}}
+                <p>{{name}}</p>
+              {{/each}}
+            {{/with}}
+          </td>
+        </tr> 
+      {{/each}}
+    </script>
+    
+    <!--进行数据处理、html构造-->
+    <script type="text/javascript">
+      $(document).ready(function() {
+        //模拟的json对象
+        var data = [
+                        {
+                            "name": "张三",
+                            "sex": "0",
+                            "age": 18,
+                            "favorite":
+                            [
+                              {
+                                "name":"唱歌"
+                              },{
+                                "name":"篮球"
+                              }
+                            ]
+                        },
+                        {
+                            "name": "李四",
+                            "sex": "0",
+                            "age": 22,
+                            "favorite":
+                            [
+                              {
+                                "name":"上网"
+                              },{
+                                "name":"足球"
+                              }
+                            ]
+                        },
+                        {
+                            "name": "妞妞",
+                            "sex": "1",
+                            "age": 18,
+                            "favorite":
+                            [
+                              {
+                                "name":"电影"
+                              },{
+                                "name":"旅游"
+                              }
+                            ]
+                        }
+                    ];
+        
+        //注册一个Handlebars模版，通过id找到某一个模版，获取模版的html框架
+        //$("#table-template").html()是jquery的语法，不懂的童鞋请恶补。。。
+        var myTemplate = Handlebars.compile($("#table-template").html());
+        
+        //将json对象用刚刚注册的Handlebars模版封装，得到最终的html，插入到基础table中。
+        $('#tableList').html(myTemplate(data));
+      });
+    </script>
+     <p><strong>html</strong></p>
+    <pre class="code">
+ &lt;!--&#x57fa;&#x7840;html&#x6846;&#x67b6;--&gt;<br/>    &lt;table&gt;<br/>      &lt;thead&gt;<br/>        &lt;tr&gt;<br/>          &lt;th&gt;&#x59d3;&#x540d;&lt;/th&gt;<br/>          &lt;th&gt;&#x6027;&#x522b;&lt;/th&gt;<br/>          &lt;th&gt;&#x5e74;&#x9f84;&lt;/th&gt;<br/>          &lt;th&gt;&#x5174;&#x8da3;&#x7231;&#x597d;&lt;/th&gt;<br/>        &lt;/tr&gt;<br/>      &lt;/thead&gt;<br/>      &lt;tbody id=&quot;tableList&quot;&gt;<br/>        <br/>      &lt;/tbody&gt;<br/>    &lt;/table&gt;
+</pre>
+ <p><strong>js</strong></p>
+    <pre class="code">
+&lt;!--&#x63d2;&#x4ef6;&#x5f15;&#x7528;--&gt;<br/>    &lt;script type=&quot;text/javascript&quot; src=&quot;script/jquery.js&quot;&gt;&lt;/script&gt;<br/>    &lt;script type=&quot;text/javascript&quot; src=&quot;script/handlebars-1.0.0.beta.6.js&quot;&gt;&lt;/script&gt;<br/>    <br/>    &lt;!--Handlebars.js&#x6a21;&#x7248;--&gt;<br/>    &lt;!--Handlebars.js&#x6a21;&#x7248;&#x653e;&#x5728;script&#x6807;&#x7b7e;&#x4e2d;&#xff0c;&#x4fdd;&#x7559;&#x4e86;html&#x539f;&#x6709;&#x5c42;&#x6b21;&#x7ed3;&#x6784;,&#x6a21;&#x7248;&#x4e2d;&#x8981;&#x5199;&#x4e00;&#x4e9b;&#x64cd;&#x4f5c;&#x8bed;&#x53e5;--&gt;<br/>    &lt;!--id&#x53ef;&#x4ee5;&#x7528;&#x6765;&#x552f;&#x4e00;&#x786e;&#x5b9a;&#x4e00;&#x4e2a;&#x6a21;&#x7248;,type&#x662f;&#x6a21;&#x7248;&#x56fa;&#x5b9a;&#x7684;&#x5199;&#x6cd5;--&gt;<br/>    &lt;script id=&quot;table-template&quot; type=&quot;text/x-handlebars-template&quot;&gt;<br/>      {{#each this}}<br/>        &lt;tr&gt;<br/>          &lt;td&gt;{{name}}&lt;/td&gt;<br/>          &lt;td&gt;{{sex}}&lt;/td&gt;<br/>          &lt;td&gt;{{age}}&lt;/td&gt;<br/>          &lt;td&gt;<br/>            {{#with favorite}}<br/>              {{#each this}}<br/>                &lt;p&gt;{{name}}&lt;/p&gt;<br/>              {{/each}}<br/>            {{/with}}<br/>          &lt;/td&gt;<br/>        &lt;/tr&gt; <br/>      {{/each}}<br/>    &lt;/script&gt;<br/>    <br/>    &lt;!--&#x8fdb;&#x884c;&#x6570;&#x636e;&#x5904;&#x7406;&#x3001;html&#x6784;&#x9020;--&gt;<br/>    &lt;script type=&quot;text/javascript&quot;&gt;<br/>      $(document).ready(function() {<br/>        //&#x6a21;&#x62df;&#x7684;json&#x5bf9;&#x8c61;<br/>        var data = [<br/>                        {<br/>                            &quot;name&quot;: &quot;&#x5f20;&#x4e09;&quot;,<br/>                            &quot;sex&quot;: &quot;0&quot;,<br/>                            &quot;age&quot;: 18,<br/>                            &quot;favorite&quot;:<br/>                            [<br/>                              {<br/>                                &quot;name&quot;:&quot;&#x5531;&#x6b4c;&quot;<br/>                              },{<br/>                                &quot;name&quot;:&quot;&#x7bee;&#x7403;&quot;<br/>                              }<br/>                            ]<br/>                        },<br/>                        {<br/>                            &quot;name&quot;: &quot;&#x674e;&#x56db;&quot;,<br/>                            &quot;sex&quot;: &quot;0&quot;,<br/>                            &quot;age&quot;: 22,<br/>                            &quot;favorite&quot;:<br/>                            [<br/>                              {<br/>                                &quot;name&quot;:&quot;&#x4e0a;&#x7f51;&quot;<br/>                              },{<br/>                                &quot;name&quot;:&quot;&#x8db3;&#x7403;&quot;<br/>                              }<br/>                            ]<br/>                        },<br/>                        {<br/>                            &quot;name&quot;: &quot;&#x599e;&#x599e;&quot;,<br/>                            &quot;sex&quot;: &quot;1&quot;,<br/>                            &quot;age&quot;: 18,<br/>                            &quot;favorite&quot;:<br/>                            [<br/>                              {<br/>                                &quot;name&quot;:&quot;&#x7535;&#x5f71;&quot;<br/>                              },{<br/>                                &quot;name&quot;:&quot;&#x65c5;&#x6e38;&quot;<br/>                              }<br/>                            ]<br/>                        }<br/>                    ];<br/>        <br/>        //&#x6ce8;&#x518c;&#x4e00;&#x4e2a;Handlebars&#x6a21;&#x7248;&#xff0c;&#x901a;&#x8fc7;id&#x627e;&#x5230;&#x67d0;&#x4e00;&#x4e2a;&#x6a21;&#x7248;&#xff0c;&#x83b7;&#x53d6;&#x6a21;&#x7248;&#x7684;html&#x6846;&#x67b6;<br/>        //$(&quot;#table-template&quot;).html()&#x662f;jquery&#x7684;&#x8bed;&#x6cd5;&#xff0c;&#x4e0d;&#x61c2;&#x7684;&#x7ae5;&#x978b;&#x8bf7;&#x6076;&#x8865;&#x3002;&#x3002;&#x3002;<br/>        var myTemplate = Handlebars.compile($(&quot;#table-template&quot;).html());<br/>        <br/>        //&#x5c06;json&#x5bf9;&#x8c61;&#x7528;&#x521a;&#x521a;&#x6ce8;&#x518c;&#x7684;Handlebars&#x6a21;&#x7248;&#x5c01;&#x88c5;&#xff0c;&#x5f97;&#x5230;&#x6700;&#x7ec8;&#x7684;html&#xff0c;&#x63d2;&#x5165;&#x5230;&#x57fa;&#x7840;table&#x4e2d;&#x3002;<br/>        $('#tableList').html(myTemplate(data));<br/>      });<br/>    &lt;/script&gt;
+</pre>
+  </body>
+</html>

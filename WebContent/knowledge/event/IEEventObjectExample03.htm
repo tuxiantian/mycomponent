@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+ <head> 
+  <title>IE Event Object Example</title>
+  <meta name="keywords" content="IE Event Object Example"> 
+   <link rel="stylesheet" type="text/css" href="http://localhost:80/mycomponent/css/common.css">
+  <script type="text/javascript" src="EventUtil.js"></script> 
+ </head> 
+ <body> 
+  <input type="button" value="Click Me" id="myBtn"> 
+  <p>This example works only in Internet Explorer.</p> 
+  <script type="text/javascript">
+        var btn = document.getElementById("myBtn");
+        btn.onclick = function(){
+            alert("Clicked");
+            window.event.cancelBubble = true;
+        };
+        
+        document.body.onclick = function(event){
+            alert("Body clicked");
+        };
+    </script>  
+   <details open="open">
+<summary>js</summary>
+<pre class="code">
+&lt;script type="text/javascript"&gt;
+        var btn = document.getElementById("myBtn");
+        btn.onclick = function(){
+            alert("Clicked");
+            window.event.cancelBubble = true;
+        };
+        
+        document.body.onclick = function(event){
+            alert("Body clicked");
+        };
+    &lt;/script&gt; 
+</pre>
+</details>  
+ </body>
+</html>

@@ -1,0 +1,210 @@
+<!doctype html>
+<html>
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>player2</title>
+  <meta name="keywords" content="player2"> 
+  <style type="text/css">
+*{padding: 0;margin: 0;}
+body{font-size: 12px;font-family: "微软雅黑";color: #000;background: url("images/musicbg.jpg") top center no-repeat;width: 100%;height:100%; }
+.music{z-index: 2;width: 720px;height:470px;margin: 130px 0 0 393px;position: absolute;}
+.music .m_lyric{width: 50%;height:470px;background: #777;float:left;}
+
+.music .m_list{width: 50%;height:470px;background: #333;float:left;}
+.music .m_list ul {padding-left: 20px;}
+.music .m_list ul li{list-style: none;padding: 5px 0;border-bottom: 1px solid #000;line-height: 25px;}
+.music .m_list ul li:hover{border-bottom: 1px solid #f63;}
+.music .m_list ul li a{color: #fff;text-decoration: none;font-size: 18px;}
+.music .m_list ul li a:hover{color: #f30;}
+
+
+.music .m_lyric h2{text-align: center;padding:15px 0 10px 0px;font-size: 25px;font-weight: 500;background-color: #CBCBCB;}
+.music .m_lyric .m_con{width: 100%;height:330px; background-color:#2A241F;overflow:hidden; /* overflow-y: scroll; */text-align:center;font-size:16px; line-height: 20px;padding: 5px 0;}
+.music .m_lyric .m_con div{margin:10px 0;}
+.music .m_lyric .m_player{width: 100%;height:60px;background:#747474;padding: 9px 0 0 34px;}
+.music .m_lyric .m_player .m_btn{width: 300px;height:60px;text-align: center;}
+.music .m_lyric .m_player .m_btn a{width: 60px;height:60px;display:inline-block;font-size: 33px;line-height: 60px;}
+.sel{color:green;}
+.bgimg{position: fixed;top:0;left: 0;width: 100%;height: 100%;
+/* background-image: url('http://localhost:8080/mycomponent/demo/knowledge/images/musicbg.jpg'); */
+z-index: -1;
+background-attachment: fixed;
+background-size: cover;background-repeat: no-repeat;}
+/* 设置图片360°旋转 */
+.box{z-index: 1;width: 180px;height: 180px;margin:160px 0 0 180px;position:absolute; background:url("http://localhost:8080/mycomponent/project/player/images/girl.jpg")  center no-repeat; border-radius:50%;}
+
+@keyframes move{
+from{transform:rotate(0)}
+10%{transform:rotate(36deg)}
+20%{transform:rotate(72deg)}
+30%{transform:rotate(108deg)}
+40%{transform:rotate(144deg)}
+50%{transform:rotate(180deg)}
+60%{transform:rotate(216deg)}
+70%{transform:rotate(252deg)}
+80%{transform:rotate(288deg)}
+90%{transform:rotate(324deg)}
+to{transform:rotate(360deg)}
+}
+/* Safari and Chrome */
+@-webkit-keyframes move{
+from{-webkit-transform:rotate(0)}
+10%{-webkit-transform:rotate(36deg)}
+20%{-webkit-transform:rotate(72deg)}
+30%{-webkit-transform:rotate(108deg)}
+40%{-webkit-transform:rotate(144deg)}
+50%{-webkit-transform:rotate(180deg)}
+60%{-webkit-transform:rotate(216deg)}
+70%{-webkit-transform:rotate(252deg)}
+80%{-webkit-transform:rotate(288deg)}
+90%{-webkit-transform:rotate(324deg)}
+to{-webkit-transform:rotate(360deg)}
+}
+
+.m{-webkit-animation:move 6s  ease;-webkit-animation-iteration-count: infinite;
+}
+</style> 
+  <link rel="stylesheet" href="http://localhost:8080/mycomponent/project/player/font-awesome/css/font-awesome.min.css"> 
+  <script type="text/javascript" src="http://localhost:8080/mycomponent/lib/jQuery/jquery-1.11.3.js"></script> 
+ </head> 
+ <body> 
+  <div class="box m" id="box"></div> 
+  <div class="music" id="music"> 
+   <div class="m_lyric"> 
+    <h2>风吹麦浪-李健</h2> 
+    <div class="m_con" id="lrcbox"></div> 
+    <div class="m_player"> 
+     <div class="m_btn"> 
+      <a herf="javascript:void(0)" class="m_pre"><i class="fa fa-step-backward"></i></a> 
+      <a herf="javascript:void(0)" class="m_play" id="play"><i class="fa fa-play"></i></a> 
+      <a href="javascript:void(0)" class="pause" id="pause" style="display: none;"><i class="fa fa-pause"></i></a> 
+      <a herf="javascript:void(0)" class="m_next"><i class="fa fa-step-forward"></i></a> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="m_list"> 
+    <ul> 
+     <li><a href="#">风吹麦浪</a></li> 
+     <li><a href="#">风吹麦浪</a></li> 
+     <li><a href="#">风吹麦浪</a></li> 
+     <li><a href="#">风吹麦浪</a></li> 
+     <li><a href="#">风吹麦浪</a></li> 
+     <li><a href="#">风吹麦浪</a></li> 
+     <li><a href="#">风吹麦浪</a></li> 
+     <li><a href="#">风吹麦浪</a></li> 
+     <li><a href="#">风吹麦浪</a></li> 
+     <li><a href="#">风吹麦浪</a></li> 
+     <li><a href="#">风吹麦浪</a></li> 
+    </ul> 
+   </div> 
+  </div> 
+  <!-- [ar:李健]
+[ti:风吹麦浪]
+[by:阿达乱舞] --> 
+  <textarea rows="10" cols="50" id="lrc" style="display:none;">
+[ar:李健]
+[ti:风吹麦浪]
+[by:阿达乱舞]
+[00:00.40]续曾经这首歌让你我共鸣，
+[00:08.25]今天这首歌还是让我心潮涌动，
+[00:13.13]我会永远深爱着她
+[00:14.42]远处蔚蓝天空下
+[00:16.84]涌动着金色的麦浪
+[00:21.90]就在那里曾是你和我
+[00:25.52]爱过的地方
+[00:28.61]当微风带着收获的味道
+[00:32.52]吹向我脸庞
+[00:35.76]想起你轻柔的话语
+[00:39.30]曾打湿我眼眶
+[00:42.18]嗯…呐…
+[00:55.99]嗯…呐…
+[01:10.37]我们曾在田野里歌唱
+[01:14.23]在冬季盼望
+[01:17.55]却没能等到阳光下
+[01:20.96]这秋天的景象
+[01:24.19]就让失散的誓言飞舞吧
+[01:28.10]随西风飘荡
+[01:31.43]就像你柔软的长发
+[01:34.82]曾芬芳我梦乡
+[01:37.78]嗯…呐…
+[01:51.70]嗯…呐…
+[02:19.94]远处蔚蓝天空下
+[02:22.18]涌动着金色的麦浪
+[02:26.99]就在那里曾是你和我
+[02:30.67]爱过的地方
+[02:33.85]当微风带着收获的味道
+[02:37.76]吹向我脸庞
+[02:41.08]想起你轻柔的话语
+[02:44.56]曾打湿我眼眶
+[02:47.35]嗯…呐…
+[03:01.20]嗯…呐…
+[03:16.05]我们曾在田野里歌唱
+[03:19.44]在冬季盼望
+[03:22.66]却没能等到阳光下
+[03:26.22]这秋天的景象
+[03:29.33]就让失散的誓言飞舞吧
+[03:33.28]随西风飘荡
+[03:36.73]就像你柔软的长发
+[03:40.08]曾芬芳我梦乡
+[03:42.96]嗯…呐…
+[03:51.78]end——给我最爱的晶晶
+</textarea> 
+  <div class="bgimg" style="background-image:url('http://localhost:8080/mycomponent/project/player/images/musicbg.jpg');"></div> 
+  <script type="text/javascript">
+ 
+$(function () {	
+	var audioDom=document.createElement("audio");
+	audioDom.src="mp3/fcml.mp3";
+	//加载歌词
+	function initlyric(){
+		//清空内容
+		$("#lrcbox").html("");
+		var html="";
+		var lrc=$("#lrc").val();
+		var lrcArr=lrc.split("[");
+		for(var i=0;i<lrcArr.length;i++){
+			var sarr=lrcArr[i].split("]");
+			
+			console.log(sarr.length);
+			var timer=sarr[0].split(".");
+			var message=sarr[1];
+			var stime=timer[0].split(":");
+			var ms=stime[0]*60+stime[1]*1;
+			if(message){
+				html+="<div id='"+ms+"'>"+message+"</div>";
+			}
+		}
+		$("#lrcbox").html(html);
+	}
+	initlyric();
+	audioDom.addEventListener("timeupdate",function(){
+		var timer=this.currentTime;
+		var st=parseInt(timer);
+		for(var i=0;i<st;i++){
+			$("#"+i).addClass("sel");
+			if($(".sel").length>8){
+				$(".sel").eq(0).remove();
+			}
+		}
+	});
+	/* 音乐播放完成时，改变按钮的样式。重新加载歌词。 */
+	audioDom.addEventListener("ended",function(){
+		$(".pause").trigger("click");
+		initlyric();
+	});
+	/* 播放 */
+	$(".m_play").click(function(){
+		audioDom.play();
+		$("#pause").css("display","inline-block");
+		$("#play").css("display","none");
+	})
+	/* 暂停 */
+	$(".pause").click(function(){
+		audioDom.pause();
+		$("#pause").css("display","none");
+		$("#play").css("display","inline-block");
+	})
+});
+</script>  
+ </body>
+</html>

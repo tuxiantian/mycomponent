@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="http://localhost:80/mycomponent/lib/popup/magnific-popup.css">
+<script type="text/javascript" src="http://localhost:80/mycomponent/lib/jQuery/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="http://localhost:80/mycomponent/lib/popup/magnific-popup.js"></script>
+
+</head>
+<body>
+<a class="test-popup-link" href="path-to-image.jpg">Open popup</a>
+<a id="close">Close popup</a>
+<script type="text/javascript">
+$('.test-popup-link').magnificPopup({
+	items: {
+	      src: 'images/loading.gif'
+	    },
+	    width:200,
+	    height:100,
+	type: 'image'
+	  // other options
+	},3);
+	$('#close').click(function(){
+		$.magnificPopup.close(); // Close popup that is currently opened (shorthand)
+	});
+</script>
+
+</body>
+</html>

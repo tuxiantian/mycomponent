@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+ <head> 
+  <title>IE Event Object Example</title>
+  <meta name="keywords" content="IE Event Object Example"> 
+  <link rel="stylesheet" type="text/css" href="http://localhost:80/mycomponent/css/common.css">
+ </head> 
+ <body> 
+  <a href="http://www.nczonline.net/" id="myLink">Click Me</a> 
+  <p>This link will not navigate when clicked.</p> 
+  <p>This example only works in Internet Explorer.</p> 
+  <script type="text/javascript">
+        var link = document.getElementById("myLink");
+        link.onclick = function(){
+            window.event.returnValue = false;
+        };    
+    </script>  
+    <details open="open">
+<summary>js</summary>
+<pre class="code">
+ &lt;script type="text/javascript"&gt;
+        var link = document.getElementById("myLink");
+        link.onclick = function(){
+            window.event.returnValue = false;
+        };    
+    &lt;/script&gt;
+</pre>
+</details> 
+ </body>
+</html>

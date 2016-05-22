@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>回到文档顶部的方式</title>
+  <meta name="keywords" content="回到文档顶部的方式"> 
+  <link rel="stylesheet" type="text/css" href="http://localhost:80/mycomponent/css/common.css"> 
+ </head> 
+ <body> 
+  <article> 
+   <h1 id="Htitle" class="detailtitle" style="font-family: &#39;Microsoft YaHei&#39;; padding: 15px 0px; color: rgb(7, 93, 179); font-size: 16px; text-align: center; white-space: normal;">
+    回到顶部
+</h1>
+<p>
+    方式一<br/>
+</p>
+<p>
+    &nbsp;&nbsp;&nbsp;&nbsp;&lt;a href=&quot;javascript:scroll(0,0)&quot;&gt;返回顶部&lt;/a&gt;
+</p>
+<p>
+    方式二
+</p>
+<p>
+    &nbsp;&nbsp;&nbsp;&nbsp;var iframe = document.getElementById(&quot;iframepage&quot;);
+</p>
+<p>
+    &nbsp;&nbsp;&nbsp;&nbsp;iframe.contentWindow.window.scrollTo(0,0);
+</p>
+<p>
+    方式三
+</p>
+<p>
+    &nbsp; &nbsp; 对于可以滚动的div,可以使用下面的这行代码返回顶部。
+</p>
+<p>
+    &nbsp;&nbsp;&nbsp;&nbsp;$(&quot;#result&quot;).animate({scrollTop:0},200);
+</p>
+<p>
+    <br/>
+</p>
+  </article>  
+ </body>
+</html>

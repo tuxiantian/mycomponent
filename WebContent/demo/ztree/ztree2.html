@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="keywords" content="zTree Demo">
+<title>zTree Demo</title>
+<link rel="stylesheet" type="text/css" href="http://localhost:80/mycomponent/lib/zTree/zTreeStyle/zTreeStyle.css">
+<link rel="stylesheet" type="text/css" href="http://localhost:80/mycomponent/css/common.css">
+<script type="text/javascript" src="http://localhost:80/mycomponent/lib/jQuery/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="http://localhost:80/mycomponent/lib/zTree/jquery.ztree.all-3.5.js"></script>
+
+</head>
+<body>
+<div class="zTreeDemoBackground left">
+		<ul id="treeDemo" class="ztree"></ul>
+	</div>
+<script type="text/javascript">
+var setting = {
+		data: {
+			simpleData: {
+				enable: true
+			}
+		}
+	};
+
+	var zNodes =[
+		{ id:1, pId:0, name:"父节点1 - 展开", open:true},
+		{ id:11, pId:1, name:"父节点11 - 折叠"},
+		{ id:111, pId:11, name:"叶子节点111"},
+		{ id:112, pId:11, name:"叶子节点112"},
+		{ id:113, pId:11, name:"叶子节点113"},
+		{ id:114, pId:11, name:"叶子节点114"},
+		{ id:12, pId:1, name:"父节点12 - 折叠"},
+		{ id:121, pId:12, name:"叶子节点121"},
+		{ id:122, pId:12, name:"叶子节点122"},
+		{ id:123, pId:12, name:"叶子节点123"},
+		{ id:124, pId:12, name:"叶子节点124"},
+		{ id:13, pId:1, name:"父节点13 - 没有子节点", isParent:true},
+		{ id:2, pId:0, name:"父节点2 - 折叠"},
+		{ id:21, pId:2, name:"父节点21 - 展开", open:true},
+		{ id:211, pId:21, name:"叶子节点211"},
+		{ id:212, pId:21, name:"叶子节点212"},
+		{ id:213, pId:21, name:"叶子节点213"},
+		{ id:214, pId:21, name:"叶子节点214"},
+		{ id:22, pId:2, name:"父节点22 - 折叠"},
+		{ id:221, pId:22, name:"叶子节点221"},
+		{ id:222, pId:22, name:"叶子节点222"},
+		{ id:223, pId:22, name:"叶子节点223"},
+		{ id:224, pId:22, name:"叶子节点224"},
+		{ id:23, pId:2, name:"父节点23 - 折叠"},
+		{ id:231, pId:23, name:"叶子节点231"},
+		{ id:232, pId:23, name:"叶子节点232"},
+		{ id:233, pId:23, name:"叶子节点233"},
+		{ id:234, pId:23, name:"叶子节点234"},
+		{ id:3, pId:0, name:"父节点3 - 没有子节点", isParent:true}
+	];
+
+	$(document).ready(function(){
+		$.fn.zTree.init($("#treeDemo"), setting, zNodes);
+	});
+</script>
+<p><strong>最简单的树 -- 简单 JSON 数据</strong></p>
+<pre class="code">
+&lt;script type=&quot;text/javascript&quot;&gt;<br/>var setting = {<br/>		data: {<br/>			simpleData: {<br/>				enable: true<br/>			}<br/>		}<br/>	};<br/><br/>	var zNodes =[<br/>		{ id:1, pId:0, name:&quot;&#x7236;&#x8282;&#x70b9;1 - &#x5c55;&#x5f00;&quot;, open:true},<br/>		{ id:11, pId:1, name:&quot;&#x7236;&#x8282;&#x70b9;11 - &#x6298;&#x53e0;&quot;},<br/>		{ id:111, pId:11, name:&quot;&#x53f6;&#x5b50;&#x8282;&#x70b9;111&quot;},<br/>		{ id:112, pId:11, name:&quot;&#x53f6;&#x5b50;&#x8282;&#x70b9;112&quot;},<br/>		{ id:113, pId:11, name:&quot;&#x53f6;&#x5b50;&#x8282;&#x70b9;113&quot;},<br/>		{ id:114, pId:11, name:&quot;&#x53f6;&#x5b50;&#x8282;&#x70b9;114&quot;},<br/>		{ id:12, pId:1, name:&quot;&#x7236;&#x8282;&#x70b9;12 - &#x6298;&#x53e0;&quot;},<br/>		{ id:121, pId:12, name:&quot;&#x53f6;&#x5b50;&#x8282;&#x70b9;121&quot;},<br/>		{ id:122, pId:12, name:&quot;&#x53f6;&#x5b50;&#x8282;&#x70b9;122&quot;},<br/>		{ id:123, pId:12, name:&quot;&#x53f6;&#x5b50;&#x8282;&#x70b9;123&quot;},<br/>		{ id:124, pId:12, name:&quot;&#x53f6;&#x5b50;&#x8282;&#x70b9;124&quot;},<br/>		{ id:13, pId:1, name:&quot;&#x7236;&#x8282;&#x70b9;13 - &#x6ca1;&#x6709;&#x5b50;&#x8282;&#x70b9;&quot;, isParent:true},<br/>		{ id:2, pId:0, name:&quot;&#x7236;&#x8282;&#x70b9;2 - &#x6298;&#x53e0;&quot;},<br/>		{ id:21, pId:2, name:&quot;&#x7236;&#x8282;&#x70b9;21 - &#x5c55;&#x5f00;&quot;, open:true},<br/>		{ id:211, pId:21, name:&quot;&#x53f6;&#x5b50;&#x8282;&#x70b9;211&quot;},<br/>		{ id:212, pId:21, name:&quot;&#x53f6;&#x5b50;&#x8282;&#x70b9;212&quot;},<br/>		{ id:213, pId:21, name:&quot;&#x53f6;&#x5b50;&#x8282;&#x70b9;213&quot;},<br/>		{ id:214, pId:21, name:&quot;&#x53f6;&#x5b50;&#x8282;&#x70b9;214&quot;},<br/>		{ id:22, pId:2, name:&quot;&#x7236;&#x8282;&#x70b9;22 - &#x6298;&#x53e0;&quot;},<br/>		{ id:221, pId:22, name:&quot;&#x53f6;&#x5b50;&#x8282;&#x70b9;221&quot;},<br/>		{ id:222, pId:22, name:&quot;&#x53f6;&#x5b50;&#x8282;&#x70b9;222&quot;},<br/>		{ id:223, pId:22, name:&quot;&#x53f6;&#x5b50;&#x8282;&#x70b9;223&quot;},<br/>		{ id:224, pId:22, name:&quot;&#x53f6;&#x5b50;&#x8282;&#x70b9;224&quot;},<br/>		{ id:23, pId:2, name:&quot;&#x7236;&#x8282;&#x70b9;23 - &#x6298;&#x53e0;&quot;},<br/>		{ id:231, pId:23, name:&quot;&#x53f6;&#x5b50;&#x8282;&#x70b9;231&quot;},<br/>		{ id:232, pId:23, name:&quot;&#x53f6;&#x5b50;&#x8282;&#x70b9;232&quot;},<br/>		{ id:233, pId:23, name:&quot;&#x53f6;&#x5b50;&#x8282;&#x70b9;233&quot;},<br/>		{ id:234, pId:23, name:&quot;&#x53f6;&#x5b50;&#x8282;&#x70b9;234&quot;},<br/>		{ id:3, pId:0, name:&quot;&#x7236;&#x8282;&#x70b9;3 - &#x6ca1;&#x6709;&#x5b50;&#x8282;&#x70b9;&quot;, isParent:true}<br/>	];<br/><br/>	$(document).ready(function(){<br/>		$.fn.zTree.init($(&quot;#treeDemo&quot;), setting, zNodes);<br/>	});<br/>&lt;/script&gt;
+</pre>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>定时换肤</title>
+  <meta name="keywords" content="定时换肤"> 
+  <script type="text/javascript" src="http://localhost:80/mycomponent/lib/jQuery/jquery-1.11.3.js"></script> 
+  <style type="text/css">
+*{margin: 0;padding: 0;}
+a{text-decoration: none;color: #333;}
+body{font-size: 12px;font-family: "微软雅黑";background: #333;}
+.box{width: 645px;height: 315px;background: rgba(3,3,3,0.5);margin: 100px auto;padding: 10px;}
+.c_left{width: 360px;height: 100%;float: left;}
+.box .c_left .imagebox{height: 150px;background: pink;margin-top: 5px;}
+.c_right{width: 280px;height: 100%;float: left;margin-left: 5px;}
+.box .c_right .imagebox{height: 100px;margin-top: 5px;}
+.box .imagebox{max-width: 100%;} 
+.bgimg{position: fixed;top:0;left: 0;width: 100%;height: 100%;
+/* background-image: url('http://localhost:80/mycomponent/demo/changeskin/images/skin1.jpg'); */
+z-index: -1;
+background-attachment: fixed;
+background-size: cover;background-repeat: no-repeat;}
+</style> 
+ </head> 
+ <body> 
+  <div class="box"> 
+   <div class="c_left"> 
+    <div class="imagebox">
+     <img alt="" width="360px" height="150px" src="images/skin1.jpg">
+    </div> 
+    <div class="imagebox">
+     <img alt="" width="360px" height="150px" src="images/skin2.jpg">
+    </div> 
+   </div> 
+   <div class="c_right"> 
+    <div class="imagebox">
+     <img alt="" width="280px" height="100" src="images/skin3.jpg">
+    </div> 
+    <div class="imagebox">
+     <img alt="" width="280px" height="100" src="images/skin4.jpg">
+    </div> 
+    <div class="imagebox">
+     <img alt="" width="280px" height="100" src="images/skin5.jpg">
+    </div> 
+   </div> 
+  </div> 
+  <div class="bgimg" style="background-image:url('http://localhost:80/mycomponent/demo/changeskin/images/skin1.jpg');"></div> 
+  <script type="text/javascript">
+	$(function(){
+		//html5 本地存储
+		if(window.localStorage){
+			var src=localStorage.getItem("bgimgsrc");
+			$(".bgimg").css("backgroundImage","url("+src+")");
+		}
+		$(".imagebox").find("img").click(function(){
+			var src=$(this).attr("src");
+			$(".bgimg").css("backgroundImage","url("+src+")");
+			 if(window.localStorage){
+				localStorage.setItem("bgimgsrc",src);
+			}
+		});
+	});
+	</script>  
+ </body>
+</html>

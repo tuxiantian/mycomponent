@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>结尾处加空div标签 clear:both</title>
+<style type="text/css"> 
+.div1{background:#000080;border:1px solid red} 
+.div2{background:#800080;border:1px solid red;height:100px;margin-top:10px} 
+.left{float:left;width:20%;height:200px;background:#DDD} 
+.right{float:right;width:30%;height:80px;background:#DDD} 
+/*清除浮动代码*/ 
+.clearfloat{clear:both} 
+</style> 
+</head>
+<body>
+<div class="div1"> 
+<div class="left">Left</div> 
+<div class="right">Right</div> 
+<div class="clearfloat"></div> 
+</div> 
+<div class="div2"> 
+div2 
+</div> 
+<ul>
+原理：添加一个空div，利用css提高的clear:both清除浮动，让父级div能自动获取到高度 
+
+优点：简单、代码少、浏览器支持好、不容易出现怪问题 
+
+缺点：不少初学者不理解原理；如果页面浮动布局多，就要增加很多空div，让人感觉很不好 
+
+建议：不推荐使用，但此方法是以前主要使用的一种清除浮动方法 
+</ul>
+</body>
+</html>

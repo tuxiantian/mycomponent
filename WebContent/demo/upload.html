@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>ajax文件上传</title>
+  <meta name="keywords" content="ajax文件上传"> 
+  <style type="text/css">
+  *{padding: 0;margin: 0;}
+  body{font-size: 12px;font-family: "微软雅黑";}
+  .uploadbtn{text-decoration: none;font-size: 18px;width:100px ;text-align:center;
+  height:45px ;display:inline-block; background-color: black;color: white;line-height: 45px;}
+  .line{height: 5px;background: #e5e5e5;margin: 20px 0;width: 700px;position: relative;border-radius:5px;}
+ .line .percent{position: absolute;background-color: green;height: 100%;top:0;left:0;border-radius:5px;}
+  </style>
+ </head> 
+ <body> 
+  <form action="../UploadServlet" method="post" enctype="multipart/form-data"> 
+   <input type="file" onchange="uploadData()" id="file" style="display: none;"> 
+   <a href="javascript:void(0);" class="uploadbtn" onclick="openFileDialog()">文件上传</a> 
+  </form> 
+  <div class="line">
+			<div class="percent" id="pbar"></div>
+			</div>
+	<audio src="" id="player"></audio>		
+  <script type="text/javascript">
+  function playmusic(url){
+	var audioDom= document.getElementById("player");
+	audioDom.src=url;
+	audioDom.play();
+  }
+function openFileDialog(){
+	var ie=navigator.appName=="Microsoft Internet Explorer"?true:false;
+	if(ie){
+		document.getElementById("file").click();
+	}else{
+		var a=document.createEvent("MouseEvents");
+		a.initEvent("click",true,true);
+		document.getElementById("file").dispatchEvent(a);
+	}
+};
+function uploadData() {
+	var files=document.getElementById("file").files;
+	var file=files[0];
+	console.log(file.name+"=="+file.type+"=="+file.size)
+	var formData=new FormData();
+	formData.append("file",files[0]);
+	var xhr=new XMLHttpRequest();
+	xhr.open("post","../UploadServlet",true);
+	xhr.onreadystatechange=function(){
+		if(xhr.readyState==4&&xhr.status==200){
+			alert(xhr.responseText)
+		console.log(xhr.responseText);
+			playmusic("../"+xhr.responseText);
+		}
+	};
+	xhr.upload.addEventListener("progress",persentProgress,true);
+	xhr.send(formData);
+};
+function persentProgress(evt) {
+	var barDom=document.getElementById("pbar");
+	var percent=0;
+	if(evt.lengthComputable){
+		percent=event.loaded/event.total;
+	barDom["style"]["width"]=Math.floor(percent*100)+"%";
+	}
+};
+</script>  
+ </body>
+</html>

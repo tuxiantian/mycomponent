@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>disable refresh</title>
+  <meta name="keywords" content="disable refresh"> 
+  <link rel="stylesheet" type="text/css" href="http://localhost:80/mycomponent/css/common.css"> 
+ </head> 
+ <body> 
+ <h2 id="date"></h2>
+  <script type="text/javascript">
+  var date=new Date();
+  document.getElementById("date").innerText=date;
+/**
+ * 弹出窗口，F5刷新及Ctrl+R刷新及右键菜单功能禁用
+ * param disabledFlag:true,禁止刷新;false,取消禁止刷新
+ */
+var refreshDisabledFun = function (disabledFlag){
+	//禁用刷新页面刷新功能
+	if (disabledFlag){
+		//禁用F5刷新及Ctrl+R刷新
+		document.onkeydown = function(e){
+			event = e||window.event;
+			if (( event.keyCode==116)||(event.ctrlKey && event.keyCode==82)) { 
+				event.keyCode = 0; 
+				event.cancelBubble = true; 
+				event.returnValue=false;
+				return false; 
+			}
+		}
+		//禁止右键弹出菜单 
+		document.oncontextmenu = function () { 
+			return false; 
+		} 
+	}else{
+		document.onkeydown = function(e){
+			event = e||window.event;
+			if (( event.keyCode==116)||(event.ctrlKey && event.keyCode==82)) { 
+				event.cancelBubble = false; 
+				event.returnValue=true;
+				return true; 
+			}
+		}
+		document.oncontextmenu = function () { 
+			return true; 
+		} 
+	}
+}
+ refreshDisabledFun(true);
+</script> 
+  <details open> 
+   <summary>js</summary> 
+    <pre class="code">
+	 &lt;script type="text/javascript"&gt;
+/**
+ * 弹出窗口，F5刷新及Ctrl+R刷新及右键菜单功能禁用
+ * param disabledFlag:true,禁止刷新;false,取消禁止刷新
+ */
+var refreshDisabledFun = function (disabledFlag){
+	//禁用刷新页面刷新功能
+	if (disabledFlag){
+		//禁用F5刷新及Ctrl+R刷新
+		document.onkeydown = function(e){
+			event = e||window.event;
+			if (( event.keyCode==116)||(event.ctrlKey && event.keyCode==82)) { 
+				event.keyCode = 0; 
+				event.cancelBubble = true; 
+				event.returnValue=false;
+				return false; 
+			}
+		}
+		//禁止右键弹出菜单 
+		document.oncontextmenu = function () { 
+			return false; 
+		} 
+	}else{
+		document.onkeydown = function(e){
+			event = e||window.event;
+			if (( event.keyCode==116)||(event.ctrlKey && event.keyCode==82)) { 
+				event.cancelBubble = false; 
+				event.returnValue=true;
+				return true; 
+			}
+		}
+		document.oncontextmenu = function () { 
+			return true; 
+		} 
+	}
+}
+ refreshDisabledFun(true);
+&lt;/script&gt; 
+	</pre> 
+  </details>  
+ </body>
+</html>

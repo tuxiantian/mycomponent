@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>canvas linearGradient</title>
+  <meta name="keywords" content="canvas linearGradient"> 
+  <link rel="stylesheet" type="text/css" href="http://localhost:80/mycomponent/css/common.css"> 
+ </head> 
+ <body> 
+  <canvas id="myCanvas" width="200" height="100"></canvas> 
+  <script type="text/javascript">
+var c=document.getElementById("myCanvas");
+var cxt=c.getContext("2d");
+var grd=cxt.createLinearGradient(0,0,175,50);
+grd.addColorStop(0,"#FF0000");
+grd.addColorStop(1,"#00FF00");
+cxt.fillStyle=grd;
+cxt.fillRect(0,0,175,50);
+</script> 
+  <details> 
+   <summary>html</summary> 
+   <pre class="code">
+&lt;canvas id="myCanvas" width="200" height="100"&gt;&lt;/canvas&gt;
+</pre> 
+  </details> 
+  <details> 
+   <summary>js</summary> 
+   <pre class="code">
+&lt;script type="text/javascript"&gt;
+var c=document.getElementById("myCanvas");
+var cxt=c.getContext("2d");
+var grd=cxt.createLinearGradient(0,0,175,50);
+grd.addColorStop(0,"#FF0000");
+grd.addColorStop(1,"#00FF00");
+cxt.fillStyle=grd;
+cxt.fillRect(0,0,175,50);
+&lt;/script&gt;
+</pre> 
+  </details>  
+ </body>
+</html>

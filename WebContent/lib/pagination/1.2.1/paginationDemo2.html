@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="shortcut icon" href="zw.ico">
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="keywords" content="分页demo">
+<title>分页demo</title>
+<link rel="stylesheet" type="text/css" href="pagination.css">
+<script src="jquery.js" type="text/javascript"></script>
+<script src="http://localhost:80/mycomponent/lib/js/common.js" type="text/javascript"></script>
+   <script type="text/javascript" src="http://localhost:80/mycomponent/demo/handlerbar/script/handlebars-1.0.0.beta.6.js"></script>
+<script src="jquery.pagination.js" type="text/javascript"></script>
+<style type="text/css">
+*{
+    margin: 0;
+    padding: 0;
+}
+html,body{
+	width: 1200px;
+	margin: 0 auto;
+	background-color: #f0f0f0;
+	font-size: 12px;
+}
+
+a{color:#34538b;}
+#Searchresult{width:300px; height:200px; padding:20px; background:#fff;}
+.ui-table {
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+  width: 100%;
+  font-size: 12px;
+  text-align: left;
+}
+.ui-table table tr td {
+  text-align: center;
+}
+colgroup {
+  display: table-column-group;
+}
+</style>
+</head>
+<body>
+
+<h1>jQuery Pagination分页插件demo</h1>
+	<div id="Searchresult">
+	
+		<table class="ui-table" cell-padding="0" cell-spacing="0" border="0" width="100%">
+			<colgroup>
+				<col width="8%" />
+				<col width="11%" />
+				<col width="18%" />
+				<!-- <col width="" /> -->
+				
+			</colgroup>
+			<thead>
+				<tr>
+					<th>标题</th>
+					<th>内容</th>
+					<th>类别</th>
+				</tr>
+			</thead>
+			<tbody id="tableList">
+
+			</tbody>
+		</table>
+	</div>
+<div id="Pagination" class="pagination"><!-- 这里显示分页 --></div>
+	<div id="hiddenresult" style="display:none;">
+  
+	</div>
+
+<script id="table-template" type="text/x-handlebars-template">
+		{{#each beans}}
+        <tr>
+          <td>{{title}}</td>
+          <td>{{detail}}</td>
+          <td>{{category}}</td>
+        </tr> 
+      {{/each}}
+ </script>
+<script type="text/javascript">
+$(function(){
+	// ----标准分页
+	var zperpage = 10,
+	 zpageindex = 0,
+	 str = '';
+	function getBrand(index, flag){
+	 $.PostJson('http://localhost:80/mycomponent/NewsServlet','start='+(zpageindex*zperpage)+'&limit='+zperpage+'&'+str,function(state,json){
+	  if(state=='success'){
+	   if(json&&json.returnCode=='0'){
+	    var myTemplate = Handlebars.compile($("#table-template").html());
+	    $('#tableList').html(myTemplate(json));
+	    if(flag){
+	     $("#Pagination").pagination(
+	           json.bean.total, {
+	           num_edge_entries : 1, //边缘页数
+	        num_display_entries : 6, //主体页数
+	        link_to: '#tradeRecordsIndex' ,
+	        call_callback_at_once : false, //控制分页控件第一次不触发callback.
+	           callback: function(page_index){
+	            zpageindex = page_index;
+	       getBrand(zpageindex , false);
+	      },
+	        prev_text : '上一页',
+	        next_text : '下一页',
+	        items_per_page : zperpage
+	         });
+	    }
+	   }
+	  }
+	 })
+	}
+	getBrand(zpageindex, true);
+});
+</script>
+</body>
+</html>

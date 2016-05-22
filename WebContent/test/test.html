@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="keywords" content="test grunt">
+<title>test grunt</title>
+<!-- 一般的js代码文件压缩，eval函数即可解密。这里测试grunt压缩的js文件是否可用evel函数解密。 -->
+</head>
+<body>
+<script type="text/javascript">
+var str3=1+2;
+var str2=function sum(){return 1+2;}
+var str=function J_Bdj_click(){$.PostJson(srvMap.get("BDJ"),"logid="+logId,function(a,b){"success"==a?!b||"0"!=b.bean.callcode&&"2"!=b.bean.callcode?result_tips(b.bean.callResult||"补登记失败！",2,function(){}):result_tips(b.bean.callResult||"补登记成功！",2,function(){dialog.get("D_showWXBDJ_CS").close().remove()}):result_prompt(b.returnMessage||"系统错误！"),$("#J_Bdj").unbind("click").bind("click",function(){J_Bdj_click(),$("#J_Bdj").unbind("click")})})};
+document.write(str);
+console.log(eval(str3))
+</script>
+</body>
+</html>

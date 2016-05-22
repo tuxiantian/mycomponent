@@ -1,0 +1,403 @@
+<!doctype html>
+<html>
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>jQuery 封装、插件浅析</title>
+  <meta name="keywords" content="jQuery 封装、插件浅析"> 
+  <link rel="stylesheet" type="text/css" href="http://localhost:80/mycomponent/css/common.css"> 
+
+ </head> 
+ <body> 
+ <article>
+   <h1 id="Htitle" class="detailtitle" style="font-family: &#39;Microsoft YaHei&#39;; padding: 15px 0px; color: rgb(7, 93, 179); font-size: 16px; text-align: center; white-space: normal; ">
+    jQuery 封装、插件浅析
+</h1>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    下面了解一下插件的种类：
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    1、<strong style="padding: 0px;">封装对象方法</strong>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    <strong style="padding: 0px;">2、封装全局函数</strong>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    <strong style="padding: 0px;">3、选择器插件等</strong>
+</p>
+
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    <strong style="padding: 0px;">封装对象方法：</strong>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这种插件是将对象方法封装起来，用于对通过<strong style="padding: 0px;">选择器获取的jQuery对象</strong>进行操作，是最常见的一种插件。此类插件可以发挥出jQuery选择器的强大优势，有相当一部分的jQuery的方法，都是在jQuery脚本库内部通过这种形式“插”在内核上的，例如：<strong style="padding: 0px;">parent()方法、appendTo()方法</strong>等。这些方法在现在来看都是jQuery本身自带的方法了。平时，我们是可以直接拿来就用的，只需引入jQuery库就行。
+</p>
+
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    <strong style="padding: 0px;">封装全局函数：</strong>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;可以将独立的函数加到jQuery命名空间下，如常用的<strong style="padding: 0px;">jQuery.ajax()</strong>、去首尾空格的<strong style="padding: 0px;">jQuery.trim()</strong>方法等，都是<strong style="padding: 0px;">jQuery内部作为全局函数</strong>的插件附加到内核上去的。
+</p>
+
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    <strong style="padding: 0px;">选择器插件：</strong>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;虽然jQuery的选择器十分强大，但是在少数情况下，还是会需要用到<strong style="padding: 0px;">选择器插件</strong>来扩充一些自己喜欢的选择器。
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    jQuery选择器插件的机制：
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    其本身并不太难理解，就是利用jQuery提供的<strong style="padding: 0px;">jQuery.fn.extend()</strong>和<strong style="padding: 0px;">jQuery.extend()</strong>方法，扩展jQuery的功能。
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    <strong style="padding: 0px;">jQuery.fn.extend()</strong>方法多用于扩展上面提到的3种类型中的第一种，<strong style="padding: 0px;">jQuery.extend()</strong>用于扩展后两种插件。这两个方法都接受一个参数，类型为<strong style="padding: 0px;">Object</strong>。<strong style="padding: 0px;">Object</strong>对象的“<strong style="padding: 0px;">名/值对</strong>”分别代表“<strong style="padding: 0px;">函数或方法名/函数主体</strong>”。
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    编写jQuery插件的一些Tips
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    1、<strong style="padding: 0px;">jQuery插件的文件名推荐命名为jQuery.[插件名].js，以免和其他JS库插件混淆。</strong>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    <strong style="padding: 0px;">2、<span style="padding: 0px; color: rgb(255, 0, 0);">所有的对象方法都应当附加到jQuery.fn对象上，而所有的全局函数都应当附加到jQuery对象本身上。</span></strong>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    <strong style="padding: 0px;">3、在插件头部上加一个分号，以免他人的不规范代码给插件带来影响。</strong>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    <strong style="padding: 0px;">4、所有的方法或函数插件，都应当以分号结尾，以免压缩时出现问题。</strong>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    <strong style="padding: 0px;">5、除非插件需要返回的是一些需要获取的变量，否则插件应该返回一个jQuery对象，以保证插件的可链式操作。</strong>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    <strong style="padding: 0px;">6、利于jQuery.extend()方法设置插件方法的默认参数，增加插件的可用性。</strong>
+</p>
+
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    jQuery插件结构：
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    代码：
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    ;(function($){
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp; &nbsp; /*这里放插件代码，可以将$作为jQuery的别名*/<br style="padding: 0px;"/>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    })(jQuery);
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    <br style="padding: 0px;"/>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    封装jQuery对象方法插件实战
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp; 功能：设置选择的元素的颜色，获取选择的首个元素的颜色
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp; 命名：jquery.color.js
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp; 结构：
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    代码：
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    ;(function($){
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;$.fn.extend({
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//这里写插件代码<br style="padding: 0px;"/>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;});<br style="padding: 0px;"/>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    })(jQuery);
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    思路：设置一个参数value，如果调用时传递了value这个参数，就是设置颜色，否则未获取颜色。获取和设置颜色可以用jQuery提供的CSS方法即可。
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    完成代码如下：
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    ;(function($){
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;$.fn.extend({
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;color&quot;:function(value){
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(value==undefined){
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return this.css(&quot;color&quot;);<br style="padding: 0px;"/>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}else{
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return this.css(&quot;color&quot;,value);<br style="padding: 0px;"/>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br style="padding: 0px;"/>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br style="padding: 0px;"/>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;});<br style="padding: 0px;"/>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    })(jQuery);
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    由于<span id="1_nwp" style="padding: 0px; width: auto; height: auto; float: none;"><a id="1_nwl" href="http://cpro.baidu.com/cpro/ui/uijs.php?adclass=0&app_id=0&c=news&cf=1001&ch=0&di=128&fv=19&is_app=0&jk=83af7813307fc66e&k=css&k0=css&kdi0=0&luki=5&mcpm=0&n=10&p=baidu&q=65035100_cpr&rb=0&rs=1&seller_id=1&sid=6ec67f301378af83&ssp2=1&stid=0&t=tpclicked3_hc&td=1836545&tu=u1836545&u=http%3A%2F%2Fwww%2Ebubuko%2Ecom%2Finfodetail%2D459923%2Ehtml&urlid=0" target="_blank" mpid="1" style="padding: 0px; color: rgb(51, 51, 51); text-decoration: none;"><span style="padding: 0px; color: rgb(0, 0, 255); width: auto; height: auto;">css</span></a></span>()方法在获取颜色时已有取第一个元素的判断，所以这里直接用this.css(&quot;color&quot;)即可。
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    如果是一组插件，代码可以如下：
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    ;(function($){
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;$.fn.extend({
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;color&quot;:function(value){
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//插件代码
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;border&quot;:function(value){
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//插件代码<br style="padding: 0px;"/>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}，<br style="padding: 0px;"/>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &quot;background&quot;:function(value){
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//插件代码<br style="padding: 0px;"/>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br style="padding: 0px;"/>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;});<br style="padding: 0px;"/>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    })(jQuery);
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    <br style="padding: 0px;"/>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    实战二：单独去除左侧或单独去除右侧的空格
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    命名：jquery.lrtrim.js
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    结构代码如下：
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    ;(function($){
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;$.extend({
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ltrim:function(text){
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//插件代码<br style="padding: 0px;"/>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}，<br style="padding: 0px;"/>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rtrim:function(text){
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//插件代码
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br style="padding: 0px;"/>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;});<br style="padding: 0px;"/>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    })(jQuery);
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    运用正则的完整去除左右空格的代码如下：
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    ;(function($){
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;$.extend({
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ltrim:function(text){
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return (text||&quot;&quot;).replace(/^\s+/g,&quot;&quot;/);<br style="padding: 0px;"/>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br style="padding: 0px;"/>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rtrim:function(text){
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return (text||&quot;&quot;).replace(/\s+$/g,&quot;&quot;/);<br style="padding: 0px;"/>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br style="padding: 0px;"/>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;});<br style="padding: 0px;"/>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    })(jQuery);
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    <br style="padding: 0px;"/>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    <strong style="padding: 0px;">jQuery的选择器的工作原理：</strong>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    <span style="padding: 0px; color: rgb(255, 0, 0);"><strong style="padding: 0px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jQuery选择器解析首先会使用一组正则表达式来解析选择器，然后针对解析出的每一个选择符执行一个函数，称为选择函数。最后根据这个选择函数的返回值为true还是false来决定是否保留这个元素，这样就可以找到匹配的元素节点。</strong></span>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    如：$(&quot;div:gt(1)&quot;),该选择器首先会获取所有的&lt;div&gt;元素，然后隐式的遍历这些&lt;div&gt;元素，并逐个将这些&lt;div&gt;元素作为参数，连同括号里的“1”等一些参数一起传递给gt对应的选择器函数进行判断。如果返回true则保留，否则不保留。这样的得到的结果就是一个符合要求的&lt;div&gt;元素的集合。
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    <br style="padding: 0px;"/>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    选择器函数一共接受3个参数，形式如下：
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    代码如下：
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    function(a,i,m){
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;//...<br style="padding: 0px;"/>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    }
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    <strong style="padding: 0px;">第一个参数为a，指的是当前遍历到DOM元素。</strong>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    <strong style="padding: 0px;">第二个参数为i，指的是遍历到的DOM元素的索引值，从0</strong>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    <strong style="padding: 0px;">开始。</strong>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    <strong style="padding: 0px;">第三个参数是m，它是有jQuery正则解析引擎进一步解析后的产物，是一个数组，其中最重要的是一个m[3],在$(&quot;div:gt(1)&quot;)中即为括号里的数字“1”。</strong>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    在jQuery中已经有lt,gt和eq选择器，因此这里写一个介于两者之间的(between)的选择器。
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    功能：选择索引值为a到b之间(a&lt;b,a、b为正整数)的元素
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    命名：jquery.between.js
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    机构代码：
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    ;(function($){
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;$.extend($.expr[&quot;:&quot;],{
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;between:function(a,i,m){
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//插件代码<br style="padding: 0px;"/>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br style="padding: 0px;"/>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;});<br style="padding: 0px;"/>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    })(jQuery);
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    思路：在上面三个参数中，m[3]为“a,b”的形式，因此把m[3]用&quot;,&quot;分隔，然后跟索引值i进行对比，如果i在m[3]表示的范围之间就返回true，否则为false。
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    <br style="padding: 0px;"/>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    完整代码如下：
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    ;(function($){
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;$.extend($.expr[&quot;:&quot;],{
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;between:function(a,i,m){
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var temp=m[3].split(&quot;,&quot;);<br style="padding: 0px;"/>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return +temp[0]&lt;i&amp;&amp;i&lt;+temp[1];<br style="padding: 0px;"/>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    &nbsp;&nbsp;&nbsp;&nbsp;});<br style="padding: 0px;"/>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    })(jQuery);<br style="padding: 0px;"/>
+</p>
+<p style="font-family: &#39;Microsoft YaHei&#39;; padding: 0px; font-size: 14px; color: rgb(63, 63, 63); line-height: 30px; white-space: normal; ">
+    注：这里用+temp[0]、+temp[1]把字符串形式的数字转换成数字；
+</p>
+<p>
+    <br/>
+</p>
+<a href="javascript:scroll(0,0)">返回顶部</a>
+</article>
+ </body>
+</html>

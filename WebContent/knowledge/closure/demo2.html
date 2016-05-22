@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>closure demo2</title>
+  <meta name="keywords" content="closure demo2"> 
+  <link rel="stylesheet" type="text/css" href="http://localhost:80/mycomponent/css/common.css"> 
+ </head> 
+ <body> 
+  <script type="text/javascript">
+function f1(){
+　　　　var n=999;
+　　　　nAdd=function(){n+=1}
+　　　　function f2(){
+　　　　　　alert(n);
+　　　　}
+　　　　return f2;
+　　}
+　　var result=f1();
+　　result(); // 999
+　　nAdd();
+　　result(); // 1000
+/*
+ * 由于闭包会使得函数中的变量都被保存在内存中，内存消耗很大，所以不能滥用闭包，否则会造成网页的性能问题，在IE中可能导致内存泄露。
+ * 解决方法是，在退出函数之前，将不使用的局部变量全部删除。
+ */
+</script> 
+  <details open> 
+   <summary>js</summary> 
+   <pre class="code">
+&lt;script type="text/javascript"&gt;
+function f1(){
+　　　　var n=999;
+　　　　nAdd=function(){n+=1}
+　　　　function f2(){
+　　　　　　alert(n);
+　　　　}
+　　　　return f2;
+　　}
+　　var result=f1();
+　　result(); // 999
+　　nAdd();
+　　result(); // 1000
+/*
+ * 由于闭包会使得函数中的变量都被保存在内存中，内存消耗很大，所以不能滥用闭包，否则会造成网页的性能问题，在IE中可能导致内存泄露。
+ * 解决方法是，在退出函数之前，将不使用的局部变量全部删除。
+ */
+&lt;/script&gt;
+</pre> 
+  </details>  
+ </body>
+</html>

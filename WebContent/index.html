@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="keywords" content="我的前端组件库">
+<title>我的前端组件库</title>
+<link rel="stylesheet" type="text/css" href="css/index.css">
+<!-- <script type="text/javascript" src="lib/jQuery/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="lib/blockUI/jquery.blockUI.js"></script> -->
+<script data-main="lib/js/main" src="lib/requireJs/require.js"></script>
+</head>
+<body>
+	
+	<div class="left" id="thediv">
+		<ul>
+			<li>常用的外部组件
+			<ul>
+					<li><a href="poshytip-1.2/demo/demo.html" target="main">poshytip-1.2</a></li>
+					<li><a href="demo/blockUI.html" target="main">blockUI</a></li>
+
+					<li><a href="demo/toggle_ul.html" target="main">可折叠的ul</a></li>
+					<li><a href="lib/md5/2.2/testDemo.html" target="main">md5</a></li>
+					<li><a href="demo/date.html" target="main">date</a></li>
+					<li><a href="demo/steps.html" target="main">任务步骤指引</a></li>
+					<li><a href="demo/sidebar.html" target="main">sidebar</a></li>
+					<li><a href="demo/selectordie.html" target="main">selectordie</a></li>
+					<li><a href="lib/picbox/index.html" target="main">picbox</a></li>
+					<li><a href="demo/jqueryForm/jqueryForm.html" target="main">jqueryForm</a></li>
+					
+					<li>zTree
+						<ul>
+							<li><a href="demo/ztree/ztree.html" target="main">标准 JSON 数据</a></li>
+							<li><a href="demo/ztree/ztree2.html" target="main">简单 JSON 数据</a></li>
+							<li><a href="demo/ztree/ztree3.html" target="main">下拉菜单</a></li>
+							<li><a href="demo/ztree/ztree4.html" target="main">选择类别</a></li>
+							<li><a href="demo/select/select_5.html" target="main">多选框元素移动</a></li>
+							
+						</ul>
+					</li>
+					<li>pagination
+						<ul>
+							<li><a href="lib/pagination/1.2.1/paginationDemo.html" target="main">pagination-basic</a></li>
+							<li><a href="lib/pagination/1.2.1/paginationDemo2.html" target="main">pagination2</a></li>
+							<li><a href="lib/pagination/1.2.1/demo_ajax.html" target="main">demo_ajax</a></li>
+							
+						</ul>
+					</li>
+					<li>handlerbar
+						<ul>
+							<li><a href="demo/handlerbar/each-basic.html" target="main">each-basic</a></li>
+							<li><a href="demo/handlerbar/each-this.html" target="main">each-this</a></li>
+							<li><a href="demo/handlerbar/html-escape.html" target="main">html-escape</a></li>
+							<li><a href="demo/handlerbar/if-basic.html" target="main">if-basic</a></li>
+							<li><a href="demo/handlerbar/if-helper-compare.html" target="main">if-helper-compare</a></li>
+							<li><a href="demo/handlerbar/if-helper-transformat.html" target="main">if-helper-transformat</a></li>
+							<li><a href="demo/handlerbar/with-basic.html" target="main">with-basic</a></li>
+							<li><a href="demo/handlerbar/with-this.html" target="main">with-this</a></li>
+
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>
+				
+			</li>
+			<li>有用的网址
+			<ul>
+					<li><a href="http://hxgoogle.com/" target="_Blank">hxgoogle</a></li>
+					<li><a href="http://www.googto.com/" target="_Blank">googto</a></li>
+					<li><a href="http://www.htmlescape.net/htmlescape_tool.html" target="_Blank">Safe Html</a></li>
+					<li><a href="http://www.bejson.com/jsonview2/" target="main">jsonview</a></li>
+					<li><a href="http://www.bootcss.com/p/underscore/" target="main">underscore</a></li>
+					<li><a href="http://fontawesome.io/icons/" target="main">fontawesome-字体库</a></li>
+				</ul>
+			</li>
+			<li>
+				工具<ul>
+				<li><a href="demo/tool/replace.html" target="main">window文件路径替换</a></li>
+				<li><a href="demo/tool/json2str.html" target="main">json2str</a></li>
+				<li><a href="demo/tool/safehtml.html" target="main">safehtml</a></li>
+				
+				
+				</ul>
+			</li>
+			<li>知识
+			<ul>
+				<li><a href="demo/knowledge/usefulJs.html" target="main">有用的js代码</a></li>
+				<li><a href="demo/knowledge/jsVSJquery.html" target="main">jsVSJquery</a></li>
+				<li><a href="demo/knowledge/countdown.html" target="main">countdown</a></li>
+				
+			</ul>
+			</li>
+			<li>project
+			<ul>
+			<li><a href="demo/knowledge/player.html" target="_blank">player</a></li>
+			<li><a href="demo/knowledge/player2.html" target="_blank">player2</a></li>
+			<li><a href="demo/changeskin/changeskin.html" target="_blank">changeskin</a></li>
+			</ul>
+			</li>
+			<li>css3
+			<ul>
+			<li><a href="demo/css3/image360.html" target="main">image360</a></li>
+			<li><a href="demo/css3/3dbox.html" target="main">demo1</a></li>
+			</ul>
+			</li>
+		</ul>
+		
+	</div>
+	<script type="text/javascript">
+	/* iframe自适应高度(兼容多种浏览器) */
+/* 	function iFrameHeight() {   
+		var ifm= document.getElementById("iframepage");   
+		var subWeb = document.frames ? document.frames["iframepage"].document : ifm.contentDocument;   
+		if(ifm != null && subWeb != null) {
+		   ifm.height = subWeb.body.scrollHeight;
+		   ifm.width = subWeb.body.scrollWidth;
+		   var height=subWeb.body.scrollHeight;
+		   alert(height)
+		   alert(document.getElementById("right"))
+		   document.getElementById("right").style.height=height;
+		   //document.getElementById("back").style.left='20px';
+		   
+		}   
+	} */
+	require( ['jquery'], function( $ ) {
+		
+		$(document).ready(function () {
+			/* 菜单操作开始 */
+	         //加载时隐藏子菜单
+	         //$('li ul').hide();
+	         //不包含子菜单时鼠标指针和项目图标
+	         $('li:not(:has(ul))')
+	        .css({ 'cursor': 'default', 'list-style-image': 'none' });
+	         //包含子菜单时鼠标指针和项目图标
+	         $('li:has(ul)')
+	         .css({ 'cursor': 'pointer', 'list-style-image': 'url(http://localhost:80/mycomponent/theme/img/plus.gif)' });
+	         //单击含子菜单的项
+	         $('li:has(ul)').unbind("click").bind("click",function (event) {
+	             if (this == event.target) {
+	                 if ($(this).children().is(':hidden')) {
+	                     $(this)
+	                 .css('list-style-image', 'url(http://localhost:80/mycomponent/theme/img/minus.gif)')
+	                 .children().show();
+	                 }
+	                 else {
+	                     $(this)
+	              .css('list-style-image', 'url(http://localhost:80/mycomponent/theme/img/plus.gif)')
+	              .children().hide();
+	                 }
+	             }
+	         })
+	         /* 菜单操作结束 */
+	         /* 侧边栏收缩隐藏操作开始 */
+	         /* var timer=null;
+	         function startmove(target,speed){
+	           var odiv=document.getElementById('thediv');
+	           clearInterval(timer);
+	           timer=setInterval(function (){
+	             if(odiv.offsetLeft==target){
+	               clearInterval(timer);
+	             }
+	             else{    
+	               odiv.style.left=odiv.offsetLeft+speed+'px';
+	             }
+	           },30)
+	         }
+	         
+	         var odiv=document.getElementById('thediv');
+	         odiv.onmouseover=function (){
+	        	 startmove(0,10);
+	         }
+	         odiv.onmouseout=function (){
+	        	 startmove(-280,-10);
+	         }  */
+	         /* 侧边栏收缩隐藏操作结束 */
+	     })
+	});
+	 
+	/*  $('li:has(ul)').click(function (event) {
+         if (this == event.target) {
+             $(this).css('list-style-image', ($(this).children().is(':hidden') ? 'url(http://localhost:80/mycomponent/theme/img/minus.gif)' : 'url(http://localhost:80/mycomponent/theme/img/plus.gif)'));
+             $(this).children().toggle();
+         }
+     }) */
+	</script>
+	<span class="menu">菜单</span>
+	<div class="right" id="right">
+	
+		<div class="head">我的前端组件库</div>
+		<iframe name="main" id="iframepage" marginheight="0"  marginwidth="0" frameborder="0" scrolling="no"></iframe><!--  onload="iFrameHeight()" -->
+	</div>
+	
+</body>
+</html>

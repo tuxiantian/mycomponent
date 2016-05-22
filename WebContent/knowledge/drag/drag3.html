@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>drag3</title>
+  <style type="text/css">
+body{background: #333;}
+.box{position: fixed;width: 100px;height: 100px;}
+</style> 
+</head>
+<body>
+<div id="box1" class="box" style="background:pink;"></div> 
+<div id="box2" class="box" style="background:yellow;"></div> 
+<div id="box3" class="box" style="background:red;"></div>
+
+	<script type="text/javascript">
+		function dom(id) {
+			return document.getElementById(id);
+		}
+		function Drag() {
+			this.dragable = true;
+			this.direction = null;
+		};
+		Drag.prototype.init = function(id) {
+			var boxDom = dom(id);
+			var obj=this;
+			if (obj.dragable) {
+				boxDom.onmousedown = function(e) {
+					var thisDom = this;
+					var ev = e || window.event;
+					var x = ev.clientX || ev.pageX;
+					var y = ev.clientY || ev.pageY;
+					var stop = (document.body.scrollTop || document.documentElement.scrollTop);
+					var sleft = (document.body.scrollLeft || document.documentElement.scrollLeft);
+					var left = thisDom.offsetLeft;
+					var top = thisDom.offsetTop;
+					var maxLeft = window.innerWidth + sleft
+							- thisDom.offsetWidth;
+					var maxTop = window.innerHeight + stop
+							- thisDom.offsetHeight;
+					document.onmousemove = function(e) {
+						var ev = e || window.event;
+						var nx = ev.clientX || ev.pageX;
+						var ny = ev.clientY || ev.pageY;
+						var nl = nx - x + left;
+						var nt = ny - y + top;
+						if (nl <= 0)
+							nl = 0;
+						if (nt <= 0)
+							nt = 0;
+						if (nl > maxLeft)
+							nl = maxLeft;
+						if (nt > maxTop)
+							nt = maxTop;
+						if(obj.direction=="y"){
+							thisDom.style.top = nt + "px";
+						}else if(obj.direction=="x"){
+							thisDom.style.left = nl + "px";
+						}else{
+							thisDom.style.left = nl + "px";
+							thisDom.style.top = nt + "px";
+						}
+
+					};
+					document.onmouseup = function() {
+						document.onmousemove = null;
+						document.onmouseup = null;
+					};
+					
+				}
+			}
+		};
+		window.onload = function() {
+			var drag1 = new Drag();
+			drag1.dragable=false;
+			drag1.init("box1");
+			var drag2 = new Drag();
+			drag2.init("box2");
+			drag2.direction="x";
+			var drag3 = new Drag();
+			drag3.init("box3");
+		}
+	</script>
+</body>
+</html>

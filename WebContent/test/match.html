@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js match</title>
+</head>
+<body>
+<script type="text/javascript">
+var con="tom-jack";
+var con1="Tom-jack";
+//alert(con.match(/tom/));//tom
+//alert(con1.match(/tom/i));//Tom
+var realnamePhone="abc";
+realnamePhone="15039686014";
+if(realnamePhone.match(/^[1]\d{10}$/)){
+	alert('合法的手机号');
+}else{
+	alert('不合法的手机号');
+}
+</script>
+</body>
+</html>

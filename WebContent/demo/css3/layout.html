@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>响应式布局</title>
+  <meta name="keywords" content="响应式布局"> 
+  <style type="text/css">
+*{padding: 0px;margin: 0px;}
+body{font-size: 14px;font-family: "微软雅黑";
+background: linear-gradient(10deg,#96A154,#0E48C6);color: #444;
+}
+section{width: 84%;margin: 20px auto;padding: 10px;background: #fff;}
+section h1{padding: 1% 1em 1em 0;}
+.section .cnt{margin-top: 10px;}
+.comments textarea{overflow: auto;width: 100%;outline:none;font-size: 14px;font-family: "微软雅黑";}
+.comments .btns{text-align: right;}
+.comments .btns a{text-decoration: none;color:#999;padding-top: 1%;}
+
+.comment_box ul{
+display: flex;/* 布局流设定：table items table-row table-column block inline inline-block none run-in marker */
+justify-content:space-between;/* space-around */
+align-items:stretch;
+flex-direction:column;
+}
+.comment_box li{margin: 1%;padding:1%; background: #eaeaea;list-style: none;}
+.comment_box li:first-letter{font-size: 18px;font-weight: 700;}
+.comment_box li:before{content:"☆";}
+</style> 
+ </head> 
+ <body> 
+  <section> 
+   <h1>响应式评论组件-响应式布局-响应式布局-响应式布局-响应式布局</h1> 
+   <div class="cnt">
+     响应式布局是Ethan Marcotte在2010年5月份提出的一个概念，简而言之，就是一个网站能够兼容多个终端——而不是为每个终端做一个特定的版本。这个概念是为解决移动互联网浏览而诞生的。 响应式布局可以为不同终端的用户提供更加舒适的界面和更好的用户体验，而且随着目前大屏幕移动设备的普及，用“大势所趋”来形容也不为过。随着越来越多的设计师采用这个技术，我们不仅看到很多的创新，还看到了一些成形的模式。 优点：[1] 面对不同分辨率设备灵活性强 能够快捷解决多设备显示适应问题 缺点：[1] 兼容各种设备工作量大，效率低下 代码累赘，会出现隐藏无用的元素，加载时间加长 其实这是一种折中性质的设计解决方案，多方面因素影响而达不到最佳效果 一定程度上改变了网站原有的布局结构，会出现用户混淆的情况 我们在上面了解了什么是响应式布局，那在我们的实际项目中应该怎么去设计呢？在以往我们设计网站的时候都会受到不同浏览器的兼容性的困扰，还要来个不同尺寸设备，我们该怎么淡定下来呢？有需求就会有解决方案，说到响应式布局，就不得不提起CSS3中的Media Query（媒介查询），这可是个好东西，易用、强大、快捷……Media Query是制作响应式布局的一个利器，使用这个工具，我们可以非常方便快捷的制造出各种丰富的实用性强的界面。接下来就一起来深入的了解Media Query。 
+   </div> 
+  </section> 
+  <section class="comments"> 
+   <p><textarea rows="" cols="" autofocus placeholder="请输入评论..."></textarea></p> 
+   <p class="btns"> <a>评论</a> </p> 
+  </section> 
+  <section class="comment_box"> 
+   <ul> 
+    <li>代码fghjkk代码累赘，会出现隐藏无用的元素，加载时间加长 其实这是一种折中性质的设计解决方案，多方面因素影响而达不到最佳效果 一定程度上改变了网站原有的布局结构，会出现用户混淆的情况</li> 
+    <li>代码fgkl代码累赘，会出现隐藏无用的元素，加载时间加长 其实这是一种折中性质的设计解决方案，多方面因素影响而达不到最佳效果 一定程度上改变了网站原有的布局结构，会出现用户混淆的情况</li> 
+    <li>代码qwerty代码累赘，会出现隐藏无用的元素，加载时间加长 其实这是一种折中性质的设计解决方案，多方面因素影响而达不到最佳效果 一定程度上改变了网站原有的布局结构，会出现用户混淆的情况</li> 
+    <li>代码cvgj代码累赘，会出现隐藏无用的元素，加载时间加长 其实这是一种折中性质的设计解决方案，多方面因素影响而达不到最佳效果 一定程度上改变了网站原有的布局结构，会出现用户混淆的情况</li> 
+   </ul> 
+  </section>  
+ </body>
+</html>

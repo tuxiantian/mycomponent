@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>extend demo1</title>
+  <meta name="keywords" content="extend demo1"> 
+  <link rel="stylesheet" type="text/css" href="http://localhost:80/mycomponent/css/common.css"> 
+ </head> 
+ <body> 
+  <script type="text/javascript">
+function extend(subClass,superClass){
+    var F = function(){};
+    F.prototype = superClass.prototype;
+    subClass.prototype = new F();
+    subClass.prototype.constructor = subClass;
+    subClass.superclass = superClass.prototype; //加多了个属性指向父类本身以便调用父类函数
+    if(superClass.prototype.constructor == Object.prototype.constructor){
+        superClass.prototype.constructor = superClass;
+    }
+}
+ 
+var Person = function(name){
+    this.name = name;
+};
+Person.prototype = {
+    getName : function(){
+        return this.name;
+    }
+};
+ 
+var Chinese = function(name, nation){
+    Person.call(this,name);
+    this.nation = nation;
+};
+extend(Chinese, Person);
+Chinese.prototype.getNation = function(){
+        return this.nation;
+};
+ 
+var c = new Chinese("tuxiantian","China");
+alert(c.getName());
+</script> 
+  <details open> 
+   <summary>js</summary> 
+   <pre class="code">
+&lt;script type="text/javascript"&gt;
+function extend(subClass,superClass){
+    var F = function(){};
+    F.prototype = superClass.prototype;
+    subClass.prototype = new F();
+    subClass.prototype.constructor = subClass;
+    subClass.superclass = superClass.prototype; //加多了个属性指向父类本身以便调用父类函数
+    if(superClass.prototype.constructor == Object.prototype.constructor){
+        superClass.prototype.constructor = superClass;
+    }
+}
+ 
+var Person = function(name){
+    this.name = name;
+};
+Person.prototype = {
+    getName : function(){
+        return this.name;
+    }
+};
+ 
+var Chinese = function(name, nation){
+    Person.call(this,name);
+    this.nation = nation;
+};
+extend(Chinese, Person);
+Chinese.prototype.getNation = function(){
+        return this.nation;
+};
+ 
+var c = new Chinese("tuxiantian","China");
+alert(c.getName());
+&lt;/script&gt;
+</pre> 
+  </details>  
+ </body>
+</html>

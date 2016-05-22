@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>dialog</title>
+  <meta name="keywords" content="dialog"> 
+  <link rel="stylesheet" href="http://localhost:80/mycomponent/lib/dialog/6.0.5/ui-dialog.css"> 
+  <script type="text/javascript" src="http://localhost:80/mycomponent/lib/jQuery/jquery-1.11.3.js"></script> 
+  <script type="text/javascript" src="http://localhost:80/mycomponent/lib/dialog/6.0.5/dialog-min.js"></script> 
+  <script type="text/javascript" src="http://localhost:80/mycomponent/demo/dialog/dialoghelp.js"></script> 
+ </head> 
+ <body> 
+  <input type="button" value="result_tips" id="result_tips"> 
+  <input type="button" value="result_prompt" id="result_prompt"> 
+  <input type="button" value="result_comfirm" id="result_comfirm"> 
+  <input type="button" value="result_comfirm_S" id="result_comfirm_S"> 
+  <input type="button" value="openWindowDiv" id="openWindowDiv"> 
+  <input type="button" value="result_normalDiv" id="result_normalDiv"> 
+  <script type="text/javascript">
+$("#result_tips").click(function(){
+	result_tips("请选择省份");
+});
+$("#result_prompt").click(function(){
+	//result_prompt("","操作成功");
+	result_prompt("待审核总量查询","操作成功");
+});
+$("#result_comfirm").click(function(){
+	result_comfirm("确定删除吗？",function(){
+		alert("确定")
+	},function(){
+		alert("取消")
+	});
+});
+
+$("#result_comfirm_S").click(function(){
+	result_comfirm_S("确定提交吗？",function(){
+		alert("确定")
+	},function(){
+		alert("取消")
+	});
+});
+$("#openWindowDiv").click(function(){
+	var D_param={
+			id: "info",
+			title: "添加新项",
+			content: ""};
+	openWindowDiv(D_param);
+});
+
+$("#result_normalDiv").click(function(){
+	var title='这是一个弹出框',
+	content="姓名：<input type='text'>",
+	width=300;
+	result_normalDiv(title,content,width);
+});
+</script>  
+ </body>
+</html>

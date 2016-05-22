@@ -1,0 +1,525 @@
+<!doctype html>
+<html>
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>我的前端组件库</title>
+  <meta name="keywords" content="首页2"> 
+  <link rel="stylesheet" href="http://localhost:80/mycomponent/lib/pagination/1.2.1/pagination.css" />
+  <style type="text/css">
+*{padding: 0;margin: 0;}
+a{text-decoration: none;}
+body{font-size: 12px;font-family: "微软雅黑";}
+/* start 页面头部样式 */
+.header{height: 50px;background: #999;position: relative;top:0;}
+.header span{height: 50px;line-height: 50px;padding-left: 50px;width: 180px;font-size: 20px;
+    font-weight: bold;float: left;}
+.header input{float: left;display: inline-block;height:25px; line-height: 25px;margin-top: 10px; }
+.header .wd{width: 250px;outline: none;margin-left: 350px;padding-left: 10px;}
+.header .search{width: 60px;height: 29px;}
+/* 页面头部样式 end */
+
+
+/* start 左侧菜单栏样式 */
+.sliderbox{width: 0;height: 100%;position: absolute;top:0;left:0;display: none;background: #ccc;overflow: scroll;}
+.sliderbox ul{display: block; margin-left: 10px;padding-left: 10px;}
+.sliderboxul li {list-style: none;display: list-item;}
+.sliderbox ul li a{text-decoration: none;width: 200px;height: 25px;line-height: 25px;display: block;}
+/* 左侧菜单栏样式 end */
+.mainbox{margin-left: 0;height: 100%;background-color:#f0f0f0;}
+iframe {width: 99%;height: 580px;}
+.contentbox{width: 985px;margin: 10px auto;}
+/* start 搜索结果样式 */
+#result{height:91%;width: 99%;margin:0 auto; } 
+.record{border: 1px solid red;margin: 20px 0;}
+.record p{margin: 10px 10px;font-size: 16px;}
+/* 搜索结果样式 end */
+/*start 返回顶部的样式 */
+.to-top.visible {
+    -webkit-transition: opacity .3s 0s, visibility 0s 0s;
+    -moz-transition: opacity .3s 0s, visibility 0s 0s;
+    transition: opacity .3s 0s, visibility 0s 0s;
+    visibility: visible;
+    opacity: 1;
+}
+.to-top {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    position: fixed;
+    bottom: 75px;
+    right: 40px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0,0,0,.05);
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
+    background: #5b4782 url(http://localhost:80/mycomponent/demo/css/images/to-top-arrow.svg) no-repeat center 50%;
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: opacity .3s 0s, visibility 0s .3s;
+    -moz-transition: opacity .3s 0s, visibility 0s .3s;
+    transition: opacity .3s 0s, visibility 0s .3s;
+}
+/* 返回顶部的样式  end*/
+</style> 
+  <script type="text/javascript" src="http://localhost:80/mycomponent/lib/jQuery/jquery-1.11.3.js"></script> 
+ <script type="text/javascript" src="http://localhost:80/mycomponent/lib/js/menu.js"></script>
+ </head> 
+ <body> 
+  <div class="sliderbox"> 
+  <ul>
+  			<!-- start 常用的外部组件 -->
+			<li>常用的外部组件
+			<ul>
+					<li><a href="poshytip-1.2/demo/demo.html" target="main">poshytip-1.2</a></li>
+					<li><a href="demo/blockUI.html" target="main">blockUI</a></li>
+
+					<li><a href="demo/toggle_ul.html" target="main">可折叠的ul</a></li>
+					<li><a href="lib/md5/2.2/testDemo.html" target="main">md5</a></li>
+					<li><a href="demo/date.html" target="main">date</a></li>
+					<li><a href="demo/steps.html" target="main">任务步骤指引</a></li>
+					<li><a href="demo/sidebar.html" target="main">sidebar</a></li>
+					
+					<li><a href="lib/picbox/index.html" target="main">picbox</a></li>
+					<li><a href="demo/jqueryForm/jqueryForm.html" target="main">jqueryForm</a></li>
+					<li><a href="demo/dialog/dialog.html" target="main">dialog</a></li>
+					<li><a href="demo/datejs/date.html" target="main">datejs demo</a></li>
+					<li><a href="demo/select/select_5.html" target="main">多选框元素移动</a></li>
+					<li><a href="demo/qrcode/qrcode.html" target="main">qrcode</a></li>
+					<li><a href="demo/webuploader/upload.html" target="main">webuploader</a></li>
+					
+					<!-- start fusioncharts -->
+					<li>fusioncharts
+					<ul><li><a href="demo/fusioncharts/chart.html" target="main">chart</a></li></ul>
+					</li>
+					<!-- fusioncharts end -->
+					<!-- start selectordie -->
+					<li>selectordie
+					<ul>
+					<li><a href="demo/selectordie/selectordie.html" target="main">selectordie</a></li>
+					<li><a href="demo/selectordie/demo2.html" target="main">demo2</a></li>
+					</ul>
+					</li>
+					<!-- selectordie end -->
+					<!-- start zTree -->
+					<li>zTree
+						<ul>
+							<li><a href="demo/ztree/ztree.html" target="main">标准 JSON 数据</a></li>
+							<li><a href="demo/ztree/ztree2.html" target="main">简单 JSON 数据</a></li>
+							<li><a href="demo/ztree/ztree3.html" target="main">下拉菜单</a></li>
+							<li><a href="demo/ztree/ztree4.html" target="main">选择类别</a></li>
+							
+							
+						</ul>
+					</li>
+					<!-- zTree end-->
+					<!-- start pagination -->
+					<li>pagination
+						<ul>
+							<li><a href="lib/pagination/1.2.1/paginationDemo.html" target="main">pagination-basic</a></li>
+							<li><a href="lib/pagination/1.2.1/paginationDemo2.html" target="main">pagination2</a></li>
+							<li><a href="lib/pagination/1.2.1/demo_ajax.html" target="main">demo_ajax</a></li>
+							
+						</ul>
+					</li>
+					<!-- pagination end-->
+					<!-- start handlerbar -->
+					<li>handlerbar
+						<ul>
+							<li><a href="demo/handlerbar/each-basic.html" target="main">each-basic</a></li>
+							<li><a href="demo/handlerbar/each-this.html" target="main">each-this</a></li>
+							<li><a href="demo/handlerbar/html-escape.html" target="main">html-escape</a></li>
+							<li><a href="demo/handlerbar/if-basic.html" target="main">if-basic</a></li>
+							<li><a href="demo/handlerbar/if-helper-compare.html" target="main">if-helper-compare</a></li>
+							<li><a href="demo/handlerbar/if-helper-transformat.html" target="main">if-helper-transformat</a></li>
+							<li><a href="demo/handlerbar/with-basic.html" target="main">with-basic</a></li>
+							<li><a href="demo/handlerbar/with-this.html" target="main">with-this</a></li>
+						</ul>
+					</li>
+					<!-- handlerbar end -->
+				</ul>
+			</li>
+			<!-- 常用的外部组件 end -->
+			<!-- start 有用的网址 -->
+			<li>有用的网址
+			<ul>
+					<li><a href="http://hxgoogle.com/" target="_Blank">hxgoogle</a></li>
+					<li><a href="http://www.googto.com/" target="_Blank">googto</a></li>
+					<li><a href="http://www.htmlescape.net/htmlescape_tool.html" target="_Blank">Safe Html</a></li>
+					<li><a href="http://www.bejson.com/jsonview2/" target="main">jsonview</a></li>
+					<li><a href="http://www.bootcss.com/p/underscore/" target="main">underscore</a></li>
+					<li><a href="http://fontawesome.io/icons/" target="main">fontawesome-字体库</a></li>
+					<li><a href="http://gs.statcounter.com/" target="_blank">浏览器排行</a></li>
+				</ul>
+			</li>
+			<!-- 有用的网址 end-->
+			<!-- satrt 工具 -->
+			<li>
+				工具<ul>
+				<li><a href="demo/tool/replace.html" target="main">window文件路径替换</a></li>
+				<li><a href="demo/tool/json2str.html" target="main">json2str</a></li>
+				<li><a href="demo/tool/safehtml.html" target="main">safehtml</a></li>
+				<li><a href="demo/tool/appendhtml.html" target="main">appendhtml</a></li>
+				<li><a href="demo/tool/editarticle.html" target="main">edit article</a></li>
+				<li><a href="demo/tool/javaappend.html" target="main">javaappend</a></li>
+				
+				
+				</ul>
+			</li>
+			<!-- 工具 end-->
+			<!-- start 知识 -->
+			<li>知识
+			<ul>
+				<li><a href="knowledge/usefulJs.html" target="main">有用的js代码</a></li>
+				<li><a href="knowledge/jsVSJquery.html" target="main">jsVSJquery</a></li>
+				<li><a href="knowledge/countdown.html" target="main">countdown</a></li>
+				
+				<li><a href="knowledge/triangle.html" target="main">triangle</a></li>
+				<li><a href="knowledge/jsassert.html" target="main">jsassert</a></li>
+				<li><a href="knowledge/cookie.html" target="main">cookie</a></li>
+				<li><a href="htmlpage/page.html" target="main">html分页</a></li>
+				<li><a href="knowledge/trim.html" target="main">trim</a></li>
+				<li><a href="demo/array.html" target="main">array</a></li>
+				<li><a href="demo/upload.html" target="main">upload</a></li>
+				<li><a href="knowledge/disable-refresh.html" target="_blank">禁止浏览器刷新</a></li>
+				<!-- start closure -->
+				<li>closure
+				<ul>
+				<li><a href="knowledge/closure/demo1.html" target="main">demo1</a></li>
+				<li><a href="knowledge/closure/demo2.html" target="main">demo2</a></li>
+				<li><a href="knowledge/closure/demo3.html" target="main">demo3</a></li>
+				<li><a href="knowledge/closure/demo4.html" target="main">demo4</a></li>
+				</ul>
+				</li>
+				<!-- closure end -->
+				
+				<!-- start proxy -->
+				<li>$.proxy
+				<ul>
+				<li><a href="knowledge/proxy/demo1.html" target="main">demo1</a></li>
+				<li><a href="knowledge/proxy/demo2.html" target="main">demo2</a></li>
+				</ul>
+				</li>
+				<!-- proxy end -->
+				
+				<!-- start 拖拽 -->
+				<li>拖拽
+				<ul>
+				<li><a href="knowledge/drag/drag.html" target="main">drag</a></li>
+				<li><a href="knowledge/drag/drag2.html" target="main">html5 drag</a></li>
+				<li><a href="knowledge/drag/drag3.html" target="main">drag3</a></li>
+				
+				</ul>
+				</li>
+				<!-- 拖拽 end -->
+				<!-- start window -->
+				<li>window
+				<ul>
+				<li><a href="demo/window/window.html" target="main">window</a></li>
+				<li><a href="demo/window/window2.html" target="main">window 封装</a></li>
+				</ul>
+				</li>
+				<!-- end window -->
+				<!-- start event -->
+				<li>event
+				<ul>
+					<li><a href="knowledge/event/BeforeUnloadEventExample01.htm" target="main">BeforeUnloadEventExample01</a></li>
+					<li><a href="knowledge/event/ButtonExample01.htm" target="main">ButtonExample01</a></li>
+					<li><a href="knowledge/event/ClientCoordinatesExample01.htm" target="main">ClientCoordinatesExample01</a></li>
+					<li><a href="knowledge/event/ContextMenuEventExample01.htm" target="main">ContextMenuEventExample01</a></li>
+					<li><a href="knowledge/event/CrossBrowserEventHandlerExample01.htm" target="main">CrossBrowserEventHandlerExample01</a></li>
+					<li><a href="knowledge/event/CrossBrowserEventObjectExample01.htm" target="main">CrossBrowserEventObjectExample01</a></li>
+					<li><a href="knowledge/event/CrossBrowserEventObjectExample02.htm" target="main">CrossBrowserEventObjectExample02</a></li>
+					<li><a href="knowledge/event/CrossBrowserEventObjectExample03.htm" target="main">CrossBrowserEventObjectExample03</a></li>
+					<li><a href="knowledge/event/DOMEventObjectExample01.htm" target="main">DOMEventObjectExample01</a></li>
+					<li><a href="knowledge/event/DOMEventObjectExample02.htm" target="main">DOMEventObjectExample02</a></li>
+					<li><a href="knowledge/event/DOMEventObjectExample03.htm" target="main">DOMEventObjectExample03</a></li>
+					<li><a href="knowledge/event/DOMLevel0EventHandlerExample01.htm" target="main">DOMLevel0EventHandlerExample01</a></li>
+					<li><a href="knowledge/event/DOMLevel2EventHandlerExample01.htm" target="main">DOMLevel2EventHandlerExample01</a></li>
+					<li><a href="knowledge/event/DOMLevel2EventHandlerExample02.htm" target="main">DOMLevel2EventHandlerExample02</a></li>
+					<li><a href="knowledge/event/DOMLevel3KeyPropertyExample01.htm" target="main">DOMLevel3KeyPropertyExample01</a></li>
+					<li><a href="knowledge/event/DoubleClickExample01.htm" target="main">DoubleClickExample01</a></li>
+					<li><a href="knowledge/event/EventBubblingExample01.htm" target="main">EventBubblingExample01</a></li>
+					<li><a href="knowledge/event/EventCapturingExample01.htm" target="main">EventCapturingExample01</a></li>
+					<li><a href="knowledge/event/EventDelegationExample01.htm" target="main">EventDelegationExample01</a></li>
+					<li><a href="knowledge/event/HashChangeEventExample01.htm" target="main">HashChangeEventExample01</a></li>
+					<li><a href="knowledge/event/HTMLEventHandlerExample02.htm" target="main">HTMLEventHandlerExample02</a></li>
+					<li><a href="knowledge/event/HTMLEventHandlerExample03.htm" target="main">HTMLEventHandlerExample03</a></li>
+					<li><a href="knowledge/event/HTMLEventHandlerExample04.htm" target="main">HTMLEventHandlerExample04</a></li>
+					<li><a href="knowledge/event/IEEventHandlerExample02.htm" target="main">IEEventHandlerExample02</a></li>
+					<li><a href="knowledge/event/IEEventObjectExample01.htm" target="main">IEEventObjectExample01</a></li>
+					<li><a href="knowledge/event/IEEventObjectExample02.htm" target="main">IEEventObjectExample02</a></li>
+					<li><a href="knowledge/event/IEEventObjectExample03.htm" target="main">IEEventObjectExample03</a></li>
+					<li><a href="knowledge/event/LoadEventExample01.htm" target="main">LoadEventExample01</a></li>
+					<li><a href="knowledge/event/LoadEventExample02.htm" target="main">LoadEventExample02</a></li>
+					<li><a href="knowledge/event/LoadEventExample03.htm" target="main">LoadEventExample03</a></li>
+					<li><a href="knowledge/event/LoadEventExample04.htm" target="main">LoadEventExample04</a></li>
+					<li><a href="knowledge/event/LoadEventExample05.htm" target="main">LoadEventExample05</a></li>
+					<li><a href="knowledge/event/LoadEventExample06.htm" target="main">LoadEventExample06</a></li>
+					<li><a href="knowledge/event/LoadEventExample07.htm" target="main">LoadEventExample07</a></li>
+					<li><a href="knowledge/event/ModifierKeysExample01.htm" target="main">ModifierKeysExample01</a></li>
+					<li><a href="knowledge/event/PageCoordinatesExample01.htm" target="main">PageCoordinatesExample01</a></li>
+					<li><a href="knowledge/event/ResizeEventExample01.htm" target="main">ResizeEventExample01</a></li>
+					<li><a href="knowledge/event/ScreenCoordinatesExample01.htm" target="main">ScreenCoordinatesExample01</a></li>
+				</ul>
+				</li>
+				<!-- event end -->
+			</ul>
+			</li>
+			<!-- 知识 end -->
+			<!-- start project -->
+			<li>project
+			<ul>
+			<li><a href="project/player/player.html" target="_blank">player</a></li>
+			<li><a href="project/player/player2.html" target="_blank">player2</a></li>
+			<li><a href="project/player/player3.html" target="_blank">player3</a></li>
+			<li><a href="project/changeskin/changeskin.html" target="_blank">changeskin</a></li>
+			<li><a href="project/desk/desk.html" target="_blank">桌面便签</a></li>
+			<li><a href="project/notice.html" target="_blank">消息通知</a></li>
+			<li><a href="project/enterprise-portals/index.html" target="_blank">企业门户网站首页</a></li>
+			<li><a href="project/dragImage/index.html" target="_blank">自定义拖拽组件</a></li>
+			</ul>
+			</li>
+			<!-- end project -->
+			<!-- start css3 -->
+			<li>css3
+			<ul>
+			<li><a href="demo/css3/image360.html" target="main">image360</a></li>
+			<li><a href="demo/css3/3dbox.html" target="main">demo1</a></li>
+			<li><a href="demo/css3/fanpai.html" target="main">3D翻牌效果</a></li>
+			<li><a href="demo/css3/layout.html" target="_blank">响应式布局</a></li>
+			</ul>
+			</li>
+			<!-- end css3 -->
+			<!-- start css -->
+			<li>css
+			<ul>
+			<li><a href="demo/css/backtop.html" target="main">backtop</a></li>
+			<li><a href="demo/css/radio.html" target="main">custome radio</a></li>
+			</ul>
+			</li>
+			<!-- end css -->
+			<!-- start test -->
+			<li>test
+			<ul>
+			<li><a href="test/test1.html" target="main">jQuery param function</a></li>
+			<li><a href="test/test.html" target="main">test grunt</a></li>
+			<li><a href="test/q.html" target="main">q:before q:after</a></li>
+			<li><a href="test/convertkey.html" target="main">英文键转中文</a></li>
+			</ul>
+			</li>
+			<!-- end test -->
+			<!-- start html5 -->
+			<li>html5
+				<ul>
+					<li><a href="html5/datalist.html" target="main">datalist</a></li>
+					<li><a href="html5/animate/animate.html" target="main">animate</a></li>
+					<!-- start canvas -->
+					<li>canvas
+						<ul>
+							<li><a href="html5/canvas/circle.html" target="main">canvas
+									circle</a></li>
+							<li><a href="html5/canvas/line.html" target="main">canvas
+									line</a></li>
+							<li><a href="html5/canvas/linearGradient.html" target="main">canvas
+									linearGradient</a></li>
+							<li><a href="html5/canvas/putimg.html" target="main">canvas
+									putimg</a></li>
+							<li><a href="html5/canvas/rectangle.html" target="main">canvas
+									rectangle</a></li>
+						</ul>
+					</li>
+					<!-- end canvas -->
+				</ul>
+			</li>
+			<!-- end html5 -->
+			<!-- start document -->
+			<li>document
+			<ul>
+			<li><a href="document/viewport.html" target="main">viewport</a></li>
+			<li><a href="document/plugin.html" target="main">jQuery 封装、插件浅析</a></li>
+			<li><a href="document/backtop.html" target="main">回到顶部</a></li>
+			<li><a href="document/创建自定义类型.html" target="main">创建自定义类型</a></li>
+			<li><a href="document/jquery 添加插入元素技巧(前面和后面).html" target="main">jquery 添加插入元素技巧(前面和后面)</a></li>
+			</ul>
+			</li>
+			<!-- end document -->
+		</ul>
+  </div> 
+  <div class="mainbox" id="mainbox"> 
+   <div class="header"><span class="expand">我的前端组件库</span>
+   <input type="text" id="wd" name="wd" list="wd_list" class="wd"><input type="button" class="search" id="search" value="搜索">
+  &nbsp;&nbsp;<input  type="button" id="back" value="返回" class="search">
+  <datalist id="wd_list">
+  <option value="demo">
+  </datalist>
+   </div> 
+   <div id="result"></div>
+   <div id="page" class="pagination"> </div>
+   <div class="contentbox" id="contentbox"> 
+    <iframe name="main" id="iframepage" marginheight="0"  marginwidth="0" frameborder="0" scrolling-x="no" scrolling-y="yes"></iframe>
+    	
+   </div> 
+  </div> 
+  <a href="javascript:scroll(0,0)" class="to-top visible">Top</a>
+ <script type="text/javascript" src="http://localhost:80/mycomponent/lib/js/page.js"></script>
+  <script type="text/javascript">	
+$(function() {
+	
+	/* 搜索框的初始化 */
+	 function search_init(){
+		  var wd_list=[];
+		  if(localStorage.getItem("wd_list")==null){
+			  localStorage.wd_list=wd_list;
+		  }
+		  else{
+			  wd_list=localStorage.wd_list.split(",");
+			  var html,length=wd_list.length;
+			  for(var i=0;i<length;i++){
+				  html="<option label='Microsoft' value='"+wd_list[i]+"'>";
+					$("#wd_list").prepend(html); 
+			  } 
+		  }
+	  }
+	  search_init();
+	  /* 搜索框的下拉列表 */
+		function search_list(wd){
+	  	var wd_list=new Array();
+		wd_list=localStorage.wd_list.split(",");
+		
+		$("#wd_list").find("option").each(function(index,element){
+			if($.inArray(wd,wd_list)==-1){
+				var html="<option label='' value='"+wd+"'>";
+				$("#wd_list").prepend(html);
+				wd_list.push(wd);
+				localStorage.wd_list=wd_list;
+				return;
+			}
+		}); 
+	}
+	//初始化菜单
+	initmenu();
+	/* 当iframepage中的文档高度大于600时，显示返回顶部；否则，不显示。 */
+	 $("#iframepage").load(function() {
+		 var ifm= document.getElementById("iframepage");   
+		 var subWeb = document.frames ? document.frames["iframepage"].document : ifm.contentDocument;   
+		 if(ifm != null && subWeb != null) { 
+			 if(subWeb.body.scrollHeight>600||ifm.height>600){
+				 $(".to-top").show();
+		 		  
+			 }else{
+				 $(".to-top").hide();
+			 }
+		 }   
+	}); 
+	
+	//左侧菜单栏的显示与隐藏控制
+	$(".expand").on("click",function(){
+		var w=$(".sliderbox").width();
+		//隐藏
+		if(w==280){
+			$(".sliderbox").show().animate({width:0},200,function(){
+				$(this).hide();
+			});
+			$(".mainbox").animate({float:"none",marginLeft:0},200);
+			$("#result").animate({left:0},200);
+			$("body,html").css("overflow","auto");
+			$("#contentbox").css({"margin":"10px auto"});
+		}//展开
+		else{
+			$(".sliderbox").show().animate({width:280},200);
+			$(".mainbox").animate({float:"left",marginLeft:280},200);
+			$("#result").animate({left:280},200);
+			$("body,html").css({"overflow-x":"hidden","overflow-y":"auto"});
+			$("#contentbox").css({"margin":"10px 0 0 10px"});
+		}
+	});
+	//默认左侧菜单展开
+	$(".expand").trigger("click");
+	//回到文档顶部
+	$(".to-top").click(function() {
+		var iframe = document.getElementById("iframepage");
+		iframe.contentWindow.window.scrollTo(0,0);
+		$("#result").animate({scrollTop:0},200);
+	});
+	//点击侧边栏的a标签时，隐藏搜索结果，显示网页内容
+	$(".sliderbox ul li a").click(function() {
+		$("#result").hide();
+		$("#contentbox").show();
+		$("#page").hide();
+	});
+	//输入完成，回车搜索
+	$("#wd").keydown(function(evt){ 
+		var event = evt || window.event;
+		console.log(event)
+		var keyCode = event.keyCode;
+		if (keyCode == '13'){
+			$("#search").trigger("click");
+		}
+		
+	});//回车搜索 end
+	$("#search").click(function(){
+		var wd=$("#wd").val().trim();
+		if(wd==""){
+			alert("请输入关键词！");
+			return;
+		}
+		search_list(wd);
+		
+		//点击搜索时，显示搜索结果，隐藏具体内容。
+		$("#result").show();
+		$("#contentbox").hide();
+		 $(".to-top").hide();
+		var url="http://localhost:80/lucene_demo/QueryIndex";
+		var datas="wd="+$("#wd").val();
+		/* 调用ajax开始 */
+		$.ajax({
+	        url: url,
+	        type: "POST",
+	        data : datas +"&_=" + (new Date()).getTime(),
+	        cache: false,
+	        dataType: "json",
+	        timeout: 60000,
+			beforeSend: function (xhr) {
+			    xhr.overrideMimeType("text/plain; charset=utf-8");
+			},
+	        success: function(json) {
+		        	if(json!=null){
+		        	var html="";
+		        	$.each(json,function(i,obj){
+		        		if(obj!=null){
+		        		html+="<div class='record'>";
+		        		html+="<p><strong>标题:</strong>"+obj.title+"</p>";
+		        		html+="<p><strong>关键字:</strong>"+obj.keywords+"</p>";
+		        		html+="<p><strong>URL:</strong><a target='main' href='"+obj.url+"'>"+obj.url+"</a></p>";
+		        		html+="</div>";
+		        		}
+		        	});//each end
+	        	
+	        		$("#result").html(html);
+		        	//显示结果的同时进行分页
+	        		Page.prototype.initPage();
+	        		
+		        	$(".record a").unbind('click').bind('click', function(){
+		        		$("#result").hide();
+		        		$("#contentbox").show();
+		        		$("#page").hide();
+		        	});
+		        	$("#back").unbind('click').bind('click', function(){
+		        		$("#result").show();
+		        		$("#contentbox").hide();
+		        		$("#page").show();
+		        		 $(".to-top").hide();
+		        	});
+		        	
+	        	}
+	        }
+		});//ajax end
+		
+	});//search end
+});
+</script>  
+ 
+
+ </body>
+</html>

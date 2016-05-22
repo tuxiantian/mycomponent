@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>edit article</title>
+  <meta name="keywords" content="edit article"> 
+  <script type="text/javascript" src="http://localhost:80/mycomponent/lib/jQuery/jquery-1.11.3.js"></script> 
+  <script type="text/javascript" charset="utf-8" src="http://localhost:80/mycomponent/lib/ueditor/ueditor.config.js"></script> 
+  <script type="text/javascript" charset="utf-8" src="http://localhost:80/mycomponent/lib/ueditor/ueditor.all.min.js"></script> 
+  <script type="text/javascript" charset="utf-8" src="http://localhost:80/mycomponent/lib/ueditor/lang/zh-cn/zh-cn.js"></script> 
+ </head> 
+ <body> 
+  <script id="editor" type="text/plain" style="width:960px;height:570px;margin: 0px auto;"></script> 
+  <script type="text/javascript">
+    //实例化编辑器
+   	var ue = new UE.ui.Editor();
+    ue.render("editor");
+</script>  
+ </body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>datejs test</title>
+  <meta name="keywords" content="datejs test"> 
+  <link rel="stylesheet" type="text/css" href="http://localhost:80/mycomponent/css/common.css"> 
+  <script type="text/javascript" src="http://localhost:80/mycomponent/lib/jQuery/jquery-1.11.3.js"></script> 
+  <script type="text/javascript" src="http://localhost:80/mycomponent/lib/js/date.js"></script> 
+ </head> 
+ <body> 
+  <p id="date1"></p> 
+  <p id="date2"></p> 
+  <script type="text/javascript">
+$("#date1").html(getCurDate(new Date(),true));
+$("#date2").html(getCurDate(new Date(),false));
+</script> 
+  <p><strong>html</strong></p> 
+  <pre class="code">
+    &lt;p id="date1"&gt;&lt;/p&gt;
+&lt;p id="date2"&gt;&lt;/p&gt;
+	</pre> 
+  <p><strong>js</strong></p> 
+  <pre class="code">
+    &lt;script type="text/javascript"&gt;
+$("#date1").html(getCurDate(new Date(),true));
+$("#date2").html(getCurDate(new Date(),false));
+&lt;/script&gt;
+	</pre>  
+ </body>
+</html>

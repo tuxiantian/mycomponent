@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>closure demo3</title>
+  <meta name="keywords" content="closure demo3"> 
+  <link rel="stylesheet" type="text/css" href="http://localhost:80/mycomponent/css/common.css"> 
+ </head> 
+ <body> 
+  <script type="text/javascript">
+var name = "The Window";   
+var object = {   
+　　name : "My Object",   
+　　getNameFunc : function(){   
+　　　　return function(){   
+　　　　　　return this.name;   
+　　　};   
+　　}   
+};   
+alert(object.getNameFunc()());  //The Window
+</script> 
+  <details open> 
+   <summary>js</summary> 
+   <pre class="code">
+&lt;script type="text/javascript"&gt;
+var name = "The Window";   
+var object = {   
+　　name : "My Object",   
+　　getNameFunc : function(){   
+　　　　return function(){   
+　　　　　　return this.name;   
+　　　};   
+　　}   
+};   
+alert(object.getNameFunc()());  //The Window
+&lt;/script&gt;
+</pre> 
+  </details>  
+ </body>
+</html>

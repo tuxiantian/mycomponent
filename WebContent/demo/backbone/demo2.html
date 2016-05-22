@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="http://localhost:80/mycomponent/lib/jQuery/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="http://localhost:80/mycomponent/lib/backbone/underscore.js"></script>
+<script type="text/javascript" src="http://localhost:80/mycomponent/lib/backbone/backbone.js"></script>
+
+</head>
+<body>
+
+<script type="text/javascript">
+	var Book=Backbone.Model.extend({
+		defaults:{
+			title:'default'
+		},
+		initialize:function(){
+
+		}
+	});
+	var BookShelf=Backbone.Collection.extend({
+		model:Book
+	});
+	var bookShelf=new BookShelf();
+	var showAllBooks=function(){
+		bookShelf.each(function(book){
+			document.writeln(book.get("title"));
+		});
+	}
+	bookShelf.bind('reset',showAllBooks);
+	bookShelf.url='http://localhost/mycomponent/BookServlet';
+	bookShelf.fetch({
+		reset:true,
+		success:function(collection,response,options){
+			console.log(JSON.stringify(response))
+			collection.each(function(book){
+				console.log(book.get('title'))
+			});
+			
+			if (response.returnCode='0') {
+				for (var i = 0; i < response.beans.length; i++) {
+					console.log(response.beans[i])
+				}
+			}
+		},
+		error:function(collection,response,options){
+			alert('error')
+		}
+	});
+</script>
+</body>
+</html>

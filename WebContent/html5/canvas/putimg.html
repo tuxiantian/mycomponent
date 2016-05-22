@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>put a image to canvas</title>
+  <meta name="keywords" content="put a image to canvas"> 
+  <link rel="stylesheet" type="text/css" href="http://localhost:80/mycomponent/css/common.css"> 
+ </head> 
+ <body> 
+  <canvas id="myCanvas" width="200" height="100"></canvas> 
+  <script type="text/javascript">
+var c=document.getElementById("myCanvas");
+var cxt=c.getContext("2d");
+var img=new Image();
+img.src="../images/flower.png";
+cxt.drawImage=(img,0,0);
+</script> 
+  <details> 
+   <summary>html</summary> 
+   <pre class="code">
+&lt;canvas id="myCanvas" width="200" height="100"&gt;&lt;/canvas&gt;
+</pre> 
+  </details> 
+  <details> 
+   <summary>js</summary> 
+   <pre class="code">
+&lt;script type="text/javascript"&gt;
+var c=document.getElementById("myCanvas");
+var cxt=c.getContext("2d");
+var img=new Image();
+img.src="../images/flower.png";
+cxt.drawImage=(img,0,0);
+&lt;/script&gt;
+</pre> 
+  </details>  
+ </body>
+</html>

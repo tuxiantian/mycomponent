@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+ <head> 
+  <title>BeforeUnload Event Example</title>
+  <meta name="keywords" content="BeforeUnload Event Example"> 
+   <link rel="stylesheet" type="text/css" href="http://localhost:80/mycomponent/css/common.css">
+  <script type="text/javascript" src="EventUtil.js"></script> 
+ </head> 
+ <body> 
+  <div id="myDiv">
+   Try to navigate away from this page.
+  </div> 
+  <script type="text/javascript">
+        EventUtil.addHandler(window, "beforeunload", function(event){
+            event = EventUtil.getEvent(event);
+            var message = "I'm really going to miss you if you go.";
+            event.returnValue = message;
+            return message;
+        });
+
+    </script> 
+    <details open="open">
+<summary>js</summary>
+<pre class="code">
+  &lt;script type="text/javascript"&gt;
+        EventUtil.addHandler(window, "beforeunload", function(event){
+            event = EventUtil.getEvent(event);
+            var message = "I'm really going to miss you if you go.";
+            event.returnValue = message;
+            return message;
+        });
+
+    &lt;/script&gt; 
+</pre>
+</details>  
+ </body>
+</html>

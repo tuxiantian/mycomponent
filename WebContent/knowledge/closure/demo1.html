@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>closure demo1</title>
+  <meta name="keywords" content="closure demo1"> 
+   <link rel="stylesheet" type="text/css" href="http://localhost:80/mycomponent/css/common.css">
+ </head> 
+ <body> 
+  <script type="text/javascript">
+  /*
+  	子对象会一级一级地向上寻找所有父对象的变量。所以，父对象的所有变量，对子对象都是可见的，反之则不成立。
+  */
+  function f1(){
+	　　　var　n=999;
+	　　　　function f2(){
+	　　　　　　alert(n);
+	　　　　}
+	　　　　return f2;
+	　　}
+	　　var result=f1();
+	　　result(); // 999
+</script>  
+<details open="open">
+<summary>js</summary>
+<pre class="code">
+&lt;script type="text/javascript"&gt;
+  /*
+  	子对象会一级一级地向上寻找所有父对象的变量。所以，父对象的所有变量，对子对象都是可见的，反之则不成立。
+  */
+  function f1(){
+	　　　var　n=999;
+	　　　　function f2(){
+	　　　　　　alert(n);
+	　　　　}
+	　　　　return f2;
+	　　}
+	　　var result=f1();
+	　　result(); // 999
+&lt;/script&gt;  
+</pre>
+</details>
+ </body>
+</html>

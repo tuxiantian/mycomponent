@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>trim</title>
+  <meta name="keywords" content="trim"> 
+  <link rel="stylesheet" type="text/css" href="http://localhost:80/mycomponent/css/common.css"> 
+ </head> 
+ <body> 
+  <script type="text/javascript">
+/* String.prototype.trim=function(){
+    return this.replace(/(\s*)/g,"");
+} */
+var str="a ";
+var str2=str.trim();
+alert(str+"a");
+alert(str2+"a");
+</script> 
+  <p><strong>js</strong></p> 
+  <pre class="code">
+&lt;script type="text/javascript"&gt;
+String.prototype.trim=function(){
+    return this.replace(/(\s*)/g,"");
+}
+var str="a ";
+var str2=str.trim();
+alert(str+"a");
+alert(str2+"a");
+&lt;/script&gt;
+</pre>  
+ </body>
+</html>

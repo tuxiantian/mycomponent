@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>get keycode</title>
+</head>
+<body>
+<script type="text/javascript" src="http://localhost:80/mycomponent/lib/jQuery/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+$(document).unbind("keyup").bind("keyup", function(evt){
+	var evt = (evt) ? evt : window.event;
+	document.write(evt.keyCode);
+	//alert(evt.keyCode);
+});
+</script>
+</body>
+</html>

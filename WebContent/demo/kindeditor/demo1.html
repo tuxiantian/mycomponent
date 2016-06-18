@@ -8,13 +8,13 @@
 <textarea id="editor_id" name="content" style="width:700px;height:300px;">
 This is default content.
 </textarea>
-<script charset="utf-8" src="http://localhost:80/mycomponent/lib/kindeditor-4.1.11-zh-CN/kindeditor/kindeditor-all.js"></script>
-<script charset="utf-8" src="http://localhost:80/mycomponent/lib/kindeditor-4.1.11-zh-CN/kindeditor/lang/zh-CN.js"></script>
+<script charset="utf-8" src="${webSiteDomain}/mycomponent/lib/kindeditor-4.1.11-zh-CN/kindeditor/kindeditor-all.js"></script>
+<script charset="utf-8" src="${webSiteDomain}/mycomponent/lib/kindeditor-4.1.11-zh-CN/kindeditor/lang/zh-CN.js"></script>
 <script>
         KindEditor.ready(function(K) {
                 window.editor = K.create('#editor_id', {
-                    uploadJson : 'http://localhost:80/mycomponent/lib/kindeditor-4.1.11-zh-CN/kindeditor/jsp/upload_json.jsp',
-                    fileManagerJson : 'http://localhost:80/mycomponent/lib/kindeditor-4.1.11-zh-CN/kindeditor/jsp/file_manager_json.jsp',
+                    uploadJson : '${webSiteDomain}/mycomponent/lib/kindeditor-4.1.11-zh-CN/kindeditor/jsp/upload_json.jsp',
+                    fileManagerJson : '${webSiteDomain}/mycomponent/lib/kindeditor-4.1.11-zh-CN/kindeditor/jsp/file_manager_json.jsp',
                     allowFileManager : true
             });
         });

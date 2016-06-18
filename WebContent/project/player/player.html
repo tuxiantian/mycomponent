@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>音乐播放器</title>
 <meta name="keywords" content="音乐播放器">
-<link rel="stylesheet" href="http://localhost:80/mycomponent/project/player/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="${webSiteDomain}/mycomponent/project/player/font-awesome/css/font-awesome.min.css">
 <style type="text/css">
 *{margin: 0;padding: 0;}
 body{font-size: 14px;font-family: "微软雅黑"}
@@ -102,7 +102,7 @@ h1{color: #666;font-weight: normal;}
 			</ul>
 		</div>
 		<div class="r"></div>
-		<audio id="audio" src="http://localhost:80/mycomponent/project/player/mp3/fcml.mp3"></audio>
+		<audio id="audio" src="${webSiteDomain}/mycomponent/project/player/mp3/fcml.mp3"></audio>
 		<script type="text/javascript">
 		var tzAudio={
 				$:function(id){
@@ -152,7 +152,7 @@ h1{color: #666;font-weight: normal;}
 					};
 				}
 		};
-		tzAudio.add("http://localhost:80/mycomponent/project/player/mp3/fcml.mp3");
+		tzAudio.add("${webSiteDomain}/mycomponent/project/player/mp3/fcml.mp3");
 		//tzAudio.play();
 		tzAudio.events("play",function(obj,btnDom){
 			obj.play();

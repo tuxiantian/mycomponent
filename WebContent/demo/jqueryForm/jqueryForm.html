@@ -4,11 +4,11 @@
   <meta charset="UTF-8"> 
   <title>jqueryForm</title>
   <meta name="keywords" content="jqueryForm"> 
-  <script type="text/javascript" src="http://localhost:80/mycomponent/lib/jQuery/jquery-1.11.3.js"></script> 
-  <script type="text/javascript" src="http://localhost:80/mycomponent/lib/jQueryForm/jquery.form.js"></script> 
+  <script type="text/javascript" src="${webSiteDomain}/mycomponent/lib/jQuery/jquery-1.11.3.js"></script> 
+  <script type="text/javascript" src="${webSiteDomain}/mycomponent/lib/jQueryForm/jquery.form.js"></script> 
  </head> 
  <body> 
-  <form action="http://localhost:80/mycomponent/JqueryFormServlet" id="myForm" method="post"> 
+  <form action="${webSiteDomain}/mycomponent/JqueryFormServlet" id="myForm" method="post"> 
    <input name="name" type="text"> 
    <input name="major" type="text">
    <input type="submit" value="提交">
@@ -32,7 +32,7 @@ $(function() {
 	/*jQuery ajax异步提交表单 */
 	$("#call1").click(function() {
 		 var options={
-			url:'http://localhost:80/mycomponent/JqueryFormServlet',
+			url:'${webSiteDomain}/mycomponent/JqueryFormServlet',
 			type:'post',
 			dataType:'text',
 			data:$("#myForm").formSerialize(),

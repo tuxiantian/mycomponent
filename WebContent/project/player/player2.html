@@ -26,12 +26,12 @@ body{font-size: 12px;font-family: "微软雅黑";color: #000;background: url("im
 .music .m_lyric .m_player .m_btn a{width: 60px;height:60px;display:inline-block;font-size: 33px;line-height: 60px;}
 .sel{color:green;}
 .bgimg{position: fixed;top:0;left: 0;width: 100%;height: 100%;
-/* background-image: url('http://localhost:8080/mycomponent/demo/knowledge/images/musicbg.jpg'); */
+/* background-image: url('${webSiteDomain}80/mycomponent/demo/knowledge/images/musicbg.jpg'); */
 z-index: -1;
 background-attachment: fixed;
 background-size: cover;background-repeat: no-repeat;}
 /* 设置图片360°旋转 */
-.box{z-index: 1;width: 180px;height: 180px;margin:160px 0 0 180px;position:absolute; background:url("http://localhost:8080/mycomponent/project/player/images/girl.jpg")  center no-repeat; border-radius:50%;}
+.box{z-index: 1;width: 180px;height: 180px;margin:160px 0 0 180px;position:absolute; background:url("${webSiteDomain}/mycomponent/project/player/images/girl.jpg")  center no-repeat; border-radius:50%;}
 
 @keyframes move{
 from{transform:rotate(0)}
@@ -64,8 +64,8 @@ to{-webkit-transform:rotate(360deg)}
 .m{-webkit-animation:move 6s  ease;-webkit-animation-iteration-count: infinite;
 }
 </style> 
-  <link rel="stylesheet" href="http://localhost:8080/mycomponent/project/player/font-awesome/css/font-awesome.min.css"> 
-  <script type="text/javascript" src="http://localhost:8080/mycomponent/lib/jQuery/jquery-1.11.3.js"></script> 
+  <link rel="stylesheet" href="${webSiteDomain}/mycomponent/project/player/font-awesome/css/font-awesome.min.css"> 
+  <script type="text/javascript" src="${webSiteDomain}/mycomponent/lib/jQuery/jquery-1.11.3.js"></script> 
  </head> 
  <body> 
   <div class="box m" id="box"></div> 
@@ -149,7 +149,7 @@ to{-webkit-transform:rotate(360deg)}
 [03:42.96]嗯…呐…
 [03:51.78]end——给我最爱的晶晶
 </textarea> 
-  <div class="bgimg" style="background-image:url('http://localhost:8080/mycomponent/project/player/images/musicbg.jpg');"></div> 
+  <div class="bgimg" style="background-image:url('${webSiteDomain}/mycomponent/project/player/images/musicbg.jpg');"></div> 
   <script type="text/javascript">
  
 $(function () {	

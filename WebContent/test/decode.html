@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <title>encodeURIComponent</title>
-<script type="text/javascript" src="http://localhost:8080/mycomponent/lib/jQuery/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="${webSiteDomain}80/mycomponent/lib/jQuery/jquery-1.11.3.js"></script>
 </head>
 <body>
 <script type="text/javascript">
 $.ajax({
 	type:'GET',
-	url:"http://localhost:8080/mycomponent/DecodeServlet",
+	url:"${webSiteDomain}80/mycomponent/DecodeServlet",
 	data:{username:encodeURIComponent("涂贤田")},
 	success:function(data){
 		alert(data)

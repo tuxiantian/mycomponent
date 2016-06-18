@@ -75,7 +75,7 @@ SAVEPATH=/JSP/ExportExample/ExportedImages/
 #the folder where exported charts will be saved. 
 #Please enter the HTTP representation of that folder 
 #in this constant e.g., http://www.yourdomain.com/images/
-HTTP_URI=http://localhost:8081/ExportHandler/JSP/ExportExample/ExportedImages/
+HTTP_URI=${webSiteDomain}81/ExportHandler/JSP/ExportExample/ExportedImages/
 
 #OVERWRITEFILE sets whether the export handler would overwrite an existing file 
 #the newly created exported file. If it is set to false the export handler would

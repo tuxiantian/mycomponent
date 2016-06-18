@@ -4,9 +4,9 @@
   <meta charset="UTF-8"> 
   <title>upload Image</title>
   <meta name="keywords" content="upload Image"> 
-  <link type="text/css" rel="stylesheet" href="http://localhost:80/mycomponent/lib/webuploader-0.1.5/webuploader.css"> 
-  <script type="text/javascript" src="http://localhost:80/mycomponent/lib/jQuery/jquery-1.11.3.js"></script> 
-  <script type="text/javascript" src="http://localhost:80/mycomponent/lib/webuploader-0.1.5/webuploader.nolog.js"></script> 
+  <link type="text/css" rel="stylesheet" href="${webSiteDomain}/mycomponent/lib/webuploader-0.1.5/webuploader.css"> 
+  <script type="text/javascript" src="${webSiteDomain}/mycomponent/lib/jQuery/jquery-1.11.3.js"></script> 
+  <script type="text/javascript" src="${webSiteDomain}/mycomponent/lib/webuploader-0.1.5/webuploader.nolog.js"></script> 
  </head> 
  <body> 
   <!--dom结构部分--> 
@@ -20,7 +20,7 @@
   <script type="text/javascript">
 //初始化Web Uploader
 var uploader = WebUploader.create({
-	BASE_URL:'http://localhost:80/mycomponent/lib/webuploader-0.1.5',
+	BASE_URL:'${webSiteDomain}/mycomponent/lib/webuploader-0.1.5',
     // 选完文件后，是否自动上传。
     auto: true,
 
@@ -28,7 +28,7 @@ var uploader = WebUploader.create({
     swf: this.BASE_URL + '/Uploader.swf',
 
     // 文件接收服务端。
-    server: 'http://localhost:80/mycomponent/UploadServlet',
+    server: '${webSiteDomain}/mycomponent/UploadServlet',
 
     // 选择文件的按钮。可选。
     // 内部根据当前运行是创建，可能是input元素，也可能是flash.

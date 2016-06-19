@@ -451,7 +451,6 @@ $(function() {
 	//输入完成，回车搜索
 	$("#wd").keydown(function(evt){ 
 		var event = evt || window.event;
-		console.log(event)
 		var keyCode = event.keyCode;
 		if (keyCode == '13'){
 			$("#search").trigger("click");

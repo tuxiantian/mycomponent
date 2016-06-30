@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0"/>
+    <meta name="description" content="">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>手机虚拟键盘遮挡问题解决示例</title>
+    <style>
+        html{background-color: #f1efef;}
+        input{padding: 10px;border: 1px solid #ddd;width: 100%;box-sizing: border-box;}
+        .input-box{
+            margin-bottom: 40px;
+        }
+        .footer{position: fixed;left:0;right: 0;bottom: 0;background-color: #ddd;}
+    </style>
+</head>
+<body>
+<div style="padding-bottom: 60px;">
+    <div class="input-box">
+        <input type="text" value="0">
+    </div>
+    <div class="input-box">
+        <input type="text"  value="1">
+    </div>
+    <div class="input-box">
+        <input type="text"  value="2">
+    </div>
+    <div class="input-box">
+        <input type="text"  value="3">
+    </div>
+    <div class="input-box">
+        <input type="text" value="4">
+    </div>
+    <div class="input-box">
+        <input type="text"  value="5">
+    </div>
+    <div class="input-box">
+        <input type="text"  value="6">
+    </div>
+    <div class="input-box">
+        <input type="text"  value="7">
+    </div>
+    <div class="input-box">
+        <input type="text"  value="8">
+    </div>
+    <div class="input-box">
+        <input type="text"  value="9">
+    </div>
+</div>
+<div class="footer">
+    <div style="padding:5px 10px;">
+        <input type="text" id="footer" value="footerInput">
+    </div>
+</div>
+<script src="http://zeptojs.com/zepto.js" type="text/javascript"></script>
+<script type="text/javascript">
+    /*
+    * 声明：
+    * 这种方法不能解决所有手机虚拟键盘遮挡问题，
+    * 只能解决大部分手机，如果可以通过设计规避这个问题，尽量通过设计规避
+    * 目前测试这种方案在苹果使用上暂未发现问题
+    * 安卓手机：
+    * 不正常的有：nexus手机
+    * 正常：小米5、华为 麦芒4、华为 p8、华为 mate8、魅族x4
+    * 由于测试机有限，暂时测试这几种机型
+    * */
+    $(function(){
+        var Interval,$body= $("body");
+        $body.on("focusin",'input',function(){
+            var $this=$(this);
+            setTimeout(function(){
+                Interval=setInterval(function(){
+                    //滚动位置，可根据情况调整
+                    if( $body.scrollTop()<$this.offset().top){
+                        $body.scrollTop($this.offset().top);
+                    }else {
+                        clearInterval(Interval)
+                    }
+                },50);
+            },300)
+        });
+        $body.on("blur",'input',function(){
+            clearInterval(Interval);
+        });
+    })
+</script>
+</body>
+</html>

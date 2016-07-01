@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>hiding elements with display</title>
+<style type="text/css">
+div {
+  height: 60px;
+  padding: 60px 0;
+  width: 180px;
+  font-size: 2em;
+  line-height: 60px;
+  background: pink;
+  text-align: center;
+  margin: 1%;
+  display: block;
+  float: left;
+  cursor: pointer;
+  font-family: 'Lato';
+}
+
+.o-hide {
+  display: none;
+  transition: all ease 0.8s;
+}
+
+.o-hide:hover {
+  display: block;
+}
+
+.o-hide p {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+</style>
+</head>
+<body>
+<div>Hover!</div>
+<div class="o-hide"><p>0</p></div>
+<div>0</div>
+</body>
+</html>

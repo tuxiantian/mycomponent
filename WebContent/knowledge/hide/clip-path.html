@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>hiding elements with the clip-path property</title>
+<style type="text/css">
+div {
+  height: 60px;
+  padding: 60px 0;
+  width: 180px;
+  font-size: 2em;
+  line-height: 60px;
+  background: pink;
+  text-align: center;
+  margin: 1%;
+  display: block;
+  float: left;
+  cursor: pointer;
+  font-family: 'Lato';
+}
+
+.o-hide {
+  clip-path: polygon(0px 0px, 0px 0px, 0px 0px, 0px 0px);
+}
+</style>
+</head>
+<body>
+<div>Hover!</div>
+<div class="o-hide">0</div>
+<div>0</div>
+<script type="text/javascript">
+var count = 0;
+var oHide = document.querySelector(".o-hide");
+var firstDiv = document.querySelector("div:nth-child(1)");
+oHide.onclick=function(){
+	alert(1)
+}
+firstDiv.addEventListener("mouseover", function(){
+    count++;
+    oHide.innerHTML = count;
+});
+
+
+firstDiv.addEventListener("click", function(){
+    oHide.className = "";
+});
+</script>
+</body>
+</html>

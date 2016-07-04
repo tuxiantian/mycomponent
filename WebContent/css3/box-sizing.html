@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>css3 box-sizing demo</title>
+<style type="text/css">
+    .content-box{
+        box-sizing:content-box;
+        -moz-box-sizing:content-box;
+        width: 100px;
+        height: 100px;
+        padding: 20px;
+        border: 5px solid #E6A43F;
+        background: blue;
+    }
+    .padding-box{
+        box-sizing:padding-box;
+        -moz-box-sizing:padding-box;
+        width: 100px;
+        height: 100px;
+        padding: 20px;
+        border: 5px solid #186645;
+        background: red;                
+    }
+    .border-box{
+        box-sizing:border-box;
+        -moz-box-sizing:border-box;
+        width: 100px;
+        height: 100px;
+        padding: 20px;
+        border: 5px solid #3DA3EF;
+        background: yellow;
+    }
+    .deprecated{text-decoration: line-through;}
+</style>
+</head>
+<body>
+<pre>css3 box-sizing属性
+box-sizing属性可以为三个值之一：content-box（default），border-box，padding-box。
+
+content-box，border和padding不计算入width之内
+
+<span class="deprecated">padding-box，padding计算入width内</span>
+
+border-box，border和padding计算入width之内，其实就是怪异模式了~
+
+ 
+
+ie8+浏览器支持content-box和border-box；
+
+ff则支持全部三个值。
+
+ 
+
+使用时：
+
+-webkit-box-sizing: 100px; // for ios-safari, android
+
+-moz-box-sizing:100px; //for ff
+
+box-sizing:100px; //for other</pre>
+<div class="content-box"></div>
+<div class="padding-box"></div>
+<div class="border-box"></div>
+</body>
+</html>

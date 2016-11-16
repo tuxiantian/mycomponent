@@ -1,0 +1,153 @@
+{
+  "bean": {
+    "callOut": "0.25",
+    "callWithin": "1003333",
+    "gprsOut": "0.25",
+    "gprsWithin": "100",
+    "productDesc": "全球通和4G套餐",
+    "productPayInfo": "198元",
+    "callOut": "0.25",
+    "callWithin": "100",
+    "gprsOut": "0.25",
+    "gprsWithin": "100",
+    "productDesc": "全球通和4G套餐",
+    "productPayInfo": "198元",
+    "reminder": "1、关于生效时间的说明 (1)开通：新入网客户或全球通标准资费客户，当月开通当月生效，当月套餐费及免费资源均按当月剩余天数进行计算，下月起按所办理的套餐执行。其他客户开通套餐，当月开通下月生效。 (2)变更/取消：当月变更/取消，下月生效。只有全球通、神州行升级版标准卡客户可以取消套餐，取消后执行相应品牌的标准资费；其他品牌客户无法取消套餐，只能变更为其他主套餐 2、每月最后一天19点后无法办理 3、与2G/3G/4G主套餐、自动加油包、全球通专属数据包、新本地15元数据流量套餐、移动数据流量产品商务套餐、以及神州行标准客户的15元CMWAP包月不限量套餐、全球通/动感地带的MO套餐20元档等包月不限量套餐互斥，香薰10086。 4、单次通话时长计算方法：通话时长计费单元为分钟的不足一分钟的按一分钟计，计费单元为6秒的不足6秒的按6秒计。 5、更多业务详情，请您咨询北京移动在线客服。",
+    "smsInstructions": "KTHSG38",
+    "smsOut": "0.1",
+    "smsWithin": "100",
+    "isBuy":"1"
+  },
+  "beans": [
+    
+  ],
+  "ext1": {
+    "bindProdInfo": [
+      {
+        "productCode": "kbhdbh0",
+        "productDesc": "kbhdjs0",
+        "productName": "kbhdmc0",
+        "productTariff": "kbhdzf0"
+      },
+      {
+        "productCode": "kbhdbh1",
+        "productDesc": "kbhdjs1",
+        "productName": "kbhdmc1",
+        "productTariff": "kbhdzf1"
+      },
+      {
+        "productCode": "kbhdbh2",
+        "productDesc": "kbhdjs2",
+        "productName": "kbhdmc2",
+        "productTariff": "kbhdzf2"
+      },
+      {
+        "productCode": "kbhdbh3",
+        "productDesc": "kbhdjs3",
+        "productName": "kbhdmc3",
+        "productTariff": "kbhdzf3"
+      },
+      {
+        "productCode": "kbhdbh4",
+        "productDesc": "kbhdjs4",
+        "productName": "kbhdmc4",
+        "productTariff": "kbhdzf4"
+      },
+      {
+        "productCode": "kbhdbh5",
+        "productDesc": "kbhdjs5",
+        "productName": "kbhdmc5",
+        "productTariff": "kbhdzf5"
+      },
+      {
+        "productCode": "kbhdbh6",
+        "productDesc": "kbhdjs6",
+        "productName": "kbhdmc6",
+        "productTariff": "kbhdzf6"
+      },
+      {
+        "productCode": "kbhdbh7",
+        "productDesc": "kbhdjs7",
+        "productName": "kbhdmc7",
+        "productTariff": "kbhdzf7"
+      },
+      {
+        "productCode": "kbhdbh8",
+        "productDesc": "kbhdjs8",
+        "productName": "kbhdmc8",
+        "productTariff": "kbhdzf8"
+      },
+      {
+        "productCode": "kbhdbh9",
+        "productDesc": "kbhdjs9",
+        "productName": "kbhdmc9",
+        "productTariff": "kbhdzf9"
+      }
+    ],
+    "srvpkgInfo": [
+      {
+        "srvpkgDesc": "fwbjs0",
+        "srvpkgId": "fwbdwybs0",
+        "srvpkgName": "国内直拨",
+        "srvpkgOption": "1"
+      },
+      {
+        "srvpkgDesc": "fwbjs1",
+        "srvpkgId": "fwbdwybs1",
+        "srvpkgName": "国内漫游",
+        "srvpkgOption": "0"
+      },
+      {
+        "srvpkgDesc": "fwbjs2",
+        "srvpkgId": "fwbdwybs2",
+        "srvpkgName": "遇忙转移",
+        "srvpkgOption": "0"
+      },
+      {
+        "srvpkgDesc": "fwbjs3",
+        "srvpkgId": "fwbdwybs3",
+        "srvpkgName": "不可达转移",
+        "srvpkgOption": "0"
+      },
+      {
+        "srvpkgDesc": "fwbjs4",
+        "srvpkgId": "fwbdwybs4",
+        "srvpkgName": "无应答转移",
+        "srvpkgOption": "0"
+      },
+      {
+        "srvpkgDesc": "fwbjs5",
+        "srvpkgId": "fwbdwybs5",
+        "srvpkgName": "移动上网功能",
+        "srvpkgOption": "2"
+      },
+      {
+        "srvpkgDesc": "fwbjs6",
+        "srvpkgId": "fwbdwybs6",
+        "srvpkgName": "移动上网功能",
+        "srvpkgOption": "2"
+      },
+      {
+        "srvpkgDesc": "fwbjs6",
+        "srvpkgId": "fwbdwybs6",
+        "srvpkgName": "移动上网功能2",
+        "srvpkgOption": "2"
+      },
+      {
+        "srvpkgDesc": "fwbjs7",
+        "srvpkgId": "fwbdwybs7",
+        "srvpkgName": "可视电话",
+        "srvpkgOption": "2"
+      },
+      {
+        "srvpkgDesc": "fwbjs7",
+        "srvpkgId": "fwbdwybs7",
+        "srvpkgName": "可视电话",
+        "srvpkgOption": "2"
+      }
+    ]
+  },
+  "returnCode": "0000",
+  "returnMessage": "success",
+  "timeStamp": "1456122235237"
+}

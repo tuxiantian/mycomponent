@@ -2,6 +2,7 @@
 <html>
  <head> 
   <meta charset="UTF-8"> 
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>ajax文件上传</title>
   <meta name="keywords" content="ajax文件上传"> 
   <style type="text/css">
@@ -44,6 +45,8 @@ function uploadData() {
 	console.log(file.name+"=="+file.type+"=="+file.size)
 	var formData=new FormData();
 	formData.append("file",files[0]);
+	formData.append("tranId","1234");
+	
 	var xhr=new XMLHttpRequest();
 	xhr.open("post","../UploadServlet",true);
 	xhr.onreadystatechange=function(){

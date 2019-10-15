@@ -1,0 +1,72 @@
+@charset "utf-8";
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td,small{margin:0;padding:0;}
+fieldset,img{border:0;}
+address,caption,cite,code,dfn,em,strong,th,var,small{font-style:normal;font-weight:normal;}
+ol,ul{list-style:none;margin: 0px; padding: 0px;}caption,th{}
+h1,h2,h3,h4,h5,h6,small{font-size:100%;font-weight: normal;}q:before,q:after{content:'';}abbr,acronym{border:0;}select,input,textarea {font-size:13px;font-family:Microsoft YaHei,"\5B8B\4F53","Lucida Grande",Lucida,"\5fae\8f6f\96c5\9ed1",arial,sans-serif;}
+.clearfix{display:inline-table;zoom:1;_height:1%;display:block}
+.clearfix:after{content:".";display:block;font-size:0;line-height:0;height:0;clear:both;visibility:hidden}
+p{margin:0;padding:0;line-height:180%;}
+a{cursor:pointer;outline: none; text-decoration: none;}
+a:active {star:expression(this.onFocus=this.blur());}
+:focus { outline:0; }
+button {cursor: pointer;line-height: 1.231;vertical-align: middle; white-space: nowrap;}
+html{font-size:10px;}
+body{font-family:Microsoft YaHei; background:#f0f2f2; color:#333;}
+.pake_tit{background:#fff;border-bottom:solid 1px #e5e8e9;padding:0rem 1rem;}
+.pake_tit td{padding:0.8rem 0.5rem;}
+.pake_tit td p{font-size:1.8rem;color:#333;line-height:2rem;}
+.pake_tit td span{height:3rem;padding:0rem 1rem;-o-border-radius:15px;-moz-border-radius:15px;-webkit-border-radius:15px;border-radius:15px;border:solid 1px #00c9d6;font-size:1.8rem;color:#00c9d6;}
+.title{background:#fff;border-bottom:solid 1px #e5e8e9;padding:0rem 1rem;margin-top:1rem;}
+.title p{font-size:1.8rem;padding-left:2.5rem;}
+.title p span{color:#999;}
+.title p.package {background:url(../images/can.png) no-repeat left center;background-size:2rem;}
+.title p.package_out{background:url(../images/tao.png) no-repeat left center;background-size:2rem;}
+.title p.message{background:url(../images/duan.png) no-repeat left center;background-size:2rem;}
+.title p.service{background:url(../images/fu.png) no-repeat left center;background-size:2rem;}
+.title p.binding{background:url(../images/kun.png) no-repeat left center;background-size:2rem;}
+.title p.warm{background:url(../images/wen.png) no-repeat left center;background-size:2rem;}
+.title td,.title_con td{padding:1rem 0.5rem;}
+.title p i,.title p i.down{ width:1.6rem;height:1.6rem;display:block; background:url(../images/down.png) no-repeat center center; background-size:100%;}
+.title p i.up{ width:1.6rem;height:1.6rem;display:block; background:url(../images/up.png) no-repeat center center; background-size:100%;}
+.title_con{background:#fff; border-bottom:solid 1px #e2e8e9; padding:0px 1.5rem;}
+.title_con td{border-bottom:solid 1px #f1f3f4;}
+.title_con p{font-size:1.6rem;color:#999;line-height:1.8rem;}
+.title_con p.gray{font-size:1.6rem;color:#333;line-height:2.4rem;}
+.title_con span{color:#333;font-size:1.6rem;}
+.title_con ul li{float:left; width:50%;}
+.title_con ul li p{background:url(../images/libj.png) no-repeat left center; background-size:2.2rem;height:3rem;line-height:3rem;overflow:hidden; padding-left:3rem;font-size:1.6rem; color:#666;}
+.title_con ul li.current p{background:url(../images/licurrent.png) no-repeat left center; background-size:2.2rem;color:#333;}
+.title_con ul li.on p{background:url(../images/lion.png) no-repeat left center; background-size:2.2rem; color:#999;}
+.title_con span.already_order{background:url(../images/already_order.png) no-repeat; display:block; height:2.6rem;width:8rem;background-size:100%;}
+.pake_tit span.already_order2{background:url(../images/already_order2.png) no-repeat right center; display:block; height:3rem;width:6rem;background-size:80%; border: none;}
+.fn-hide{display:none}
+
+.zoom-anim-dialog{
+    opacity: 0.8;
+}
+
+#J_onload-dialog {
+    margin: 0 auto;
+    width: 65%;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    text-align: center;
+    background: #000 none repeat scroll!important;
+    padding: 15px 0;
+    margin-top: 50%;
+}
+#J_onload-dialog .refresh {
+    margin: 0 auto;
+    background: url(images/loading.png) no-repeat 0 0;
+    animation: 1s linear 0s normal none infinite rotate;
+    -webkit-animation:1s linear 0s normal none infinite rotate;
+    height: 30px;
+    width: 30px;
+}
+#J_onload-dialog .showInfo{
+    margin-top: 15px;
+    font-size: 15px;
+    color: #fff;
+}
+#J_detail_desc{margin-top: -20px;}

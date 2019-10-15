@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+ <head> 
+  <title>DOM Event Object Example</title>
+  <meta name="keywords" content="DOM Event Object Example">
+    <link rel="stylesheet" type="text/css" href="${webSiteDomain}/mycomponent/css/common.css">
+ </head> 
+ <body> 
+  <input type="button" id="myBtn" value="Click Me"> 
+  <script type="text/javascript">
+        var btn = document.getElementById("myBtn");
+        var handler = function(event){
+            switch(event.type){
+                case "click":
+                    alert("Clicked");
+                    break;
+                    
+                case "mouseover":
+                    event.target.style.backgroundColor = "red";
+                    break;
+                    
+                case "mouseout":
+                    event.target.style.backgroundColor = "";
+                    break;                        
+            }
+        };
+        
+        btn.onclick = handler;
+        btn.onmouseover = handler;
+        btn.onmouseout = handler;
+    
+    </script>   
+    <details open="open">
+<summary>js</summary>
+<pre class="code">
+ &lt;script type="text/javascript"&gt;
+        var btn = document.getElementById("myBtn");
+        var handler = function(event){
+            switch(event.type){
+                case "click":
+                    alert("Clicked");
+                    break;
+                    
+                case "mouseover":
+                    event.target.style.backgroundColor = "red";
+                    break;
+                    
+                case "mouseout":
+                    event.target.style.backgroundColor = "";
+                    break;                        
+            }
+        };
+        
+        btn.onclick = handler;
+        btn.onmouseover = handler;
+        btn.onmouseout = handler;
+    
+    &lt;/script&gt;  
+</pre>
+</details>
+ </body>
+</html>

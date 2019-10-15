@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>_.bindAll使用示例</title>
+<meta name="descprition" content="_.bindAll与$.proxy的功能等价,可与demo2.html对比理解">
+<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="${webSiteDomain}/mycomponent/lib/backbone/underscore-min.js"></script>
+<script>
+$(document).ready(function(){
+	test=function()
+	{
+		this.txt="This is an object property";
+		_.bindAll(this,'myClick');
+		$("div").click(this.myClick);
+	};
+	
+	test.prototype.myClick = function(event)
+	{
+		alert(this.txt);
+		alert(event.currentTarget.nodeName);
+	};
+	
+	var x = new test();
+});
+</script>
+</head>
+<body>
+
+<div>This is a div element.</div>
+
+</body>
+</html>

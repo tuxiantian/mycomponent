@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+ <head> 
+  <title>Load Event Example</title>
+  <meta name="keywords" content="Load Event Example"> 
+   <link rel="stylesheet" type="text/css" href="${webSiteDomain}/mycomponent/css/common.css">
+  <script type="text/javascript" src="EventUtil.js"></script> 
+ </head> 
+ <body> 
+  <script type="text/javascript">
+        EventUtil.addHandler(window, "load", function(){
+        
+            var script = document.createElement("script");
+            EventUtil.addHandler(script, "load", function(event){
+                alert("Loaded");
+            });
+            script.src = "example.js";
+            document.body.appendChild(script);
+            
+            var link = document.createElement("link");
+            link.type = "text/css";
+            link.rel= "stylesheet";
+            
+            //opera only
+            EventUtil.addHandler(link, "load", function(event){
+                alert("css loaded");
+            });
+            link.href = "example.css";
+            document.getElementsByTagName("head")[0].appendChild(link);
+        });
+    </script>   
+    <details open="open">
+<summary>js</summary>
+<pre class="code">
+&lt;script type="text/javascript"&gt;
+        EventUtil.addHandler(window, "load", function(){
+        
+            var script = document.createElement("script");
+            EventUtil.addHandler(script, "load", function(event){
+                alert("Loaded");
+            });
+            script.src = "example.js";
+            document.body.appendChild(script);
+            
+            var link = document.createElement("link");
+            link.type = "text/css";
+            link.rel= "stylesheet";
+            
+            //opera only
+            EventUtil.addHandler(link, "load", function(event){
+                alert("css loaded");
+            });
+            link.href = "example.css";
+            document.getElementsByTagName("head")[0].appendChild(link);
+        });
+    &lt;/script&gt; 
+</pre>
+</details>
+ </body>
+</html>

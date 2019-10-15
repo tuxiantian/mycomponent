@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>pop-up message notice</title>
+  <meta name="keywords" content="pop-up message notice"> 
+  <style type="text/css">
+.fn-hide {
+	display: none;
+}
+.popup-window{
+	position: absolute;
+	width:340px; 
+	background-color:#fff; 
+	border:1px solid #d7d9da; 
+    right:15px; 
+    bottom:15px;
+    -o-border-radius:3px;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;     
+    border-radius:3px;     
+    -o-box-shadow: 1px 1px 10px rgba(229,229,229,1);
+    -moz-box-shadow: 1px 1px 10px rgba(229,229,229,1);
+    -webkit-box-shadow: 1px 1px 10px rgba(229,229,229,1);
+    box-shadow: 1px 1px 10px rgba(229,229,229,1);
+    z-index:3000;
+}
+.popup-window .popup-window-header {
+	background:#ebebeb;
+	padding:0px 10px;
+	height:35px;
+    border-bottom: solid 1px #dedede;
+    }
+.popup-window .popup-window-header p{
+	font-family:Microsoft YaHei;
+	font-size:12px;
+    color:#333; 
+    line-height:12px;
+    width: 300px;
+    display: inline-block;
+}
+.popup-window .popup-window-header span{
+    float: right;
+    margin-top: 5px;
+}
+/*padding:15px 15px 0 15px;*/
+.popup-window .popup-window-content { 
+	height: 48px;
+	color:#333;
+	font-family:Microsoft YaHei; 
+}
+
+.popup-window .popup-window-content p{ 
+	font-size: 16px;
+    color: #333;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.popup-window .popup-window-content p span{ 
+	font-size: 16px;
+    color: #0085D0;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+
+.popup-window .popup-window-footer{padding: 0 0 10px 10px; margin: 5px 0 0 0; }
+.popup-window .popup-window-footer .popup-window-button {
+	padding:5px 20px;
+	background:#3a8be0;
+	font-size:12px;
+	color:#fff;
+	border:solid 1px #4a81c4; 
+	-o-border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	cursor:pointer;
+	}
+.popup-window .popup-window-footer .next{margin-left:6px;}
+.popup-window .popup-window-footer .markread { 
+	float: right;
+    margin: 0 10px 0 0; 
+   }
+</style> 
+  <script type="text/javascript" src="${webSiteDomain}/mycomponent/lib/jQuery/jquery-1.11.3.js"></script> 
+ </head> 
+ <body> 
+  
+  <div class="glob-notice popup-window fn-hide"> 
+   <div class="popup-window-header"> 
+    <p>消息提醒</p> 
+    <span id="popup-window-stop">✕</span> 
+   </div> 
+   <div class="popup-window-content"> 
+    <p>您有高风险业务工单需要审核</p> 
+    <p>您有综合信息查询业务的工单需要审核</p>
+   </div> 
+   <div class="popup-window-footer"></div> 
+  </div> 
+  <script type="text/javascript">
+  $(".glob-notice").show();
+  $(".popup-window-content").height(54);
+		/* $("#popup-window-stop").click(function(){
+			$(".glob-notice").hide();
+		});
+		function noticeFun() {
+			setInterval(function() {
+				noticeShow();
+			}, 1000 * 60);
+		}
+
+		function noticeShow() {
+			$(".glob-notice").show();
+			//3s后消息提示自动消失
+			setTimeout(function() {
+				$(".glob-notice").hide();
+			}, 30000);
+		}
+		noticeFun(); */
+	</script>  
+ </body>
+</html>

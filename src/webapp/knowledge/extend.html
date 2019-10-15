@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery的extend方法实现对象的继承</title>
+<script type="text/javascript" src="${webSiteDomain}/mycomponent/lib/jQuery/jquery-1.11.3.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+/* var person={
+		name:'bob',
+		sayHi:function(){
+			console.log(this.name);
+		}
+			
+		}
+var personal={
+		age:12, 		
+		sayHello:function(){
+			console.log(this.age);
+		}
+}	
+personal.age=14;
+var zhangsan=$.extend({},person,personal);
+zhangsan.sayHello(); */
+
+function Person(name){
+	this.name=name;
+}
+Person.prototype={
+		constructor:Person,
+		sayHi:function (){
+			console.log(this.name);
+		}
+}
+function Personal(age){this.age=age;}
+Personal.prototype={
+		constructor:Personal,
+		sayHello:function (){
+			console.log(this.age);
+		}
+}
+var zhangsan=$.extend({},new Person('bob'),new Personal(12));
+zhangsan.sayHello();
+
+</script>
+</body>
+</html>

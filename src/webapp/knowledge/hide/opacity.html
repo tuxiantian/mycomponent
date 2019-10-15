@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>hiding elements with opacity</title>
+<style type="text/css">
+div {
+  padding: 60px;
+  width: 60px;
+  font-size: 3em;
+  background: pink;
+  text-align: center;
+  margin: 1%;
+  display: inline-block;
+  float: left;
+  cursor: pointer;
+  font-family: 'Lato';
+}
+
+.o-hide {
+  opacity: 0;
+  transition: all ease 0.8s;
+}
+
+.o-hide:hover {
+  opacity: 1;
+}
+</style>
+</head>
+<body>
+<div>1</div>
+<div class="o-hide">2</div>
+<div>3</div>
+</body>
+</html>

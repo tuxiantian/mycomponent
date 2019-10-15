@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>父级div定义 height </title>
+<style type="text/css"> 
+.div1{background:#000080;border:1px solid red;/*解决代码*/height:200px;} 
+.div2{background:#800080;border:1px solid red;height:100px;margin-top:10px} 
+.left{float:left;width:20%;height:200px;background:#DDD} 
+.right{float:right;width:30%;height:80px;background:#DDD} 
+ul li{line-height:30px;}
+</style> 
+</head>
+<body>
+<div class="div1"> 
+<div class="left">Left</div> 
+<div class="right">Right</div> 
+</div> 
+<div class="div2"> 
+div2 
+</div> 
+<ul>
+<li>原理：父级div手动定义height，就解决了父级div无法自动获取到高度的问题。 </li>
+
+<li>优点：简单、代码少、容易掌握 </li>
+
+<li>缺点：只适合高度固定的布局，要给出精确的高度，如果高度和父级div不一样时，会产生问题</li> 
+
+<li>建议：不推荐使用，只建议高度固定的布局时使用 </li>
+</ul>
+</body>
+</html>

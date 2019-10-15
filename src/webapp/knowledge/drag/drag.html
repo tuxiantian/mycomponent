@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>drag</title>
+  <meta name="keywords" content="drag"> 
+  <style type="text/css">
+body{background: #333;}
+#box{position: absolute;width: 100px;height: 100px;background: red;}
+</style> 
+ </head> 
+ <body> 
+  <div id="box"></div> 
+  <script type="text/javascript">
+ window.onload=function(){
+	var boxDom=document.getElementById("box");
+	boxDom.onmousedown=function(e){
+		var x=e.clientX;
+		var y=e.clientY;
+		var left=this.offsetLeft;
+		var top=this.offsetTop;
+		var ml=window.innerWidth-this.offsetWidth;
+		var mt=window.innerHeight-this.offsetHeight;
+		document.onmousemove=function(e){
+			var cleft=e.clientX-x+left;
+			var ctop=e.clientY-y+top;
+			if(cleft<=0)cleft=0;
+			if(ctop<=0)ctop=0;
+			if(cleft>ml)cleft=ml;
+			if(ctop>mt)ctop=mt; 
+			boxDom["style"]["left"]=cleft+"px";
+			boxDom.style.top=ctop+"px";
+		}
+		document.onmouseup=function(){
+			 document.onmousemove=null; 
+			document.onmouseup=null; 
+		}
+	}
+} 
+</script>  
+ </body>
+</html>

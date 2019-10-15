@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>根据窗口大小显示不同的背景色</title>
+<style type="text/css">
+	#box{
+		width: 200px;height: 200px;margin: 20px auto;
+	}
+	@media screen and (min-width: 1000px){
+		#box{background-color: red;}
+	}
+	/*窗口宽度在640px以上、999px以下*/
+	@media screen and (min-width: 640px) and (max-width: 999px){
+		#box{background-color: #333;}
+	}
+
+	/*窗口宽度在639以下*/
+	@media screen and (max-width: 639px){
+		#box{background-color: yellow;}
+	}
+</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+</html>

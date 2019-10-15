@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>java append</title>
+  <meta name="keywords" content="java append"> 
+  <style type="text/css">
+input[type="button"]{margin-left: 30px;}
+</style> 
+  <script type="text/javascript" src="${webSiteDomain}/mycomponent/lib/jQuery/jquery-1.11.3.js"></script> 
+ </head> 
+ <body> 
+  <p><strong>html</strong></p> 
+  <textarea rows="20" cols="100" id="source"></textarea> 
+  <p>可选项：<input type="checkbox" id="opt">是否加\n<input type="button" value="开始转换" id="convert"></p> 
+  <p><strong>java append html</strong></p> 
+  <textarea rows="20" cols="100" id="result"></textarea> 
+  <script type="text/javascript">
+$("#convert").click(function(){
+var array=$("#source").val().split(/[\r\n]+/g);
+var html="";
+var length=array.length;
+var i=0;
+html+="StringBuilder builder=new StringBuilder();\n";
+for(;i<length;i++){
+	   if(array[i]==""||array[i].trim()==""){
+		   continue;
+	   }else{
+		   //alert($("#opt").attr("checked"))
+		   if($("#opt").is(':checked')){
+			   html+="builder.append(\"";
+			   html+=array[i]+"\").append(\"\\n\");"+"\n";
+		   }else{
+			   html+="builder.append(\"";
+			   html+=array[i]+"\");"+"\n";
+		   }
+	   }
+}
+$("#result").text(html);
+});
+</script>  
+ </body>
+</html>

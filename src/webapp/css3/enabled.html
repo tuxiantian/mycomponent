@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>E:disabled伪类选择器与E:enabled伪类选择器结合使用示例</title>
+<style type="text/css">
+	input[type="text"]:enabled{background-color: yellow;}
+	input[type="text"]:disabled{background-color: purple;}
+</style>
+<script type="text/javascript">
+	function radio_onchange(){
+		var radio=document.getElementById("radio1");
+		var text=document.getElementById("text1");
+		if (radio.checked) {
+			text.disabled="";
+		}else{
+			text.value="";
+			text.disabled="disabled";
+		}
+	}
+
+</script>
+</head>
+<body>
+<form>
+	<input type="radio" id="radio1" name="radio" onchange="radio_onchange()"></input>可用
+	<input type="radio" id="radio2" name="radio" onchange="radio_onchange()"></input>不可用
+	<input type="text" id="text1" disabled=""></input>
+</form>
+</body>
+</html>

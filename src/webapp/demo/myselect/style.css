@@ -1,0 +1,7 @@
+select{display: none;}
+.select_box{font-family: "宋体"; font-size: 12px;color: #999999;width: 178px;line-height: 20px;margin: 50px auto;}
+.select_showbox{border: 1px solid #b0a296;height: 20px;padding-left: 5px;background: url(icon.png) no-repeat 156px 0;}
+.select_option{border: 1px solid #b0a296;border-top: none;display: none;}
+.select_option li{padding-left: 5px;}
+.select_option li.selected{background-color: #F3F3F3;color: #999;}
+.select_option li.hover{background: #7b6959; color: #fff;}

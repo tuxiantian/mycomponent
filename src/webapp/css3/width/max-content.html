@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>max-content</title>
+<style type="text/css">
+body{width: 50%;}
+.box {
+    background-color: #f0f3f9;
+    padding: 10px;
+    margin: 10px auto 20px;
+    overflow: hidden;
+}
+
+.inline-block {
+    display: inline-block;
+}
+.max-content {
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;    
+}
+</style>
+</head>
+<body>
+<strong>display:inline-block;</strong>
+<div class="box inline-block">
+    <img src="../images/mm1.jpg">
+    <p>display:inline-block具有收缩特性，但是，当（例如这里的）描述文字超过一行显示的时候，其会这行，不会让自身的宽度超过父级容器的可用空间的，但是，width:max-content就不是酱样子哦咯！表现得好像设置了white-space:nowrap一样，科科！</p>
+</div>
+
+<strong>width: max-content;</strong>
+<div class="box max-content">
+    <img src="../images/mm1.jpg">
+    <p>display:inline-block具有收缩特性，但是，当（例如这里的）描述文字超过一行显示的时候，其会这行，不会让自身的宽度超过父级容器的可用空间的，但是，width:max-content就不是酱样子哦咯！表现得好像设置了white-space:nowrap一样，科科！</p>
+</div>
+</body>
+</html>

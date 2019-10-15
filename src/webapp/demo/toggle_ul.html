@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="keywords" content="可折叠的菜单列表">
+<title>可折叠的菜单列表</title>
+<link rel="stylesheet" type="text/css" href="${webSiteDomain}/mycomponent/css/common.css">
+<script type="text/javascript" src="${webSiteDomain}/mycomponent/lib/jQuery/jquery-1.11.3.js"></script>
+
+</head>
+<body>
+<fieldset>
+        <legend>Collapsible List 1</legend>
+        <ul>
+            <li>0 前言</li>
+            <li>1 CLR的执行模型
+                <ul>
+                    <li>1.1 将源代码编译成托管模块</li>
+                    <li>1.4 执行程序集的代码
+                        <ul>
+                            <li>1.4.1 IL和验证</li>
+                            <li>1.4.2 不安全的代码</li>
+                        </ul>
+                    </li>
+                    <li>1.6 通过类型系统</li>
+                </ul>
+            </li>
+            <li>4 类型基础
+                <ul>
+                    <li>4.1 System.Object</li>
+                    <li>4.2 类型转换
+                </ul>
+            </li>
+            <li>5 基元类型、引用类型、值类型</li>
+        </ul>
+    </fieldset>
+    <!-- 方案一 -->
+   <!--  <script type="text/javascript">
+    $(document).ready(function () {
+        //加载时隐藏子菜单
+        $('li ul').hide();
+        //不包含子菜单时鼠标指针和项目图标
+        $('li:not(:has(ul))')
+       .css({ 'cursor': 'default', 'list-style-image': 'none' });
+        //包含子菜单时鼠标指针和项目图标
+        $('li:has(ul)')
+        .css({ 'cursor': 'pointer', 'list-style-image': 'url(${webSiteDomain}/mycomponent/theme/img/plus.gif)' });
+        //单击含子菜单的项
+        $('li:has(ul)').click(function (event) {
+            if (this == event.target) {
+                if ($(this).children().is(':hidden')) {
+                    $(this)
+                .css('list-style-image', 'url(${webSiteDomain}/mycomponent/theme/img/minus.gif)')
+                .children().show();
+                }
+                else {
+                    $(this)
+             .css('list-style-image', 'url(${webSiteDomain}/mycomponent/theme/img/plus.gif)')
+             .children().hide();
+                }
+            }
+        })
+    })
+    </script> -->
+    <!-- 方案二 -->
+    <script type="text/javascript">
+  	//单击含子菜单的项
+    $('li:has(ul)').click(function (event) {
+        if (this == event.target) {
+            $(this).css('list-style-image', ($(this).children().is(':hidden') ? 'url(${webSiteDomain}/mycomponent/theme/img/minus.gif)' : 'url(${webSiteDomain}/mycomponent/theme/img/plus.gif)'));
+            //$(this).children().toggle('normal');
+            $(this).children().slideToggle('normal');
+        }
+    })
+    </script>
+    <p>方案一</p>
+    <pre class="code">
+    $(document).ready(function () {<br/>        //&#x52a0;&#x8f7d;&#x65f6;&#x9690;&#x85cf;&#x5b50;&#x83dc;&#x5355;<br/>        $('li ul').hide();<br/>        //&#x4e0d;&#x5305;&#x542b;&#x5b50;&#x83dc;&#x5355;&#x65f6;&#x9f20;&#x6807;&#x6307;&#x9488;&#x548c;&#x9879;&#x76ee;&#x56fe;&#x6807;<br/>        $('li:not(:has(ul))')<br/>       .css({ 'cursor': 'default', 'list-style-image': 'none' });<br/>        //&#x5305;&#x542b;&#x5b50;&#x83dc;&#x5355;&#x65f6;&#x9f20;&#x6807;&#x6307;&#x9488;&#x548c;&#x9879;&#x76ee;&#x56fe;&#x6807;<br/>        $('li:has(ul)')<br/>        .css({ 'cursor': 'pointer', 'list-style-image': 'url(${webSiteDomain}/mycomponent/theme/img/plus.gif)' });<br/>        //&#x5355;&#x51fb;&#x542b;&#x5b50;&#x83dc;&#x5355;&#x7684;&#x9879;<br/>        $('li:has(ul)').click(function (event) {<br/>            if (this == event.target) {<br/>                if ($(this).children().is(':hidden')) {<br/>                    $(this)<br/>                .css('list-style-image', 'url(${webSiteDomain}/mycomponent/theme/img/minus.gif)')<br/>                .children().show();<br/>                }<br/>                else {<br/>                    $(this)<br/>             .css('list-style-image', 'url(${webSiteDomain}/mycomponent/theme/img/plus.gif)')<br/>             .children().hide();<br/>                }<br/>            }<br/>        })<br/>    })
+    </pre>
+    <p>方案二</p>
+    <pre class="code">
+     $('li:has(ul)').click(function (event) {<br/>        if (this == event.target) {<br/>            $(this).css('list-style-image', ($(this).children().is(':hidden') ? 'url(${webSiteDomain}/mycomponent/theme/img/minus.gif)' : 'url(${webSiteDomain}/mycomponent/theme/img/plus.gif)'));<br/>            //$(this).children().toggle('normal');<br/>            $(this).children().slideToggle('normal');<br/>        }<br/>    })
+    </pre>
+</body>
+</html>

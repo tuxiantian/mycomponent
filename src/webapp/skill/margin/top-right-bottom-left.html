@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>margin-top与relative top的共同点 demo</title>
+<style>
+h2{
+	width:1000px;
+	margin:15px auto;
+	text-align:left;
+}
+.demo{
+	width:1000px;
+	margin:auto;
+	border-radius:10px;
+	background:#eee;
+	text-align:left;
+}
+.demo p{
+	display:inline-block;
+	*display:inline;
+	*zoom:1;
+	position:relative;
+	padding:10px;
+}
+.demo .a{
+	background:#aaa;
+}
+.demo .b{
+	background:#f60;
+}
+#demo1 p{
+	top:auto;
+	bottom:auto;
+}
+#demo2 p{
+	right:auto;
+	right:auto;
+}
+#demo3 .a{
+	top:auto;
+	bottom:20px;
+}
+#demo3 .b{
+	top:-20px;
+	bottom:auto;
+}
+#demo4 .a{
+	right:auto;
+	left:20px;
+}
+#demo4 .b{
+	right:-20px;
+	left:auto;
+}
+#demo5 .a{
+	top:20px;
+	bottom:20px;
+}
+#demo6 .a{
+	right:20px;
+	left:20px;
+}
+</style>
+</head>
+<body>
+<h2>relative时，如果top和bottom都是auto，则它们的计算值是0：</h2>
+<div id="demo1" class="demo">
+	<p class="b">top和bottom都是auto</p>
+</div>
+
+<h2>如果right和left都是auto，则它们的计算值是0：</h2>
+<div id="demo2" class="demo">
+	<p class="a">right和left都是auto</p>
+</div>
+
+<h2>如果top和bottom其中一个为auto，则auto相当于另一个的负值：</h2>
+<div id="demo3" class="demo">
+	<p class="a">top为auto，bottom为20px</p>
+	<p class="b">top为-20px，bottom为auto</p>
+</div>
+
+<h2>如果right和left其中一个为auto，则auto相当于另一个的负值：</h2>
+<div id="demo4" class="demo">
+	<p class="a">right为auto，left为20px</p>
+	<p class="b">right为-20px，left为auto</p>
+</div>
+
+<h2>如果top和bottom的值都不为auto，则忽略bottom：</h2>
+<div id="demo5" class="demo">
+	<p class="a">top为20px，bottom为20px</p>
+</div>
+
+<h2>如果right和left的值都不为auto，则忽略right：</h2>
+<div id="demo6" class="demo">
+	<p class="a">right为20px，left为20px</p>
+</div>
+</body>
+</html>

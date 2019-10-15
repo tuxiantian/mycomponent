@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>fit-content</title>
+<style type="text/css">
+.box {
+    background-color: #f0f3f9;
+    padding: 10px;
+    /* 这里左右方向是auto */
+    margin: 10px auto 20px;
+    overflow: hidden;
+}
+
+.inline-block {
+    display: inline-block;
+}
+.fit-content {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;    
+}
+</style>
+</head>
+<body>
+<strong>display:inline-block;</strong>
+<div class="box inline-block">
+    <img src="../images/mm1.jpg">
+    <p>display:inline-block居中要靠父元素，而width:fit-content直接margin:auto.</p>
+</div>
+
+<strong>width: fit-content;</strong>
+<div class="box fit-content">
+    <img src="../images/mm1.jpg">
+    <p>display:inline-block居中要靠父元素，而width:fit-content直接margin:auto.</p>
+</div>
+</body>
+</html>

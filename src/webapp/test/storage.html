@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript" src="${webSiteDomain}/mycomponent/lib/jQuery/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="${webSiteDomain}/mycomponent/lib/js/storage.js"></script>
+<script type="text/javascript">
+localStorage.setItem('name','tom');
+localStorage.setItem('age',15);
+var json=Util.lStorage.getJsonObject();
+console.log(JSON.stringify(json))
+console.log(Util.lStorage.getJsonString());
+
+//test setJsonObject
+/* var json2={'width':10,'height':20};
+Util.lStorage.setJsonObject(json2);
+console.log(Util.lStorage.getJsonString()); */
+//test setJsonObject 2
+Util.lStorage.clearParam();
+var json3={'returnCode':'0000','returnMessage':'success','bean':{'status':0}};
+Util.lStorage.setJsonObject(json3);
+console.log(Util.lStorage.getJsonString());
+</script>
+</body>
+</html>

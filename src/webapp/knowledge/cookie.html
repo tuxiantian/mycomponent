@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>js操作cookie</title>
+  <meta name="keywords" content="js操作cookie"> 
+  <link rel="stylesheet" type="text/css" href="${webSiteDomain}/mycomponent/css/common.css"> 
+  <script type="text/javascript" src="${webSiteDomain}/mycomponent/lib/jQuery/jquery-1.11.3.js"></script> 
+  <script type="text/javascript" src="${webSiteDomain}/mycomponent/lib/js/tools.js"></script> 
+ </head> 
+ <body> 
+  <input type="button" value="添加cookie" id="add"> 
+  <input type="button" value="获取cookie" id="get"> 
+  <input type="button" value="删除cookie" id="delete"> 
+  <p id="cookie"></p> 
+  <script type="text/javascript">
+$("#add").click(function(){
+	$.tmCookie.setCookie("name","zhangsan","d7");
+});
+$("#get").click(function(){
+	var cookie=$.tmCookie.getCookie("name");
+	$("#cookie").text(cookie);
+});
+$("#delete").click(function(){
+	$.tmCookie.delCookie("name");
+});
+</script> 
+  <h2>添加cookie</h2> 
+  <pre class="code">
+$("#add").click(function(){
+	$.tmCookie.setCookie("name","zhangsan","s7");
+});
+</pre> 
+  <h2>获取cookie</h2> 
+  <pre class="code">
+$("#get").click(function(){
+	var cookie=$.tmCookie.getCookie("name");
+	$("#cookie").text(cookie);
+});
+</pre> 
+  <h2>删除cookie</h2> 
+  <pre class="code">
+$("#delete").click(function(){
+	$.tmCookie.delCookie("name");
+});
+</pre>  
+ </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<META name="keywords" content="My97DatePicker Demo,DatePicker">
+<title>My97DatePicker Demo</title>
+<link rel="stylesheet" type="text/css" href="${webSiteDomain}/mycomponent/css/date.css">
+<link rel="stylesheet" type="text/css" href="${webSiteDomain}/mycomponent/css/common.css">
+<script type="text/javascript" src="${webSiteDomain}/mycomponent/lib/jQuery/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="${webSiteDomain}/mycomponent/lib/datepicker/4.8.b2/WdatePicker.js"></script>
+</head>
+<body>
+<div><p><strong>示例</strong></p>
+<table class="search_table" cellpadding="0" cellspacing="0" border="0" width="100%">
+          <tbody>
+            <tr>
+            <!--每行最多三个查询条件-->
+              <td width="100"><label class="description">正常日期选择</label></td>
+              <td width="150">
+                <!-- 不添加任何限制，自由选择日期 -->
+                <input id="date" type="text" class="FormInputText inputWidth Wdate" onFocus="WdatePicker()"/>
+              </td>
+              <!--日期开始与结束选择分开放置-->
+              <td width="90"><label class="description">日期起</label></td>
+              <td width="150">
+                <input type="text"  id='start' name='start'  class="FormInputText inputWidth Wdate" value="" onFocus="WdatePicker({
+                    onpicked:function(){end.focus();},//选择后自动打开id为end的日期选择
+                    startDate:'%y-%M-%d',//初始化从今天开始
+                    realDateFmt:'yyyy-MM-dd',//格式化后的值
+                    dateFmt:'yyyy-MM-dd',//显示的格式
+                    minDate:'%y-%M-%d',//选择的最小值是今天
+                    maxDate:'#F{$dp.$D(\'end\')}'//选择的最大值不能大过ID为end的值
+                    })"/>
+              </td>
+              <td width="90"><label class="description">日期止</label></td>
+              <td width="150">
+              <input type="text"  id='end' name='end'  class="FormInputText inputWidth Wdate" value="" onFocus="WdatePicker({
+                  startDate:'%y-%M-%d',
+                  realDateFmt:'yyyy-MM-dd',
+                  dateFmt:'yyyy-MM-dd',
+                  minDate:'#F{$dp.$D(\'start\')}',//选择的最小值不能小于ID为start的值
+                  })"/>
+              </td>
+              <td><div class="normalBtnArea w82"> <a class="searchBtn" href="javascript:;" id="J_search" ><i></i>查询</a> </div></td>
+            </tr>
+            <tr>
+              <td width="100"><label class="description">商家名称</label></td>
+              <td width="150"><input class="inputText" type="text" maxlength="255" value=""/></td>
+              <td width="90"><label class="description">精确日期起</label></td>
+              <td width="150">
+                <input type="text"  id='start1' name='start1'  class="inputWidthDataPoint FormInputText  Wdate" value="" onFocus="WdatePicker({
+                    onpicked:function(){end1.focus();},//选择后自动打开id为end1的日期选择
+                    startDate:'%y-%M-%d',//初始化从今天开始
+                    realDateFmt:'yyyy-MM-dd HH:mm:ss',//格式化后的值
+                    dateFmt:'yyyy-MM-dd HH:mm:ss',//显示的格式
+                    minDate:'%y-%M-%d',//选择的最小值是今天
+                    maxDate:'#F{$dp.$D(\'end1\')}'//选择的最大值不能大过ID为end的值
+                    })"/>
+              </td>
+              <td width="90"><label class="description">精确日期止</label></td>
+              <td width="150">
+              <input type="text"  id='end1' name='end1'  class="inputWidthDataPoint FormInputText Wdate" value="" onFocus="WdatePicker({
+                  startDate:'%y-%M-%d',
+                  realDateFmt:'yyyy-MM-dd HH:mm:ss',
+                  dateFmt:'yyyy-MM-dd HH:mm:ss',
+                  minDate:'#F{$dp.$D(\'start1\')}',//选择的最小值不能小于ID为start的值
+                  })"/>
+              </td>
+              <td> </td>
+            </tr>
+          </tbody>
+        </table>
+ </div>
+	<p><strong>代码</strong></p>
+	<pre class="code">
+	 &lt;table class=&quot;search_table&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot; width=&quot;100%&quot;&gt;<br/>          &lt;tbody&gt;<br/>            &lt;tr&gt;<br/>            &lt;!--&#x6bcf;&#x884c;&#x6700;&#x591a;&#x4e09;&#x4e2a;&#x67e5;&#x8be2;&#x6761;&#x4ef6;--&gt;<br/>              &lt;td width=&quot;100&quot;&gt;&lt;label class=&quot;description&quot;&gt;&#x6b63;&#x5e38;&#x65e5;&#x671f;&#x9009;&#x62e9;&lt;/label&gt;&lt;/td&gt;<br/>              &lt;td width=&quot;150&quot;&gt;<br/>                &lt;!-- &#x4e0d;&#x6dfb;&#x52a0;&#x4efb;&#x4f55;&#x9650;&#x5236;&#xff0c;&#x81ea;&#x7531;&#x9009;&#x62e9;&#x65e5;&#x671f; --&gt;<br/>                &lt;input id=&quot;date&quot; type=&quot;text&quot; class=&quot;FormInputText inputWidth Wdate&quot; onFocus=&quot;WdatePicker()&quot;/&gt;<br/>              &lt;/td&gt;<br/>              &lt;!--&#x65e5;&#x671f;&#x5f00;&#x59cb;&#x4e0e;&#x7ed3;&#x675f;&#x9009;&#x62e9;&#x5206;&#x5f00;&#x653e;&#x7f6e;--&gt;<br/>              &lt;td width=&quot;90&quot;&gt;&lt;label class=&quot;description&quot;&gt;&#x65e5;&#x671f;&#x8d77;&lt;/label&gt;&lt;/td&gt;<br/>              &lt;td width=&quot;150&quot;&gt;<br/>                &lt;input type=&quot;text&quot;  id='start' name='start'  class=&quot;FormInputText inputWidth Wdate&quot; value=&quot;&quot; onFocus=&quot;WdatePicker({<br/>                    onpicked:function(){end.focus();},//&#x9009;&#x62e9;&#x540e;&#x81ea;&#x52a8;&#x6253;&#x5f00;id&#x4e3a;end&#x7684;&#x65e5;&#x671f;&#x9009;&#x62e9;<br/>                    startDate:'%y-%M-%d',//&#x521d;&#x59cb;&#x5316;&#x4ece;&#x4eca;&#x5929;&#x5f00;&#x59cb;<br/>                    realDateFmt:'yyyy-MM-dd',//&#x683c;&#x5f0f;&#x5316;&#x540e;&#x7684;&#x503c;<br/>                    dateFmt:'yyyy-MM-dd',//&#x663e;&#x793a;&#x7684;&#x683c;&#x5f0f;<br/>                    minDate:'%y-%M-%d',//&#x9009;&#x62e9;&#x7684;&#x6700;&#x5c0f;&#x503c;&#x662f;&#x4eca;&#x5929;<br/>                    maxDate:'#F{$dp.$D(\'end\')}'//&#x9009;&#x62e9;&#x7684;&#x6700;&#x5927;&#x503c;&#x4e0d;&#x80fd;&#x5927;&#x8fc7;ID&#x4e3a;end&#x7684;&#x503c;<br/>                    })&quot;/&gt;<br/>              &lt;/td&gt;<br/>              &lt;td width=&quot;90&quot;&gt;&lt;label class=&quot;description&quot;&gt;&#x65e5;&#x671f;&#x6b62;&lt;/label&gt;&lt;/td&gt;<br/>              &lt;td width=&quot;150&quot;&gt;<br/>              &lt;input type=&quot;text&quot;  id='end' name='end'  class=&quot;FormInputText inputWidth Wdate&quot; value=&quot;&quot; onFocus=&quot;WdatePicker({<br/>                  startDate:'%y-%M-%d',<br/>                  realDateFmt:'yyyy-MM-dd',<br/>                  dateFmt:'yyyy-MM-dd',<br/>                  minDate:'#F{$dp.$D(\'start\')}',//&#x9009;&#x62e9;&#x7684;&#x6700;&#x5c0f;&#x503c;&#x4e0d;&#x80fd;&#x5c0f;&#x4e8e;ID&#x4e3a;start&#x7684;&#x503c;<br/>                  })&quot;/&gt;<br/>              &lt;/td&gt;<br/>              &lt;td&gt;&lt;div class=&quot;normalBtnArea w82&quot;&gt; &lt;a class=&quot;searchBtn&quot; href=&quot;javascript:;&quot; id=&quot;J_search&quot; &gt;&lt;i&gt;&lt;/i&gt;&#x67e5;&#x8be2;&lt;/a&gt; &lt;/div&gt;&lt;/td&gt;<br/>            &lt;/tr&gt;<br/>            &lt;tr&gt;<br/>              &lt;td width=&quot;100&quot;&gt;&lt;label class=&quot;description&quot;&gt;&#x5546;&#x5bb6;&#x540d;&#x79f0;&lt;/label&gt;&lt;/td&gt;<br/>              &lt;td width=&quot;150&quot;&gt;&lt;input class=&quot;inputText&quot; type=&quot;text&quot; maxlength=&quot;255&quot; value=&quot;&quot;/&gt;&lt;/td&gt;<br/>              &lt;td width=&quot;90&quot;&gt;&lt;label class=&quot;description&quot;&gt;&#x7cbe;&#x786e;&#x65e5;&#x671f;&#x8d77;&lt;/label&gt;&lt;/td&gt;<br/>              &lt;td width=&quot;150&quot;&gt;<br/>                &lt;input type=&quot;text&quot;  id='start1' name='start1'  class=&quot;inputWidthDataPoint FormInputText  Wdate&quot; value=&quot;&quot; onFocus=&quot;WdatePicker({<br/>                    onpicked:function(){end1.focus();},//&#x9009;&#x62e9;&#x540e;&#x81ea;&#x52a8;&#x6253;&#x5f00;id&#x4e3a;end1&#x7684;&#x65e5;&#x671f;&#x9009;&#x62e9;<br/>                    startDate:'%y-%M-%d',//&#x521d;&#x59cb;&#x5316;&#x4ece;&#x4eca;&#x5929;&#x5f00;&#x59cb;<br/>                    realDateFmt:'yyyy-MM-dd HH:mm:ss',//&#x683c;&#x5f0f;&#x5316;&#x540e;&#x7684;&#x503c;<br/>                    dateFmt:'yyyy-MM-dd HH:mm:ss',//&#x663e;&#x793a;&#x7684;&#x683c;&#x5f0f;<br/>                    minDate:'%y-%M-%d',//&#x9009;&#x62e9;&#x7684;&#x6700;&#x5c0f;&#x503c;&#x662f;&#x4eca;&#x5929;<br/>                    maxDate:'#F{$dp.$D(\'end1\')}'//&#x9009;&#x62e9;&#x7684;&#x6700;&#x5927;&#x503c;&#x4e0d;&#x80fd;&#x5927;&#x8fc7;ID&#x4e3a;end&#x7684;&#x503c;<br/>                    })&quot;/&gt;<br/>              &lt;/td&gt;<br/>              &lt;td width=&quot;90&quot;&gt;&lt;label class=&quot;description&quot;&gt;&#x7cbe;&#x786e;&#x65e5;&#x671f;&#x6b62;&lt;/label&gt;&lt;/td&gt;<br/>              &lt;td width=&quot;150&quot;&gt;<br/>              &lt;input type=&quot;text&quot;  id='end1' name='end1'  class=&quot;inputWidthDataPoint FormInputText Wdate&quot; value=&quot;&quot; onFocus=&quot;WdatePicker({<br/>                  startDate:'%y-%M-%d',<br/>                  realDateFmt:'yyyy-MM-dd HH:mm:ss',<br/>                  dateFmt:'yyyy-MM-dd HH:mm:ss',<br/>                  minDate:'#F{$dp.$D(\'start1\')}',//&#x9009;&#x62e9;&#x7684;&#x6700;&#x5c0f;&#x503c;&#x4e0d;&#x80fd;&#x5c0f;&#x4e8e;ID&#x4e3a;start&#x7684;&#x503c;<br/>                  })&quot;/&gt;<br/>              &lt;/td&gt;<br/>              &lt;td&gt; &lt;/td&gt;<br/>            &lt;/tr&gt;<br/>          &lt;/tbody&gt;<br/>        &lt;/table&gt;
+	</pre>
+</body>
+</html>

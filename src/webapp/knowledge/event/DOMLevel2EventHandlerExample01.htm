@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+ <head> 
+  <title>DOM Level 2 Event Handler Example</title>
+  <meta name="keywords" content="DOM Level 2 Event Handler Example"> 
+ <link rel="stylesheet" type="text/css" href="${webSiteDomain}/mycomponent/css/common.css">
+ </head> 
+ <body> 
+  <input type="button" id="myBtn" value="Click Me"> 
+  <p>This example won't work in Internet Explorer.</p> 
+  <script type="text/javascript">
+        var btn = document.getElementById("myBtn");
+        btn.addEventListener("click", function(){
+            alert(this.id);
+        }, false);
+        btn.addEventListener("click", function(){
+            alert("Hello world!");
+        }, false);
+
+    </script>  
+     <details open="open">
+<summary>js</summary>
+<pre class="code">
+ &lt;script type="text/javascript"&gt;
+        var btn = document.getElementById("myBtn");
+        btn.addEventListener("click", function(){
+            alert(this.id);
+        }, false);
+        btn.addEventListener("click", function(){
+            alert("Hello world!");
+        }, false);
+
+    &lt;/script&gt;
+</pre>
+</details>
+ </body>
+</html>

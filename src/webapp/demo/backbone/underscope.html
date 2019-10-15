@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>underscope demo</title>
+<script type="text/javascript" src="${webSiteDomain}/mycomponent/lib/jQuery/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="${webSiteDomain}/mycomponent/lib/backbone/underscore.js"></script>
+</head>
+<body>
+	<button id="underscore_button">underscore_button</button>
+	<script type="text/javascript">
+		var buttonView = {
+		  label  : 'underscore',
+		  onClick: function(){ alert('clicked: ' + this.label); },
+		  onHover: function(){ console.log('hovering: ' + this.label); }
+		};
+		_.bindAll(buttonView, 'onClick', 'onHover');
+		// When the button is clicked, this.label will have the correct value.
+		jQuery('#underscore_button').bind('click', buttonView.onClick);
+		jQuery('#underscore_button').bind('mouseover', buttonView.onHover);
+	</script>
+</body>
+</html>

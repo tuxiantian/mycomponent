@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="keywords" content="selectordie">
+<title>selectordie</title>
+<link rel="stylesheet" type="text/css" href="${webSiteDomain}/mycomponent/css/common.css">
+<link rel="stylesheet" type="text/css" href="${webSiteDomain}/mycomponent/lib/selectordie/selectordie.css">
+
+<script type="text/javascript" src="${webSiteDomain}/mycomponent/lib/jQuery/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="${webSiteDomain}/mycomponent/lib/selectordie/selectordie.js"></script>
+
+</head>
+<body>
+<select class="myselect">
+    <option value="交互设计">交互设计</option>
+    <option value="视觉设计">视觉设计</option>
+    <optgroup label="开发">
+        <option value="前端开发">前端开发</option>
+        <option value="后端开发">后端开发</option>
+    </optgroup>
+    <option value="用户研究">用户研究</option>
+    <option value="产品经理">产品经理</option>
+</select>
+<script type="text/javascript">
+$(function(){
+    $('select').selectOrDie();
+});
+</script>
+<p><strong>html</strong></p>
+<pre class="code">
+&lt;select class=&quot;myselect&quot;&gt;<br/>    &lt;option value=&quot;&#x4ea4;&#x4e92;&#x8bbe;&#x8ba1;&quot;&gt;&#x4ea4;&#x4e92;&#x8bbe;&#x8ba1;&lt;/option&gt;<br/>    &lt;option value=&quot;&#x89c6;&#x89c9;&#x8bbe;&#x8ba1;&quot;&gt;&#x89c6;&#x89c9;&#x8bbe;&#x8ba1;&lt;/option&gt;<br/>    &lt;optgroup label=&quot;&#x5f00;&#x53d1;&quot;&gt;<br/>        &lt;option value=&quot;&#x524d;&#x7aef;&#x5f00;&#x53d1;&quot;&gt;&#x524d;&#x7aef;&#x5f00;&#x53d1;&lt;/option&gt;<br/>        &lt;option value=&quot;&#x540e;&#x7aef;&#x5f00;&#x53d1;&quot;&gt;&#x540e;&#x7aef;&#x5f00;&#x53d1;&lt;/option&gt;<br/>    &lt;/optgroup&gt;<br/>    &lt;option value=&quot;&#x7528;&#x6237;&#x7814;&#x7a76;&quot;&gt;&#x7528;&#x6237;&#x7814;&#x7a76;&lt;/option&gt;<br/>    &lt;option value=&quot;&#x4ea7;&#x54c1;&#x7ecf;&#x7406;&quot;&gt;&#x4ea7;&#x54c1;&#x7ecf;&#x7406;&lt;/option&gt;<br/>&lt;/select&gt;
+</pre>
+<p><strong>js</strong></p>
+<pre class="code">
+&lt;script type=&quot;text/javascript&quot;&gt;<br/>$(function(){<br/>    $('select').selectOrDie();<br/>});<br/>&lt;/script&gt;
+</pre>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>json sort</title>
+</head>
+<body>
+
+<script type="text/javascript">
+var peoples = [
+{
+    name: 'a75',
+    item1: false,
+    item2: false
+},
+{
+    name: 'z32',
+    item1: true,
+    item2: false
+},
+{
+    name: 'e77',
+    item1: false,
+    item2: false
+}];
+ 
+
+function sortByKey(array, key) {
+    return array.sort(function(a, b) {
+        var x = a[key]; var y = b[key];
+        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+    });
+}
+
+peoples = sortByKey(peoples, 'name');
+document.write(JSON.stringify(peoples));
+</script>
+</body>
+</html>

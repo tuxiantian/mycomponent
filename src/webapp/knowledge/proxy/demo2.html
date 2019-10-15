@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>$.proxy()使用示例</title>
+<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+	test=function()
+	{
+		this.txt="This is an object property";
+		$("div").click($.proxy(this.myClick,this));
+	};
+	
+	test.prototype.myClick = function(event)
+	{
+		alert(this.txt);
+		alert(event.currentTarget.nodeName);
+	};
+	
+	var x = new test();
+});
+</script>
+</head>
+<body>
+
+<div>This is a div element.</div>
+
+</body>
+</html>

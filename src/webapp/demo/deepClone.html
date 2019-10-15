@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js deepClone</title>
+</head>
+<body>
+<script type="text/javascript" src="${webSiteDomain}/mycomponent/lib/js/util.js"></script>
+<script type="text/javascript">
+	var inputObject={"service":"userService","method":"saveUser","beans":[1,2,3],"params":{"type":"1","size":"10"}};
+	/*	使用util.js中的deepClone方法*/
+	 var inputObject2=Util.deepClone(inputObject);
+		
+		inputObject2.method="deleteUser";
+		inputObject2.params.type="2";
+		inputObject2.beans.push(4);
+	/*最简单的deepClone方法*/
+	var inputObject3=JSON.parse(JSON.stringify(inputObject));
+
+	inputObject3.method="updateUser";
+	inputObject3.params.type="3";
+	inputObject3.beans.push(5);
+	
+	console.log(JSON.stringify(inputObject) );
+	console.log(JSON.stringify(inputObject2));
+	console.log(JSON.stringify(inputObject3));
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>des demo</title>
+</head>
+<body>
+<form action="" method="post" id="form1">
+<label>密码</label><input type="password" name="password">
+<input type="button" value="提交" id="formSubmit">
+</form>
+<script type="text/javascript" src="${webSiteDomain}/mycomponent/lib/jQuery/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="${webSiteDomain}/mycomponent/lib/des/des.js"></script>
+<script type="text/javascript" src="${webSiteDomain}/mycomponent/lib/js/util.js"></script>
+<script type="text/javascript">
+$("#formSubmit").click(function(){
+var key="zyzx1qaz",specialTime=Util.date.dateTime2str(new Date(),'hhmmss');;
+var data={'specialTime':specialTime,'password':strEnc($('[name=password]').val(),key,specialTime)};	
+	$.ajax({
+		url: 'http://localhost/mycomponent/JqueryFormServlet',
+		type: 'post',
+		cache: false,
+		async:true,
+		data:data,
+		processData: true
+	}).done(function(res) {
+		alert(res);
+	}).fail(function(res) {
+		alert('failer');
+	});
+});
+
+
+</script>
+</body>
+</html>

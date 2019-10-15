@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>router demo</title>
+<script type="text/javascript" src="${webSiteDomain}/mycomponent/lib/jQuery/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="${webSiteDomain}/mycomponent/lib/backbone/underscore.js"></script>
+<script type="text/javascript" src="${webSiteDomain}/mycomponent/lib/backbone/backbone.js"></script>
+
+</head>
+<body>
+<div>
+    <a href="">首页</a>
+    <a href="#search">查询列表</a>
+    <a href="#search/abc">关键字查询</a>
+    <a href="#search/abc/p2">页码关键字查询</a>
+    <a href="#error">其它页</a>
+</div>
+<div id="show"></div>
+<script type="text/javascript">
+var testrouter = Backbone.Router.extend({
+	initialize: function () {
+		             console.log("Route initialize");
+		             $divshow=$("#show");
+		         },
+    routes:{
+        '':'main',
+        'search':'search_list',
+        'search/:key':'search_key',
+        'search/:key/p:page':'search_key_page',
+        '*search':'search_default'
+    },
+    main:function(){
+        $divshow.html("首页");
+    },
+    search_list:function(){
+        $divshow.html("查询列表");
+        console.log("search_list");
+    },
+    search_key:function(key){
+        $divshow.html("查询关键字为"+key+"的记录")
+    },
+    search_key_page:function(key,page){
+        $divshow.html("查询关键字为"+key+"的记录,页码为"+page)
+    },
+    search_default:function(){
+        $divshow.html("其它页");
+    }
+});
+var router = new testrouter();
+//另一种方法定义事件函数
+router.on("route:main",function(){
+    alert("首页");
+});
+router.route('search2/:key/p:page','search_page',function(key,page){
+    $divshow.html('实例化后,查询页数为'+page);
+});
+//router要起作用必须要有下面这行代码
+Backbone.history.start();
+</script>
+</body>
+</html>

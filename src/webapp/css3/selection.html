@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	p::selection{
+		background-color: red;
+		color: #FFF;
+	}
+	input[type="text"]::selection{
+		background-color: gray;
+		color: #FFF;
+	}
+	td::selection{
+		background-color: green;
+		color: #FFF;
+	}
+</style>
+</head>
+<body>
+<p>这是一段测试文字。</p>
+<input type="text" value="这是一段测试文字。"></input>
+<table border="1" cellpadding="0" cellspacing="0">
+	<tr><td>测试文字</td><td>测试文字</td></tr>
+	<tr><td>测试文字</td><td>测试文字</td></tr>
+</table>
+</body>
+</html>

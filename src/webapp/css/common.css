@@ -1,0 +1,7 @@
+@CHARSET "UTF-8";
+.code{background-color:#f0f0f0;white-space: pre-wrap;padding-left: 10px;font-size: 18px;font-family: "微软雅黑"}
+pre{border: 1px solid black;}
+article {font-family: "微软雅黑";width: 960px;margin: 0 auto;background-color:#C7EDCC;}
+article h2,article h2{text-align: center;color: rgb(7, 93, 179);font-size: 20px;}
+article p{text-indent: 2em;line-height: 30px;width: 940px;}
+details summary{outline: none;}

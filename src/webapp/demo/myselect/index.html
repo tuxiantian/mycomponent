@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>select美化自定义下拉框样式 - 站长素材</title>
+</head>
+
+<body>
+
+<style type="text/css">
+*{margin:0;padding:0;}
+select{outline:none;}
+ul{list-style:none;}
+a{text-decoration:none;}
+</style>
+
+
+<link type="text/css" rel="stylesheet" href="style.css" />
+
+<select name="choose" id="choose">
+	<option value="选择风格" selected="selected">选择风格</option>
+	<option value="复古风">复古风</option>
+	<option value="摇滚风">摇滚风</option>
+	<option value="怀旧风">怀旧风</option>
+	<option value="站长素材">站长素材</option>
+</select>
+<input type="button" value="重置" id="reset">
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/jquery.select.js"></script>
+<script type="text/javascript">
+$(function(){	
+	$("#reset").click(function(){
+		/*var options=$("#select_box0").find('ul').find('li').eq(0).trigger("click");
+		$("#select_box0").find('ul').hide();
+		console.log(options)*/
+		/*$("select:first option:first").trigger("click");*/
+		select_reset("#select_box0");
+	})
+})
+
+</script>
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+<p>适用浏览器：IE8、360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗.</p>
+<p>来源：<a href="http://sc.chinaz.com/" target="_blank">站长素材</a></p>
+</div>
+</body>
+</html>

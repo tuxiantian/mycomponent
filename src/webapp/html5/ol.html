@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>html5 ol reversed属性</title>
+</head>
+<body>
+<!-- 设置ol元素的reversed属性可以倒序排列元素 -->
+<ol reversed>
+<li>red</li>
+<li>green</li>
+<li>blue</li>
+</ol>
+<form>
+<input name="date1" type="datetime" value="2016-02-27 20:36:12">
+<input type="text" id="input1" autofocus>input1
+<!-- tabindex的值为-1时，对应的元素就无法通过tab键来获取焦点.
+设置tabindex的值为-1的元素依然可以通过js的focus函数获取焦点。 -->
+<input type="text" tabindex="-1" id="input2">input2
+<input type="text" required>input3
+<input type="submit" value="提交">
+</form>
+<script type="text/javascript">
+document.getElementById('input2').focus();
+</script>
+</body>
+</html>

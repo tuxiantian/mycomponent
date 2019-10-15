@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>用blockUI创建一个遮罩层</title>
+<meta name="description" content="在指定元素上创建一个loading遮罩层">
+<style type="text/css">
+.fullscreen{width: 1920px;height:960px;opcity:0;border:1px solid red;position: absolute;top:0;left:0;z-index:-1;}
+</style>
+</head>
+<body>
+<button id="createLoading">createLoading</button>
+<div id="fullscreen" class="fullscreen"></div>
+<script type="text/javascript" src="${webSiteDomain}/mycomponent/lib/jQuery/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="${webSiteDomain}/mycomponent/lib/blockUI/jquery.blockUI.js">
+</script>
+<script type="text/javascript">
+//创建loading效果
+function createLoading(id){
+    $(id).block({ 
+        message: '上传中..', 
+        css: {padding:"0 0 0 20px" , textAlign: "left",color:"#fff",background:"url(css/images/load.gif) no-repeat 0 0",border:"0" } ,
+        overlayCSS:{
+            backgroundColor: '#333', 
+            opacity:  0.5, 
+            cursor: 'wait' 
+        }
+    }); 
+}
+//关闭loading效果
+function unLoading(id){
+    $(id).unblock();
+}
+$("#createLoading").click(function(){
+	createLoading("#fullscreen");
+	setTimeout(function(){
+		unLoading("#fullscreen");
+	},2000);
+});
+</script>
+</body>
+</html>

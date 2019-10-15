@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>encodeURIComponent</title>
+<script type="text/javascript" src="${webSiteDomain}80/mycomponent/lib/jQuery/jquery-1.11.3.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+$.ajax({
+	type:'GET',
+	url:"${webSiteDomain}80/mycomponent/DecodeServlet",
+	data:{username:encodeURIComponent("涂贤田")},
+	success:function(data){
+		alert(data)
+	}
+});
+</script>
+</body>
+</html>

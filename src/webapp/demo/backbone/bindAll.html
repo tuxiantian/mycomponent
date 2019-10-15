@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>理解并实现 underscore 中的 bind 和 bindAll 函数</title>
+<script type="text/javascript" src="${webSiteDomain}/mycomponent/lib/jQuery/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="${webSiteDomain}/mycomponent/lib/backbone/underscore.js"></script>
+
+</head>
+<body>
+<button>click me</button>
+<script type="text/javascript">
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+
+    //_.bindAll(this, 'sayName', 'sayAge');
+}
+Person.prototype.sayName = function() {
+    console.log(this.name);
+}
+Person.prototype.sayAge = function() {
+    console.log(this.age);
+}
+
+var wenyi = new Person('wenyi', 26);
+wenyi.sayName();
+var func = wenyi.sayName;
+func(); // wenyi
+
+//$('button').click(wenyi.sayAge); // 26
+$('button').click(function(){wenyi.sayAge()}); 
+</script>
+</body>
+</html>

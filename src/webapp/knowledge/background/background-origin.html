@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>background-origin</title>
+<style type="text/css">
+div {
+    width: 50px;
+    height: 50px;
+    border: 10px dashed #f00;
+    padding: 20px;
+    background-image: url(http://sfault-avatar.b0.upaiyun.com/196/388/1963885910-54af96065b546_big64);
+    background-repeat: no-repeat;
+    background-origin: border-box;
+}
+div ~ div{
+background-origin: padding-box;
+}
+div ~ div ~ div{
+background-origin: content-box;
+}
+</style>
+</head>
+<body>
+border-box
+<div></div>
+<hr>
+padding-box
+<div></div>
+<hr>
+content-box
+<div></div>
+<hr>
+</body>
+</html>
